@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LogOut, Plus, Search, Filter, Download, Edit, Trash, Copy, FileText } from 'lucide-react';
+import { LogOut, Plus, Search, Filter, Download, Edit, Trash, Copy, FileText, Eye } from 'lucide-react';
 import { api } from '../utils/api';
 import { useAuthStore } from '../store/auth';
 
@@ -353,6 +353,13 @@ export const Dashboard = () => {
                           </button>
                         )}
 
+                        <button
+                          onClick={() => navigate(`/invoices/${inv.id}/view`)}
+                          className="p-1 text-slate-400 hover:text-cyan-400 rounded transition-colors"
+                          title="View Public Link"
+                        >
+                          <Eye size={14} />
+                        </button>
                         <button
                           onClick={() => handleDownloadPDF(inv.id)}
                           className="p-1 text-slate-400 hover:text-cyan-400 rounded transition-colors"
