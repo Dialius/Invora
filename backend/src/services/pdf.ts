@@ -173,16 +173,22 @@ export const generateInvoiceHTML = (invoice: any) => {
         <!-- Header Section -->
         <div class="flex justify-between items-start border-b border-gray-100 pb-6">
           <div>
-            <!-- Simple textless logo concept: stylized minimal glyph of paper/flow -->
-            <div class="flex items-center gap-2 mb-4">
-              <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="20" y="15" width="60" height="70" rx="10" stroke="#1E3A5F" stroke-width="8" />
-                <path d="M35 35H65" stroke="#00A8CC" stroke-width="8" stroke-linecap="round" />
-                <path d="M35 50H65" stroke="#1E3A5F" stroke-width="8" stroke-linecap="round" />
-                <path d="M35 65H55" stroke="#1E3A5F" stroke-width="8" stroke-linecap="round" />
-              </svg>
-              <span class="text-xl font-bold tracking-tight text-[#1E3A5F]">Invora</span>
-            </div>
+            ${company?.logo ? `
+              <div class="mb-4">
+                <img src="${company.logo}" style="max-height: 50px; max-width: 150px; object-fit: contain;" />
+              </div>
+            ` : `
+              <!-- Simple textless logo concept: stylized minimal glyph of paper/flow -->
+              <div class="flex items-center gap-2 mb-4">
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="20" y="15" width="60" height="70" rx="10" stroke="#1E3A5F" stroke-width="8" />
+                  <path d="M35 35H65" stroke="#00A8CC" stroke-width="8" stroke-linecap="round" />
+                  <path d="M35 50H65" stroke="#1E3A5F" stroke-width="8" stroke-linecap="round" />
+                  <path d="M35 65H55" stroke="#1E3A5F" stroke-width="8" stroke-linecap="round" />
+                </svg>
+                <span class="text-xl font-bold tracking-tight text-[#1E3A5F]">Invora</span>
+              </div>
+            `}
             <div class="text-xs text-gray-500">
               <div class="font-bold text-sm text-gray-700">${company?.name || 'My Company'}</div>
               <div>${company?.address || '-'}</div>
@@ -283,10 +289,17 @@ export const generateInvoiceHTML = (invoice: any) => {
             <div>Thank you for your business!</div>
           </div>
           ${signature ? `
-            <div class="text-center">
-              <div class="mb-10 text-gray-500 font-medium">Authorized Signature</div>
+            <div class="text-center" style="min-width: 150px;">
+              <div class="text-gray-500 font-medium mb-2" style="font-size: 11px;">Authorized Signature</div>
+              ${signature.startsWith('data:image/') ? `
+                <div class="mb-2" style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                  <img src="${signature}" style="max-height: 60px; max-width: 120px; object-fit: contain;" />
+                </div>
+              ` : `
+                <div class="mb-10"></div>
+                <div class="font-semibold text-gray-700">${signature}</div>
+              `}
               <div class="w-32 border-b border-gray-300 mx-auto mb-1"></div>
-              <div class="font-semibold text-gray-600">${signature}</div>
             </div>
           ` : ''}
         </div>
