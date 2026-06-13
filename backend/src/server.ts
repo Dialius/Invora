@@ -4,6 +4,8 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth';
 import invoiceRoutes from './routes/invoices';
+import companyRoutes from './routes/companies';
+import clientRoutes from './routes/clients';
 
 dotenv.config();
 
@@ -21,6 +23,8 @@ app.use(cookieParser());
 // Routing
 app.use('/api/auth', authRoutes);
 app.use('/api/invoices', invoiceRoutes);
+app.use('/api/companies', companyRoutes);
+app.use('/api/clients', clientRoutes);
 
 // Root endpoint for health check
 app.get('/health', (req, res) => {
