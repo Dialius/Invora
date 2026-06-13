@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth';
+import invoiceRoutes from './routes/invoices';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(cookieParser());
 
 // Routing
 app.use('/api/auth', authRoutes);
+app.use('/api/invoices', invoiceRoutes);
 
 // Root endpoint for health check
 app.get('/health', (req, res) => {
