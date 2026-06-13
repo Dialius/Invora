@@ -15,7 +15,6 @@ export const getCompanies = async (req: Request, res: Response) => {
       where: { userId },
       include: { bankAccounts: true }
     });
-
     return res.status(200).json({ companies });
   } catch (error: any) {
     return res.status(500).json({ error: error.message || 'Failed to fetch companies' });
@@ -28,8 +27,22 @@ export const createCompany = async (req: Request, res: Response) => {
     if (!userId) return res.status(401).json({ error: 'Unauthorized' });
 
     const { name, logo, address, phone, email, website, npwp, bankAccounts } = req.body;
-
     if (!name) return res.status(400).json({ error: 'Company name is required' });
+
+    // Case-insensitive duplicate check for the same user
+    const existingCompany = await prisma.company.findFirst({
+      where: {
+        userId,
+        name: {
+          equals: name,
+          mode: 'insensitive'
+        }
+      }
+    });
+
+    if (existingCompany) {
+      return res.status(400).json({ error: 'Company with this name already exists' });
+    }
 
     const company = await prisma.company.create({
       data: {
@@ -47,9 +60,43 @@ export const createCompany = async (req: Request, res: Response) => {
       },
       include: { bankAccounts: true }
     });
-
     return res.status(201).json({ company });
   } catch (error: any) {
     return res.status(500).json({ error: error.message || 'Failed to create company' });
+  }
+};
+
+export const deleteCompany = async (req: Request, res: Response) => {
+  try {
+    const userId = req.user?.id;
+    if (!userId) return res.status(401).json({ error: 'Unauthorized' });
+
+    const { id } = req.params;
+
+    const company = await prisma.company.findFirst({
+      where: { id, userId }
+    });
+
+    if (!company) return res.status(404).json({ error: 'Company not found' });
+
+    const invoiceCount = await prisma.invoice.count({
+      where: { companyId: id }
+    });
+
+    if (invoiceCount > 0) {
+      return res.status(400).json({ error: 'Cannot delete company with active invoices' });
+    }
+
+    await prisma.bankAccount.deleteMany({
+      where: { companyId: id }
+    });
+
+    await prisma.company.delete({
+      where: { id }
+    });
+
+    return res.status(200).json({ message: 'Company deleted successfully' });
+  } catch (error: any) {
+    return res.status(500).json({ error: error.message || 'Failed to delete company' });
   }
 };
