@@ -8,12 +8,18 @@ import {
   deleteInvoice,
   duplicateInvoice,
   updateInvoiceStatus,
-  getInvoicePDF
+  getInvoicePDF,
+  getPublicInvoiceById,
+  getPublicInvoicePDF
 } from '../controllers/invoices';
 
 const router = Router();
 
-// Apply auth middleware to all invoice endpoints
+// Public routes (No authentication required)
+router.get('/public/:id', getPublicInvoiceById);
+router.get('/public/:id/pdf', getPublicInvoicePDF);
+
+// Apply auth middleware to all other invoice endpoints
 router.use(authenticateToken);
 
 router.get('/', getInvoices);

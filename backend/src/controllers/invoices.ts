@@ -540,3 +540,56 @@ export const getInvoicePDF = async (req: Request, res: Response) => {
   }
 };
 
+// GET /api/invoices/public/:id
+export const getPublicInvoiceById = async (req: ExpressRequest, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const invoice = await prisma.invoice.findUnique({
+      where: { id },
+      include: {
+        client: true,
+        company: { include: { bankAccounts: true } },
+        items: true
+      }
+    });
+
+    if (!invoice) {
+      return res.status(404).json({ error: 'Invoice not found' });
+    }
+
+    return res.status(200).json({ invoice });
+  } catch (error: any) {
+    return res.status(500).json({ error: error.message || 'Failed to fetch public invoice' });
+  }
+};
+
+// GET /api/invoices/public/:id/pdf
+export const getPublicInvoicePDF = async (req: ExpressRequest, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const invoice = await prisma.invoice.findUnique({
+      where: { id },
+      include: {
+        client: true,
+        company: { include: { bankAccounts: true } },
+        items: true
+      }
+    });
+
+    if (!invoice) {
+      return res.status(404).json({ error: 'Invoice not found' });
+    }
+
+    const htmlContent = generateInvoiceHTML(invoice);
+    const pdfBuffer = await generatePDF(htmlContent);
+
+    res.contentType('application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename=Invoice-${invoice.invoiceNumber.replace(/\//g, '-')}.pdf`);
+    return res.send(pdfBuffer);
+  } catch (error: any) {
+    return res.status(500).json({ error: error.message || 'Failed to generate PDF' });
+  }
+};
+
