@@ -48,7 +48,8 @@ export const calculateInvoiceTotals = (invoiceData: any, items: any[]) => {
   const taxPercent = Number(invoiceData.taxPercent) !== undefined ? Number(invoiceData.taxPercent) : 11;
   const taxAmount = taxableAmount * (taxPercent / 100);
   const extraFee = Number(invoiceData.extraFee) || 0;
-  const total = taxableAmount + taxAmount + extraFee;
+  const shippingFee = Number(invoiceData.shippingFee) || 0;
+  const total = taxableAmount + taxAmount + extraFee + shippingFee;
 
   let dpPercent = null;
   let dpAmount = null;
@@ -73,6 +74,7 @@ export const calculateInvoiceTotals = (invoiceData: any, items: any[]) => {
       taxPercent,
       taxAmount,
       extraFee,
+      shippingFee,
       total,
       dpPercent,
       dpAmount,
@@ -188,6 +190,7 @@ export const createInvoice = async (req: Request, res: Response) => {
       discountValue,
       taxPercent,
       extraFee,
+      shippingFee,
       dpPercent,
       dpAmount,
       paidAmount
@@ -224,7 +227,7 @@ export const createInvoice = async (req: Request, res: Response) => {
 
     // Calculate totals
     const { calculatedItems, totals } = calculateInvoiceTotals(
-      { type, discountType, discountValue, taxPercent, extraFee, dpPercent, dpAmount, paidAmount },
+      { type, discountType, discountValue, taxPercent, extraFee, shippingFee, dpPercent, dpAmount, paidAmount },
       items
     );
 
@@ -247,6 +250,7 @@ export const createInvoice = async (req: Request, res: Response) => {
         taxPercent: totals.taxPercent,
         taxAmount: totals.taxAmount,
         extraFee: totals.extraFee,
+        shippingFee: totals.shippingFee,
         total: totals.total,
         dpPercent: totals.dpPercent,
         dpAmount: totals.dpAmount,
@@ -301,6 +305,7 @@ export const updateInvoice = async (req: Request, res: Response) => {
       discountValue,
       taxPercent,
       extraFee,
+      shippingFee,
       dpPercent,
       dpAmount,
       paidAmount
@@ -321,6 +326,7 @@ export const updateInvoice = async (req: Request, res: Response) => {
     if (notes !== undefined) updateData.notes = notes;
     if (terms !== undefined) updateData.terms = terms;
     if (signature !== undefined) updateData.signature = signature;
+    if (shippingFee !== undefined) updateData.shippingFee = shippingFee;
 
     if (items && Array.isArray(items)) {
       // Re-calculate totals
@@ -330,6 +336,7 @@ export const updateInvoice = async (req: Request, res: Response) => {
         discountValue: discountValue !== undefined ? discountValue : existingInvoice.discountValue,
         taxPercent: taxPercent !== undefined ? taxPercent : existingInvoice.taxPercent,
         extraFee: extraFee !== undefined ? extraFee : existingInvoice.extraFee,
+        shippingFee: shippingFee !== undefined ? shippingFee : existingInvoice.shippingFee,
         dpPercent: dpPercent !== undefined ? dpPercent : existingInvoice.dpPercent,
         dpAmount: dpAmount !== undefined ? dpAmount : existingInvoice.dpAmount,
         paidAmount: paidAmount !== undefined ? paidAmount : existingInvoice.paidAmount,
@@ -343,6 +350,7 @@ export const updateInvoice = async (req: Request, res: Response) => {
       updateData.taxPercent = totals.taxPercent;
       updateData.taxAmount = totals.taxAmount;
       updateData.extraFee = totals.extraFee;
+      updateData.shippingFee = totals.shippingFee;
       updateData.total = totals.total;
       updateData.dpPercent = totals.dpPercent;
       updateData.dpAmount = totals.dpAmount;
