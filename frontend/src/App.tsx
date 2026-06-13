@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { ConsoleLayout } from './components/ConsoleLayout';
 import { InvoiceFormPage } from './pages/InvoiceFormPage';
 import { Dashboard } from './pages/Dashboard';
 import { LandingHome } from './pages/LandingHome';
@@ -48,9 +49,11 @@ function App() {
 
         {/* Protected Panel routes */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/invoices/new" element={<InvoiceFormPage />} />
-          <Route path="/invoices/:id/edit" element={<InvoiceFormPage />} />
+          <Route element={<ConsoleLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/invoices/new" element={<InvoiceFormPage />} />
+            <Route path="/invoices/:id/edit" element={<InvoiceFormPage />} />
+          </Route>
         </Route>
 
         {/* Redirects */}
