@@ -1,6 +1,7 @@
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 generator client {
@@ -60,7 +61,7 @@ model Invoice {
   user            User          @relation(fields: [userId], references: [id])
   company         Company       @relation(fields: [companyId], references: [id])
   client          Client        @relation(fields: [clientId], references: [id])
-  invoiceNumber   String        @unique
+  invoiceNumber   String
   type            InvoiceType
   status          InvoiceStatus @default(DRAFT)
   title           String?
@@ -74,6 +75,7 @@ model Invoice {
   taxPercent      Decimal       @default(11)
   taxAmount       Decimal
   extraFee        Decimal?
+  shippingFee     Decimal?      @default(0)
   total           Decimal
   dpPercent       Decimal?
   dpAmount        Decimal?
@@ -85,6 +87,8 @@ model Invoice {
   items           InvoiceItem[]
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
+
+  @@unique([userId, invoiceNumber])
 }
 
 model InvoiceItem {

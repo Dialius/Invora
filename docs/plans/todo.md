@@ -1,25 +1,10 @@
-# Redesign Tasks Track List
+# Redesign and Humanization Tasks Track List
 
-- [x] **Task 1: Backend DELETE Endpoints & Duplicate Validation**
-  - Delete endpoints for companies and clients.
-  - Case-insensitive duplicate name checks on creation.
-  - Active invoice usage reference check.
-- [x] **Task 2: Public Multi-Route Components**
-  - Create `/`, `/features`, `/pricing`, `/faq`, `/contact`.
-  - Add routes to React Router in `App.tsx`.
-  - Include an interactive demo preview invoice on the landing page `/`.
-- [x] **Task 3: Dropdown & Number Input Redesign**
-  - Add utility styles in `index.css`.
-  - Style dropdowns & inputs beautifully inside `InvoiceForm.tsx`.
-- [x] **Task 4: Base64 Logo Upload & HTML5 Signature Canvas**
-  - Implement Base64 converter for Company Logo.
-  - Create interactive canvas drawing pad & upload for signatures.
-- [x] **Task 5: Live Invoice Preview under the Form**
-  - Embed dynamic invoice preview section below form.
-  - Multi-language support toggle (ID/EN).
-  - Format Notes/Terms, custom thank you messaging, delete profile buttons.
-- [x] **Task 6: Read-Only Invoice Details & Public Sharing Page**
-  - Create `/invoices/:id/view` public read-only page.
-  - Add Print and share link buttons.
-- [ ] **Task 7: Integration & Verification**
-  - Validate all features via browser tests.
+- [ ] **Task 1: Database Schema Migration** (Add `shippingFee` to Invoice model)
+- [ ] **Task 2: Backend Controller Totals Calculation Update** (Integrate `shippingFee` into totals calculation)
+- [ ] **Task 3: PDF Generation Service Update** (Render `shippingFee` and apply print media styles in backend PDF)
+- [ ] **Task 4: Console Sidebar & Top Breadcrumbs Layout Wrapper** (Build `ConsoleLayout` wrapper and update routing)
+- [ ] **Task 5: Redesign Login and Register Pages** (Apply 'Soft Editorial & Clean' theme to auth screens)
+- [ ] **Task 6: Invoice Form Custom Elements, Shipping, and Signature Fix** (Fix canvas cursor offset, style dropdowns/number inputs, and add shipping field)
+- [ ] **Task 7: Public Invoice View Page Redesign** (Add shipping row and clean print styles to client view)
+- [ ] **Task 8: Dashboard Page Alignment** (Style dashboard to fit light-mode console aesthetic)
