@@ -17,10 +17,18 @@ graph TD
 ```
 
 ### 1.1 Architecture Components
-*   **Frontend**: A responsive Single Page Application (SPA) built using React 18, TypeScript, and Tailwind CSS. State management is handled globally by Zustand and locally via standard React state hooks.
+*   **Frontend**: A responsive Single Page Application (SPA) built using React 18, TypeScript, and Tailwind CSS. Supports multiple currencies (IDR, USD, EUR, etc.) with localized formatting. State management is handled globally by Zustand and locally via standard React state hooks.
 *   **Backend**: Node.js and Express.js REST API server handling request validation, business logic, authentication, and database migrations.
-*   **Database**: PostgreSQL relational database managed using Prisma ORM.
+*   **Database**: PostgreSQL relational database managed using Prisma ORM. The `Invoice` model stores a `currency` code field.
 *   **PDF Export Engine**: Server-side rendering using Puppeteer or client-side generation using `react-pdf` to output A4-formatted, print-ready PDFs.
+
+### 1.2 Logo & Brand Identity
+The logo is designed to be simple, textless (icon-only), conveying the concept of documents/invoices combined with seamless flow.
+
+![Invora Simple Icon Mockup](C:\Users\ASUS\.gemini\antigravity\brain\45416c30-8611-4167-be4c-85b6cdb618c5\invora_simple_logo_1781351397145.png)
+
+*   **Logo Prompt**: *"A simple minimalist vector icon-only logo for an invoice platform. The icon is a clean, abstract geometric shape representing a document/invoice merged with a smooth flow/arrow. No text, no letters. Modern flat design, solid dark blue background, cyan and electric blue gradient accents, corporate identity icon, professional, clean."*
+
 
 ---
 

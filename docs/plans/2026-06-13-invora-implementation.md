@@ -118,6 +118,7 @@ model Invoice {
   status          InvoiceStatus @default(DRAFT)
   title           String?
   projectRef      String?
+  currency        String        @default("IDR")
   invoiceDate     DateTime
   dueDate         DateTime
   subtotal        Decimal
@@ -276,7 +277,7 @@ git commit -m "feat: create authState container and routing configuration"
 Dynamic component handling dynamic row manipulation, calculating row totals.
 
 **Step 2: Create main InvoiceForm**
-Dynamic fields for DP percentage, pelunasan paid amounts, tax configurations, and business information.
+Dynamic fields for DP percentage, pelunasan paid amounts, tax configurations, business information, and currency selection (USD, EUR, IDR, etc.) with localized formatting for all calculated figures.
 
 **Step 3: Commit**
 ```bash
