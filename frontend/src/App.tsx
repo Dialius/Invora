@@ -10,6 +10,7 @@ import { Features } from './pages/Features';
 import { Pricing } from './pages/Pricing';
 import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
+import PublicInvoiceView from './pages/PublicInvoiceView';
 import { useAuthStore } from './store/auth';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/invoices/:id/view" element={<PublicInvoiceView />} />
 
         {/* Auth routes */}
         <Route path="/login" element={<Login />} />
