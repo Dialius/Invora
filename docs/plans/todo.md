@@ -1,0 +1,25 @@
+# Redesign Tasks Track List
+
+- [x] **Task 1: Backend DELETE Endpoints & Duplicate Validation**
+  - Delete endpoints for companies and clients.
+  - Case-insensitive duplicate name checks on creation.
+  - Active invoice usage reference check.
+- [x] **Task 2: Public Multi-Route Components**
+  - Create `/`, `/features`, `/pricing`, `/faq`, `/contact`.
+  - Add routes to React Router in `App.tsx`.
+  - Include an interactive demo preview invoice on the landing page `/`.
+- [x] **Task 3: Dropdown & Number Input Redesign**
+  - Add utility styles in `index.css`.
+  - Style dropdowns & inputs beautifully inside `InvoiceForm.tsx`.
+- [x] **Task 4: Base64 Logo Upload & HTML5 Signature Canvas**
+  - Implement Base64 converter for Company Logo.
+  - Create interactive canvas drawing pad & upload for signatures.
+- [x] **Task 5: Live Invoice Preview under the Form**
+  - Embed dynamic invoice preview section below form.
+  - Multi-language support toggle (ID/EN).
+  - Format Notes/Terms, custom thank you messaging, delete profile buttons.
+- [x] **Task 6: Read-Only Invoice Details & Public Sharing Page**
+  - Create `/invoices/:id/view` public read-only page.
+  - Add Print and share link buttons.
+- [ ] **Task 7: Integration & Verification**
+  - Validate all features via browser tests.
