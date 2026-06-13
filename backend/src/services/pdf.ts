@@ -50,6 +50,7 @@ export const generateInvoiceHTML = (invoice: any) => {
     taxPercent,
     taxAmount,
     extraFee,
+    shippingFee,
     total,
     dpPercent,
     dpAmount,
@@ -99,6 +100,17 @@ export const generateInvoiceHTML = (invoice: any) => {
       <div class="flex justify-between py-1 text-sm text-gray-600">
         <span>Extra Fee:</span>
         <span>${formatCurrency(extraFee, currency)}</span>
+      </div>
+    `;
+  }
+
+  // Shipping fee label
+  let shippingFeeRow = '';
+  if (shippingFee && Number(shippingFee) > 0) {
+    shippingFeeRow = `
+      <div class="flex justify-between py-1 text-sm text-gray-600">
+        <span>Shipping Cost:</span>
+        <span>${formatCurrency(shippingFee, currency)}</span>
       </div>
     `;
   }
@@ -274,6 +286,7 @@ export const generateInvoiceHTML = (invoice: any) => {
               <span>${formatCurrency(taxAmount, currency)}</span>
             </div>
             ${extraFeeRow}
+            ${shippingFeeRow}
             <div class="flex justify-between py-2 text-base font-bold text-[#1E3A5F] border-t-2 border-gray-200 mt-2">
               <span>Total:</span>
               <span>${formatCurrency(total, currency)}</span>
