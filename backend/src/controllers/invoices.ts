@@ -1,6 +1,7 @@
 import { Request as ExpressRequest, Response } from 'express';
 import { prisma } from '../prisma';
 import { UserPayload } from '../types';
+import { generateInvoiceHTML, generatePDF } from '../services/pdf';
 
 interface Request extends ExpressRequest {
   user?: UserPayload;
@@ -506,3 +507,36 @@ export const updateInvoiceStatus = async (req: Request, res: Response) => {
     return res.status(500).json({ error: error.message || 'Failed to update status' });
   }
 };
+
+// GET /api/invoices/:id/pdf
+export const getInvoicePDF = async (req: Request, res: Response) => {
+  try {
+    const userId = req.user?.id;
+    const { id } = req.params;
+
+    if (!userId) return res.status(401).json({ error: 'Unauthorized' });
+
+    const invoice = await prisma.invoice.findFirst({
+      where: { id, userId },
+      include: {
+        client: true,
+        company: { include: { bankAccounts: true } },
+        items: true
+      }
+    });
+
+    if (!invoice) {
+      return res.status(404).json({ error: 'Invoice not found' });
+    }
+
+    const htmlContent = generateInvoiceHTML(invoice);
+    const pdfBuffer = await generatePDF(htmlContent);
+
+    res.contentType('application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename=Invoice-${invoice.invoiceNumber.replace(/\//g, '-')}.pdf`);
+    return res.send(pdfBuffer);
+  } catch (error: any) {
+    return res.status(500).json({ error: error.message || 'Failed to generate PDF' });
+  }
+};
+

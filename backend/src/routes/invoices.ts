@@ -7,7 +7,8 @@ import {
   updateInvoice,
   deleteInvoice,
   duplicateInvoice,
-  updateInvoiceStatus
+  updateInvoiceStatus,
+  getInvoicePDF
 } from '../controllers/invoices';
 
 const router = Router();
@@ -17,6 +18,7 @@ router.use(authenticateToken);
 
 router.get('/', getInvoices);
 router.get('/:id', getInvoiceById);
+router.get('/:id/pdf', getInvoicePDF);
 router.post('/', createInvoice);
 router.put('/:id', updateInvoice);
 router.delete('/:id', deleteInvoice);
