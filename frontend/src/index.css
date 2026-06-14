@@ -207,6 +207,32 @@ select {
 }
 
 /* =========================================
+   CUSTOM SCROLLBAR
+   ========================================= */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #C9C3BA transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #C9C3BA;
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #A8A29E;
+}
+
+/* =========================================
    REDUCED MOTION
    ========================================= */
 @media (prefers-reduced-motion: reduce) {

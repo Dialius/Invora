@@ -122,7 +122,7 @@ export const ConsoleLayout = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 py-5 px-2 space-y-0.5 overflow-y-auto min-h-0">
+        <nav className="flex-1 py-5 px-2 space-y-0.5 overflow-y-auto min-h-0 custom-scrollbar">
           {!collapsed && (
             <p className="text-[10px] font-semibold text-stone-600 uppercase tracking-widest px-3 mb-3">
               {t('console.navigation')}
@@ -229,7 +229,7 @@ export const ConsoleLayout = () => {
               </button>
             </div>
 
-            <nav className="flex-1 p-3 space-y-0.5 overflow-y-auto">
+            <nav className="flex-1 p-3 space-y-0.5 overflow-y-auto custom-scrollbar">
               <p className="text-[10px] font-semibold text-stone-600 uppercase tracking-widest px-3 mb-3">{t('console.navigation')}</p>
               {navItems.map((item) => (
                 <NavItem key={item.path} item={item} onClick={() => setMobileOpen(false)} />
@@ -323,7 +323,7 @@ export const ConsoleLayout = () => {
         </header>
 
         {/* Scrollable work area */}
-        <main className="flex-1 overflow-y-auto p-4 md:p-7">
+        <main className="flex-1 overflow-y-auto p-4 md:p-7 custom-scrollbar">
           <div className="max-w-7xl mx-auto">
             <Outlet />
           </div>

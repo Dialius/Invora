@@ -168,7 +168,7 @@ export const CustomSelect = ({
             absolute top-full left-0 right-0 z-50
             mt-1.5 bg-white border border-[#E2DED7]
             rounded-xl shadow-lg shadow-stone-200/60
-            py-1.5 max-h-52 overflow-y-auto
+            py-1.5 max-h-52 overflow-y-auto overflow-x-hidden custom-scrollbar
             animate-slideDown
           "
           onClick={(e) => e.stopPropagation()}
