@@ -12,6 +12,7 @@ export const LandingHome = () => {
   const [currency, setCurrency] = useState('USD');
   const [discountPct, setDiscountPct] = useState(10);
   const [demoLang, setDemoLang] = useState<'EN' | 'ID'>('EN');
+  const [invoiceType, setInvoiceType] = useState<'REGULER' | 'PROFORMA' | 'DOWN_PAYMENT' | 'PELUNASAN'>('REGULER');
 
   const itemPrice = 450;
   const itemQty = 3;
@@ -20,6 +21,12 @@ export const LandingHome = () => {
   const taxPct = 11;
   const taxVal = ((subtotal - discountVal) * taxPct) / 100;
   const total = subtotal - discountVal + taxVal;
+
+  const dpPct = 30;
+  const dpAmount = total * (dpPct / 100);
+  const remainingAmount = total - dpAmount;
+  const paidAmount = total * 0.3;
+  const remainingPayable = total - paidAmount;
 
   const currencySymbol = () => {
     switch (currency) {
@@ -35,8 +42,44 @@ export const LandingHome = () => {
   };
 
   const inv = {
-    EN: { title: 'INVOICE', from: 'Billed From', to: 'Billed To', date: 'Invoice Date', due: 'Due Date', desc: 'Description', qty: 'Qty', price: 'Unit Price', subtotal: 'Subtotal', discount: 'Discount', tax: 'Tax', total: 'Total Amount', thanks: 'Thank you for your business!' },
-    ID: { title: 'FAKTUR / INVOICE', from: 'Tagihan Dari', to: 'Tagihan Kepada', date: 'Tanggal Invoice', due: 'Jatuh Tempo', desc: 'Deskripsi', qty: 'Jumlah', price: 'Harga Satuan', subtotal: 'Subtotal', discount: 'Diskon', tax: 'Pajak', total: 'Total Tagihan', thanks: 'Terima kasih atas kerja sama Anda!' },
+    EN: {
+      title: invoiceType === 'REGULER' ? 'INVOICE' : invoiceType === 'PROFORMA' ? 'PROFORMA INVOICE' : invoiceType === 'DOWN_PAYMENT' ? 'DOWN PAYMENT INVOICE' : 'SETTLEMENT INVOICE',
+      from: 'Billed From',
+      to: 'Billed To',
+      date: 'Invoice Date',
+      due: 'Due Date',
+      desc: 'Description',
+      qty: 'Qty',
+      price: 'Unit Price',
+      subtotal: 'Subtotal',
+      discount: 'Discount',
+      tax: 'Tax',
+      total: 'Total Amount',
+      thanks: 'Thank you for your business!',
+      dpLabel: `Down Payment (${dpPct}%)`,
+      remLabel: 'Remaining Balance',
+      paidLabel: 'DP Paid Amount',
+      remPayLabel: 'Remaining to Pay'
+    },
+    ID: {
+      title: invoiceType === 'REGULER' ? 'FAKTUR / INVOICE' : invoiceType === 'PROFORMA' ? 'FAKTUR PROFORMA' : invoiceType === 'DOWN_PAYMENT' ? 'FAKTUR UANG MUKA' : 'FAKTUR PELUNASAN',
+      from: 'Tagihan Dari',
+      to: 'Tagihan Kepada',
+      date: 'Tanggal Invoice',
+      due: 'Jatuh Tempo',
+      desc: 'Deskripsi',
+      qty: 'Jumlah',
+      price: 'Harga Satuan',
+      subtotal: 'Subtotal',
+      discount: 'Diskon',
+      tax: 'Pajak',
+      total: 'Total Tagihan',
+      thanks: 'Terima kasih atas kerja sama Anda!',
+      dpLabel: `Uang Muka (${dpPct}%)`,
+      remLabel: 'Sisa Pembayaran',
+      paidLabel: 'DP Terbayar',
+      remPayLabel: 'Sisa Pelunasan'
+    },
   };
   const iv = inv[demoLang];
 
@@ -148,6 +191,31 @@ export const LandingHome = () => {
                 />
               </div>
 
+              {/* Invoice Type */}
+              <div className="space-y-1.5">
+                <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500">{t('demo.type.label')}</label>
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { id: 'REGULER', name: t('demo.type.reguler') },
+                    { id: 'PROFORMA', name: t('demo.type.proforma') },
+                    { id: 'DOWN_PAYMENT', name: t('demo.type.down_payment') },
+                    { id: 'PELUNASAN', name: t('demo.type.pelunasan') }
+                  ].map((tp) => (
+                    <button
+                      key={tp.id}
+                      onClick={() => setInvoiceType(tp.id as any)}
+                      className={`py-2 px-1 rounded-lg text-[11px] font-semibold transition-all border text-center ${
+                        invoiceType === tp.id
+                          ? 'bg-teal-50 text-teal-800 border-teal-300 shadow-sm font-bold'
+                          : 'bg-white text-stone-600 border-[#E2DED7] hover:border-[#C9C3BA]'
+                      }`}
+                    >
+                      {tp.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               {/* Template Language */}
               <div className="space-y-1.5">
                 <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500">{t('demo.lang.label')}</label>
@@ -253,8 +321,36 @@ export const LandingHome = () => {
                   </div>
                   <div className="flex justify-between text-sm font-extrabold text-stone-900 pt-1">
                     <span>{iv.total}:</span>
-                    <span className="text-teal-700">{currencySymbol()} {formatMoney(total)}</span>
+                    <span className={invoiceType === 'REGULER' || invoiceType === 'PROFORMA' ? 'text-teal-700 font-extrabold' : 'text-stone-900 font-extrabold'}>
+                      {currencySymbol()} {formatMoney(total)}
+                    </span>
                   </div>
+
+                  {invoiceType === 'DOWN_PAYMENT' && (
+                    <>
+                      <div className="flex justify-between text-stone-500 pt-1 border-t border-stone-100">
+                        <span>{iv.dpLabel}:</span>
+                        <span className="text-teal-700 font-bold">{currencySymbol()} {formatMoney(dpAmount)}</span>
+                      </div>
+                      <div className="flex justify-between text-stone-500">
+                        <span>{iv.remLabel}:</span>
+                        <span>{currencySymbol()} {formatMoney(remainingAmount)}</span>
+                      </div>
+                    </>
+                  )}
+
+                  {invoiceType === 'PELUNASAN' && (
+                    <>
+                      <div className="flex justify-between text-amber-700 font-medium pt-1 border-t border-stone-100">
+                        <span>{iv.paidLabel}:</span>
+                        <span>-{currencySymbol()} {formatMoney(paidAmount)}</span>
+                      </div>
+                      <div className="flex justify-between text-sm font-bold text-stone-900">
+                        <span>{iv.remPayLabel}:</span>
+                        <span className="text-teal-700 font-extrabold">{currencySymbol()} {formatMoney(remainingPayable)}</span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
 

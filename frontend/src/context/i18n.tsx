@@ -41,6 +41,11 @@ const translations: Record<Lang, Record<string, string>> = {
     'demo.currency.label':   'Currency',
     'demo.discount.label':   'Discount',
     'demo.lang.label':       'Template Language',
+    'demo.type.label':       'Invoice Type',
+    'demo.type.reguler':      'Regular',
+    'demo.type.proforma':     'Proforma',
+    'demo.type.down_payment': 'Down Payment',
+    'demo.type.pelunasan':    'Settlement',
     'demo.info':             'Want to upload custom company logos, draw digital signatures, and export PDF documents? Register a free account to unlock all features!',
 
     // Invoice labels (demo)
@@ -156,6 +161,11 @@ const translations: Record<Lang, Record<string, string>> = {
     'demo.currency.label':   'Mata Uang',
     'demo.discount.label':   'Diskon',
     'demo.lang.label':       'Bahasa Template',
+    'demo.type.label':       'Jenis Invoice',
+    'demo.type.reguler':      'Reguler',
+    'demo.type.proforma':     'Proforma',
+    'demo.type.down_payment': 'Uang Muka',
+    'demo.type.pelunasan':    'Pelunasan',
     'demo.info':             'Ingin mengunggah logo perusahaan khusus, menggambar tanda tangan digital, dan mengekspor dokumen PDF? Daftar akun gratis untuk membuka semua fitur!',
 
     // Invoice labels (demo)
