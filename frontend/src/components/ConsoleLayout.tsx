@@ -1,271 +1,334 @@
 import { useState } from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
-import { 
-  LayoutDashboard, 
-  PlusCircle, 
-  LogOut, 
-  Menu, 
-  X, 
-  ChevronLeft, 
+import {
+  LayoutDashboard,
+  PlusCircle,
+  LogOut,
+  Menu,
+  X,
+  ChevronLeft,
   ChevronRight,
-  Settings,
   HelpCircle,
-  Sparkles
+  Globe,
+  ExternalLink,
+  Languages,
 } from 'lucide-react';
 import { useAuthStore } from '../store/auth';
+import { useTranslation } from '../context/i18n';
 
 export const ConsoleLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { user, logout } = useAuthStore();
+  const { lang, setLang, t } = useTranslation();
+  const toggle = () => setLang(lang === 'EN' ? 'ID' : 'EN');
   const navigate = useNavigate();
   const location = useLocation();
+
+  const navItems = [
+    { name: t('console.dashboard'),  path: '/dashboard',    icon: LayoutDashboard },
+    { name: t('console.newInvoice'), path: '/invoices/new', icon: PlusCircle },
+    { name: t('console.faq'),        path: '/faq',          icon: HelpCircle },
+  ];
+
+  const getBreadcrumbs = () => {
+    const path = location.pathname;
+    if (path === '/dashboard')    return [t('bc.workspace'), t('bc.dashboard')];
+    if (path === '/invoices/new') return [t('bc.invoices'),  t('bc.createNew')];
+    if (path.includes('/edit'))   return [t('bc.invoices'),  t('bc.edit')];
+    if (path === '/faq')          return [t('bc.support'),   t('bc.faq')];
+    return [t('bc.console')];
+  };
+
+  const breadcrumbs = getBreadcrumbs();
 
   const handleLogout = async () => {
     await logout();
     navigate('/login');
   };
 
-  const navItems = [
-    {
-      name: 'Dashboard',
-      path: '/dashboard',
-      icon: LayoutDashboard
-    },
-    {
-      name: 'New Invoice',
-      path: '/invoices/new',
-      icon: PlusCircle
-    },
-    {
-      name: 'FAQ',
-      path: '/faq',
-      icon: HelpCircle
-    }
-  ];
-
-  // Helper to generate dynamic breadcrumbs
-  const getBreadcrumbs = () => {
-    const path = location.pathname;
-    if (path === '/dashboard') return ['Project Overview', 'Dashboard'];
-    if (path === '/invoices/new') return ['Invoices', 'Create New'];
-    if (path.includes('/edit')) return ['Invoices', 'Edit Invoice'];
-    if (path === '/faq') return ['Support', 'FAQ'];
-    if (path === '/contact') return ['Support', 'Contact Us'];
-    return ['Console'];
+  // Sidebar nav item component
+  const NavItem = ({ item, onClick }: { item: typeof navItems[0]; onClick?: () => void }) => {
+    const isActive = location.pathname === item.path;
+    const Icon = item.icon;
+    return (
+      <Link
+        to={item.path}
+        onClick={onClick}
+        title={collapsed ? item.name : undefined}
+        className={`
+          group flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 relative
+          ${isActive
+            ? 'bg-stone-800 text-white border-l-2 border-teal-500 pl-[10px]'
+            : 'text-stone-400 hover:text-white hover:bg-stone-800/60 border-l-2 border-transparent'
+          }
+        `}
+      >
+        <Icon size={17} className={`flex-shrink-0 transition-colors ${isActive ? 'text-teal-400' : 'text-stone-500 group-hover:text-stone-300'}`} />
+        {!collapsed && <span className="truncate">{item.name}</span>}
+      </Link>
+    );
   };
 
-  const breadcrumbs = getBreadcrumbs();
+  // User avatar
+  const UserAvatar = ({ size = 'md' }: { size?: 'sm' | 'md' }) => {
+    const initials = user?.name ? user.name.slice(0, 2).toUpperCase() : 'IN';
+    const cls = size === 'sm' ? 'w-7 h-7 text-[10px]' : 'w-9 h-9 text-xs';
+    return (
+      <div className={`${cls} rounded-full bg-teal-900/60 text-teal-300 border border-teal-800/50 flex items-center justify-center font-bold flex-shrink-0`}>
+        {initials}
+      </div>
+    );
+  };
+
+  // Language pill toggle (for top header)
+  const LangToggle = () => (
+    <button
+      onClick={toggle}
+      title={t('console.language')}
+      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-stone-200 bg-white hover:bg-stone-50 text-stone-600 hover:text-stone-800 text-xs font-semibold transition-all shadow-sm"
+    >
+      <Languages size={13} className="text-teal-600" />
+      <span>{lang === 'EN' ? '🇮🇩 ID' : '🇬🇧 EN'}</span>
+    </button>
+  );
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-slate-800 flex font-sans">
-      
-      {/* 1. Sidebar - Desktop */}
-      <aside 
-        className={`hidden md:flex flex-col bg-[#0F172A] text-slate-300 border-r border-slate-800 transition-all duration-300 relative z-30 ${
-          collapsed ? 'w-16' : 'w-64'
-        }`}
+    <div className="min-h-screen bg-[#F0EDE8] text-stone-800 flex font-sans">
+
+      {/* ─── Sidebar — Desktop ─────────────────────────────────────────── */}
+      <aside
+        className={`
+          hidden md:flex flex-col
+          bg-[#1C1917] border-r border-[#44403C]
+          transition-all duration-300 ease-out relative z-30 flex-shrink-0
+          h-screen sticky top-0
+          ${collapsed ? 'w-16' : 'w-60'}
+        `}
       >
-        {/* Sidebar Header */}
-        <div className="h-16 flex items-center justify-between px-4 border-b border-slate-800">
-          <Link to="/dashboard" className="flex items-center gap-2.5 overflow-hidden">
-            <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+        {/* Logo / Brand */}
+        <div className={`h-16 flex items-center border-b border-[#44403C] flex-shrink-0 ${collapsed ? 'justify-center px-0' : 'px-4 gap-2.5'}`}>
+          <Link to="/dashboard" className="flex items-center gap-2.5 overflow-hidden min-w-0">
+            <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
               <rect x="20" y="15" width="60" height="70" rx="10" stroke="#0D9488" strokeWidth="8" />
               <path d="M35 35H65" stroke="#0D9488" strokeWidth="8" strokeLinecap="round" />
-              <path d="M35 50H65" stroke="#1E3A5F" strokeWidth="8" strokeLinecap="round" />
-              <path d="M35 65H55" stroke="#1E3A5F" strokeWidth="8" strokeLinecap="round" />
+              <path d="M35 50H65" stroke="#5EEAD4" strokeWidth="8" strokeLinecap="round" />
+              <path d="M35 65H55" stroke="#5EEAD4" strokeWidth="8" strokeLinecap="round" />
             </svg>
             {!collapsed && (
-              <span className="text-lg font-bold tracking-tight text-white uppercase">Invora</span>
+              <span className="text-[15px] font-bold tracking-tight text-white truncate">Invora</span>
             )}
           </Link>
         </div>
 
-        {/* Navigation Items */}
-        <nav className="flex-1 py-6 px-3 space-y-1.5 overflow-y-auto">
-          <div className={`text-[10px] font-bold text-slate-500 uppercase tracking-wider px-2 mb-2 ${collapsed ? 'sr-only' : ''}`}>
-            Navigation
-          </div>
-          {navItems.map((item) => {
-            const isActive = location.pathname === item.path;
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all group ${
-                  isActive 
-                    ? 'bg-slate-800 text-white shadow-sm border border-slate-700/50' 
-                    : 'hover:bg-slate-800/40 hover:text-white text-slate-400'
-                }`}
-              >
-                <Icon size={18} className={isActive ? 'text-teal-400' : 'text-slate-400 group-hover:text-slate-300'} />
-                {!collapsed && <span>{item.name}</span>}
-              </Link>
-            );
-          })}
+        {/* Navigation */}
+        <nav className="flex-1 py-5 px-2 space-y-0.5 overflow-y-auto min-h-0">
+          {!collapsed && (
+            <p className="text-[10px] font-semibold text-stone-600 uppercase tracking-widest px-3 mb-3">
+              {t('console.navigation')}
+            </p>
+          )}
+          {navItems.map((item) => (
+            <NavItem key={item.path} item={item} />
+          ))}
         </nav>
 
-        {/* Footer info (User profile) */}
-        <div className="p-3 border-t border-slate-800">
+        {/* Bottom section */}
+        <div className="border-t border-[#44403C] p-3 space-y-2">
+          {/* Language toggle in sidebar (when expanded) */}
           {!collapsed && (
-            <div className="bg-slate-800/40 rounded-xl p-3 mb-2 border border-slate-800">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-teal-800 text-teal-100 flex items-center justify-center font-bold text-xs">
-                  {user?.name ? user.name[0].toUpperCase() : 'U'}
-                </div>
+            <button
+              onClick={toggle}
+              title={t('console.language')}
+              className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-stone-400 hover:text-white hover:bg-stone-800/60 transition-colors"
+            >
+              <Languages size={15} className="flex-shrink-0 text-stone-500" />
+              <span className="flex-1 text-left">{t('console.language')}</span>
+              <span className="text-[10px] font-bold bg-stone-800 border border-stone-700 px-1.5 py-0.5 rounded text-teal-400">
+                {lang}
+              </span>
+            </button>
+          )}
+
+          {/* User card */}
+          {!collapsed && (
+            <div className="bg-[#292524] rounded-xl p-3 border border-[#44403C]">
+              <div className="flex items-center gap-2.5">
+                <UserAvatar />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-bold text-white truncate">{user?.name || 'User'}</p>
-                  <p className="text-[10px] text-slate-500 truncate">{user?.email || 'free@invora.co'}</p>
+                  <p className="text-xs font-semibold text-white truncate leading-tight">{user?.name || 'User'}</p>
+                  <p className="text-[10px] text-stone-500 truncate">{user?.email || ''}</p>
                 </div>
               </div>
-              
-              <div className="mt-3 pt-3 border-t border-slate-800 flex justify-between items-center text-[10px] text-slate-400">
-                <div className="flex items-center gap-1">
-                  <Sparkles size={12} className="text-amber-500" />
-                  <span>Spark plan</span>
-                </div>
-                <span className="bg-teal-950 text-teal-400 border border-teal-800 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Free</span>
+              <div className="mt-3 pt-2.5 border-t border-[#44403C] flex items-center justify-between">
+                <span className="text-[10px] text-stone-500">{t('console.freePlan')}</span>
+                <span className="text-[10px] font-bold bg-teal-950/60 text-teal-400 border border-teal-900/50 px-1.5 py-0.5 rounded uppercase tracking-wider">{t('console.free')}</span>
               </div>
             </div>
           )}
 
+          {/* Back to site */}
+          <Link
+            to="/"
+            title={collapsed ? t('console.publicSite') : undefined}
+            className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-stone-500 hover:text-stone-300 hover:bg-stone-800/40 transition-colors"
+          >
+            <Globe size={15} className="flex-shrink-0" />
+            {!collapsed && <span>{t('console.publicSite')}</span>}
+            {!collapsed && <ExternalLink size={11} className="ml-auto opacity-50" />}
+          </Link>
+
+          {/* Logout */}
           <button
             onClick={handleLogout}
-            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-400 hover:bg-red-500/10 transition-colors ${
-              collapsed ? 'justify-center' : ''
-            }`}
-            title="Log Out"
+            title={collapsed ? t('console.signOut') : undefined}
+            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-red-400/80 hover:text-red-400 hover:bg-red-500/10 transition-colors ${collapsed ? 'justify-center' : ''}`}
           >
-            <LogOut size={18} />
-            {!collapsed && <span>Sign Out</span>}
+            <LogOut size={15} className="flex-shrink-0" />
+            {!collapsed && <span>{t('console.signOut')}</span>}
           </button>
         </div>
 
-        {/* Collapse Toggle Button */}
+        {/* Collapse toggle */}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="absolute -right-3 top-20 bg-slate-800 border border-slate-700 hover:bg-slate-700 text-white rounded-full p-1 shadow-md transition-transform z-40 hidden md:block"
+          className="absolute -right-3 top-1/2 -translate-y-1/2 bg-[#292524] border border-[#44403C] hover:bg-stone-700 text-stone-400 hover:text-white rounded-full p-1 shadow-lg transition-colors z-40 hidden md:flex items-center justify-center"
+          title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
           {collapsed ? <ChevronRight size={12} /> : <ChevronLeft size={12} />}
         </button>
       </aside>
 
-      {/* 2. Mobile Sidebar Slide-over */}
+      {/* ─── Mobile Slide-over ──────────────────────────────────────────── */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-50 flex md:hidden bg-slate-900/60 backdrop-blur-sm">
-          <div className="w-64 bg-[#0F172A] text-slate-300 flex flex-col p-4 relative">
-            <button 
-              onClick={() => setMobileOpen(false)}
-              className="absolute right-4 top-4 text-slate-400 hover:text-white"
-            >
-              <X size={20} />
-            </button>
+        <div
+          className="fixed inset-0 z-50 flex md:hidden"
+          onClick={() => setMobileOpen(false)}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-stone-950/70 backdrop-blur-sm" />
 
-            <Link to="/dashboard" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 mb-8">
-              <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="20" y="15" width="60" height="70" rx="10" stroke="#0D9488" strokeWidth="8" />
-                <path d="M35 35H65" stroke="#0D9488" strokeWidth="8" strokeLinecap="round" />
-                <path d="M35 50H65" stroke="#1E3A5F" strokeWidth="8" strokeLinecap="round" />
-                <path d="M35 65H55" stroke="#1E3A5F" strokeWidth="8" strokeLinecap="round" />
-              </svg>
-              <span className="text-lg font-bold text-white uppercase">Invora</span>
-            </Link>
+          {/* Panel */}
+          <div
+            className="relative w-64 bg-[#1C1917] flex flex-col animate-slideInLeft"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="h-16 flex items-center justify-between px-4 border-b border-[#44403C]">
+              <Link to="/dashboard" onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5">
+                <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="20" y="15" width="60" height="70" rx="10" stroke="#0D9488" strokeWidth="8" />
+                  <path d="M35 35H65" stroke="#0D9488" strokeWidth="8" strokeLinecap="round" />
+                  <path d="M35 50H65" stroke="#5EEAD4" strokeWidth="8" strokeLinecap="round" />
+                  <path d="M35 65H55" stroke="#5EEAD4" strokeWidth="8" strokeLinecap="round" />
+                </svg>
+                <span className="font-bold text-white text-sm">Invora</span>
+              </Link>
+              <button onClick={() => setMobileOpen(false)} className="text-stone-500 hover:text-white p-1 rounded">
+                <X size={18} />
+              </button>
+            </div>
 
-            <nav className="flex-1 space-y-1">
-              {navItems.map((item) => {
-                const isActive = location.pathname === item.path;
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setMobileOpen(false)}
-                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                      isActive 
-                        ? 'bg-slate-800 text-white border border-slate-700/50' 
-                        : 'hover:bg-slate-800/40 text-slate-400'
-                    }`}
-                  >
-                    <Icon size={18} className={isActive ? 'text-teal-400' : 'text-slate-400'} />
-                    <span>{item.name}</span>
-                  </Link>
-                );
-              })}
+            <nav className="flex-1 p-3 space-y-0.5 overflow-y-auto">
+              <p className="text-[10px] font-semibold text-stone-600 uppercase tracking-widest px-3 mb-3">{t('console.navigation')}</p>
+              {navItems.map((item) => (
+                <NavItem key={item.path} item={item} onClick={() => setMobileOpen(false)} />
+              ))}
             </nav>
 
-            <div className="border-t border-slate-800 pt-4 mt-auto">
-              <div className="flex items-center gap-2 mb-4 px-2">
-                <div className="w-8 h-8 rounded-full bg-teal-800 text-teal-100 flex items-center justify-center font-bold text-xs">
-                  {user?.name ? user.name[0].toUpperCase() : 'U'}
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-white leading-tight">{user?.name || 'User'}</p>
-                  <p className="text-[10px] text-slate-500">{user?.email || 'free@invora.co'}</p>
+            <div className="border-t border-[#44403C] p-3 space-y-2">
+              {/* Language toggle */}
+              <button
+                onClick={toggle}
+                className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-stone-400 hover:text-white hover:bg-stone-800/60 transition-colors font-medium"
+              >
+                <Languages size={14} />
+                <span>{t('console.language')}</span>
+                <span className="ml-auto text-[10px] font-bold bg-stone-800 border border-stone-700 px-1.5 py-0.5 rounded text-teal-400">{lang}</span>
+              </button>
+
+              <div className="flex items-center gap-2.5 px-2 py-1.5">
+                <UserAvatar size="sm" />
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold text-white truncate">{user?.name || 'User'}</p>
+                  <p className="text-[10px] text-stone-500 truncate">{user?.email || ''}</p>
                 </div>
               </div>
+              <Link
+                to="/"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-stone-500 hover:text-stone-300 hover:bg-stone-800/40 transition-colors"
+              >
+                <Globe size={14} />
+                <span>{t('console.publicSite')}</span>
+              </Link>
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-400 hover:bg-red-500/10 transition-colors"
+                className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-red-400/80 hover:text-red-400 hover:bg-red-500/10 transition-colors"
               >
-                <LogOut size={18} />
-                <span>Sign Out</span>
+                <LogOut size={14} />
+                <span>{t('console.signOut')}</span>
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* 3. Main Content Wrapper */}
-      <div className="flex-1 flex flex-col min-w-0">
-        
-        {/* Top Utility Header */}
-        <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-8 z-20">
+      {/* ─── Main Content ───────────────────────────────────────────────── */}
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        {/* Top header bar */}
+        <header className="h-14 bg-[#FDFCFA] border-b border-[#E2DED7] flex items-center justify-between px-4 md:px-6 z-20 flex-shrink-0 shadow-sm">
           <div className="flex items-center gap-3">
-            <button 
+            {/* Mobile hamburger */}
+            <button
               onClick={() => setMobileOpen(true)}
-              className="p-1 text-slate-650 hover:bg-slate-50 rounded-lg md:hidden"
+              className="p-1.5 text-stone-500 hover:text-stone-800 hover:bg-stone-100 rounded-lg md:hidden transition-colors"
             >
-              <Menu size={20} />
+              <Menu size={18} />
             </button>
-            
+
             {/* Breadcrumbs */}
-            <div className="flex items-center gap-2 text-xs md:text-sm font-medium text-slate-550">
+            <nav className="flex items-center gap-1.5 text-xs font-medium">
               {breadcrumbs.map((crumb, idx) => (
-                <div key={idx} className="flex items-center gap-2">
-                  {idx > 0 && <span className="text-slate-350">/</span>}
-                  <span className={idx === breadcrumbs.length - 1 ? 'text-slate-900 font-semibold' : 'text-slate-400'}>
+                <span key={idx} className="flex items-center gap-1.5">
+                  {idx > 0 && <span className="text-stone-300">/</span>}
+                  <span className={idx === breadcrumbs.length - 1 ? 'text-stone-900 font-semibold' : 'text-stone-400'}>
                     {crumb}
                   </span>
-                </div>
+                </span>
               ))}
-            </div>
+            </nav>
           </div>
 
-          <div className="flex items-center gap-4">
+          {/* Right side */}
+          <div className="flex items-center gap-2">
             {location.pathname !== '/dashboard' && (
-              <Link 
-                to="/dashboard" 
-                className="hidden sm:inline-flex items-center justify-center px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg border border-slate-250 transition-colors"
+              <Link
+                to="/dashboard"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-800 text-xs font-semibold rounded-lg border border-stone-200 transition-colors"
               >
-                Back to Dashboard
+                {t('console.backToDash')}
               </Link>
             )}
-            
-            <div className="text-xs font-semibold text-slate-400 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-lg">
-              Console v1.0
+
+            {/* Language toggle — top bar */}
+            <LangToggle />
+
+            <div className="hidden sm:flex items-center gap-2">
+              <UserAvatar size="sm" />
+              <span className="text-xs text-stone-500 font-medium hidden lg:block">{user?.name}</span>
             </div>
           </div>
         </header>
 
-        {/* Scrollable Work Area */}
-        <main className="flex-1 overflow-y-auto p-4 md:p-8">
+        {/* Scrollable work area */}
+        <main className="flex-1 overflow-y-auto p-4 md:p-7">
           <div className="max-w-7xl mx-auto">
             <Outlet />
           </div>
         </main>
       </div>
-
     </div>
   );
 };

@@ -2,6 +2,9 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { UserPayload } from '../types';
 
+if (process.env.NODE_ENV === 'production' && !process.env.JWT_SECRET) {
+  throw new Error('FATAL: JWT_SECRET environment variable must be defined in production!');
+}
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-jwt-secret-key-12345!';
 
 export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {

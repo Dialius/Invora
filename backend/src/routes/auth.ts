@@ -5,6 +5,9 @@ import { prisma } from '../prisma';
 import { authenticateToken } from '../middleware/auth';
 
 const router = Router();
+if (process.env.NODE_ENV === 'production' && !process.env.JWT_SECRET) {
+  throw new Error('FATAL: JWT_SECRET environment variable must be defined in production!');
+}
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-jwt-secret-key-12345!';
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
 
@@ -38,6 +41,7 @@ router.post('/register', async (req: Request, res: Response) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
@@ -77,6 +81,7 @@ router.post('/login', async (req: Request, res: Response) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 

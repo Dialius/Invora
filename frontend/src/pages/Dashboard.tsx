@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LogOut, Plus, Search, Filter, Download, Edit, Trash, Copy, FileText, Eye } from 'lucide-react';
+import { Plus, Search, Filter, Download, Edit, Trash, Copy, FileText, Eye } from 'lucide-react';
 import { api } from '../utils/api';
 import { useAuthStore } from '../store/auth';
+import { CustomSelect } from '../components/CustomSelect';
 
 interface Invoice {
   id: string;
@@ -21,7 +22,7 @@ interface Invoice {
 
 export const Dashboard = () => {
   const navigate = useNavigate();
-  const { user, logout } = useAuthStore();
+  const { user } = useAuthStore();
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -54,11 +55,6 @@ export const Dashboard = () => {
   useEffect(() => {
     fetchInvoices();
   }, [search, statusFilter, typeFilter]);
-
-  const handleLogout = async () => {
-    await logout();
-    navigate('/login');
-  };
 
   // Row Action Handlers
   const handleDuplicate = async (id: string) => {
@@ -129,50 +125,21 @@ export const Dashboard = () => {
   const getStatusBadgeClass = (status: string) => {
     switch (status) {
       case 'PAID':
-        return 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30';
+        return 'bg-emerald-50 text-emerald-700 border border-emerald-150';
       case 'SENT':
-        return 'bg-blue-500/10 text-blue-400 border border-blue-500/30';
+        return 'bg-blue-50 text-blue-700 border border-blue-150';
       case 'DRAFT':
-        return 'bg-amber-500/10 text-amber-400 border border-amber-500/30';
+        return 'bg-amber-50 text-amber-700 border border-amber-150';
       case 'VOID':
-        return 'bg-red-500/10 text-red-400 border border-red-500/30';
+        return 'bg-red-50 text-red-700 border border-red-150';
       default:
-        return 'bg-slate-500/10 text-slate-400 border border-slate-500/30';
+        return 'bg-slate-50 text-slate-700 border border-slate-150';
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0B132B] text-slate-100 pb-12">
-      {/* Header bar */}
-      <header className="bg-[#1C2541]/40 border-b border-slate-800 backdrop-blur-md sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="20" y="15" width="60" height="70" rx="10" stroke="#00A8CC" stroke-width="8" />
-              <path d="M35 35H65" stroke="#00A8CC" stroke-width="8" stroke-linecap="round" />
-              <path d="M35 50H65" stroke="#1E3A5F" stroke-width="8" stroke-linecap="round" />
-              <path d="M35 65H55" stroke="#1E3A5F" stroke-width="8" stroke-linecap="round" />
-            </svg>
-            <span className="text-lg font-bold tracking-tight text-slate-100">Invora</span>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:block text-right">
-              <div className="text-xs font-semibold text-slate-300">{user?.name}</div>
-              <div className="text-[10px] text-slate-500">{user?.email}</div>
-            </div>
-            <button
-              onClick={handleLogout}
-              className="p-2 text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
-              title="Sign Out"
-            >
-              <LogOut size={18} />
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+    <div className="pb-12 text-slate-800">
+      <main className="max-w-7xl mx-auto pt-4">
         {error && (
           <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-sm text-red-400 flex justify-between items-center animate-fade-in">
             <span>{error}</span>
@@ -183,12 +150,12 @@ export const Dashboard = () => {
         {/* Welcome Section */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-100">Invoices Overview</h1>
-            <p className="text-slate-400 text-sm mt-0.5">Welcome back, {user?.name}. Monitor billing request flows.</p>
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 font-serif">Invoices Overview</h1>
+            <p className="text-slate-500 text-sm mt-0.5">Welcome back, {user?.name}. Monitor billing request flows.</p>
           </div>
           <button
             onClick={() => navigate('/invoices/new')}
-            className="bg-cyan-600 hover:bg-cyan-500 text-slate-900 font-bold px-4 py-2.5 rounded-lg flex items-center gap-2 text-sm transition-all shadow-lg shadow-cyan-500/20"
+            className="bg-slate-900 hover:bg-slate-850 text-white font-bold px-4 py-2 rounded-lg flex items-center gap-2 text-xs transition-all shadow-sm"
           >
             <Plus size={16} />
             New Invoice
@@ -196,51 +163,52 @@ export const Dashboard = () => {
         </div>
 
         {/* Currency Stat Toggle & Grid */}
-        <div className="mb-6 flex justify-between items-center bg-[#1C2541]/20 border border-slate-800 p-4 rounded-xl">
-          <span className="text-sm font-semibold text-slate-300">Statistics Base Currency:</span>
-          <select
+        <div className="mb-6 flex justify-between items-center bg-white border border-[#E2DED7] p-4 rounded-xl shadow-sm">
+          <span className="text-sm font-semibold text-stone-700">Statistics Base Currency:</span>
+          <CustomSelect
             value={statsCurrency}
-            onChange={(e: any) => setStatsCurrency(e.target.value)}
-            className="bg-[#0B132B] border border-slate-700 rounded-lg py-1 px-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
-          >
-            <option value="IDR">IDR (Rp)</option>
-            <option value="USD">USD ($)</option>
-            <option value="EUR">EUR (€)</option>
-          </select>
+            onChange={(v) => setStatsCurrency(v as 'IDR' | 'USD' | 'EUR')}
+            options={[
+              { value: 'IDR', label: 'IDR (Rp)' },
+              { value: 'USD', label: 'USD ($)' },
+              { value: 'EUR', label: 'EUR (€)' },
+            ]}
+            placeholder="Currency"
+          />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-[#1C2541]/40 border border-slate-800 rounded-xl p-5 shadow-sm">
+          <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm">
             <div className="text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Total Invoices</div>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold text-slate-100">{stats.totalCount}</span>
-              <span className="text-slate-400 text-xs">issued</span>
+              <span className="text-2xl font-bold text-slate-900">{stats.totalCount}</span>
+              <span className="text-slate-550 text-xs">issued</span>
             </div>
           </div>
 
-          <div className="bg-[#1C2541]/40 border border-slate-800 rounded-xl p-5 shadow-sm">
+          <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm">
             <div className="text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Revenue (Paid)</div>
-            <div className="text-2xl font-bold text-emerald-400">{formatCurrencyVal(stats.revenue)}</div>
+            <div className="text-2xl font-bold text-teal-600">{formatCurrencyVal(stats.revenue)}</div>
           </div>
 
-          <div className="bg-[#1C2541]/40 border border-slate-800 rounded-xl p-5 shadow-sm">
+          <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm">
             <div className="text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Outstanding (Sent)</div>
-            <div className="text-2xl font-bold text-blue-400">{formatCurrencyVal(stats.outstanding)}</div>
+            <div className="text-2xl font-bold text-blue-600">{formatCurrencyVal(stats.outstanding)}</div>
           </div>
 
-          <div className="bg-[#1C2541]/40 border border-slate-800 rounded-xl p-5 shadow-sm">
+          <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm">
             <div className="text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Drafts Value</div>
-            <div className="text-2xl font-bold text-amber-400">{formatCurrencyVal(stats.drafts)}</div>
+            <div className="text-2xl font-bold text-amber-600">{formatCurrencyVal(stats.drafts)}</div>
           </div>
         </div>
 
         {/* Filter and Table Panel */}
-        <div className="bg-[#1C2541]/30 border border-slate-800 rounded-xl overflow-hidden shadow-lg">
+        <div className="bg-white border border-slate-200/80 rounded-xl overflow-hidden shadow-sm">
           
           {/* Controls Bar */}
-          <div className="p-4 border-b border-slate-850 flex flex-col md:flex-row gap-4 justify-between bg-[#0B132B]/40">
+          <div className="p-4 border-b border-[#E2DED7] flex flex-col md:flex-row gap-4 justify-between bg-stone-50/50">
             <div className="relative flex-1 max-w-md">
-              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-500">
+              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-stone-400">
                 <Search size={16} />
               </span>
               <input
@@ -248,39 +216,41 @@ export const Dashboard = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search invoice number, client or subject..."
-                className="w-full bg-[#0B132B]/80 border border-slate-700 rounded-lg py-1.5 pl-10 pr-4 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                className="w-full bg-white border border-[#E2DED7] rounded-lg py-1.5 pl-10 pr-4 text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:border-teal-600 focus:ring-4 focus:ring-teal-500/10 transition-all shadow-sm"
               />
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex items-center gap-1.5">
-                <Filter size={14} className="text-slate-500" />
-                <span className="text-xs text-slate-400">Status:</span>
+                <Filter size={14} className="text-stone-400" />
+                <span className="text-xs text-stone-500">Status:</span>
               </div>
-              <select
+              <CustomSelect
                 value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-                className="bg-[#0B132B] border border-slate-700 rounded-lg py-1 px-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
-              >
-                <option value="ALL">All Status</option>
-                <option value="DRAFT">Draft</option>
-                <option value="SENT">Sent</option>
-                <option value="PAID">Paid</option>
-                <option value="VOID">Void</option>
-              </select>
+                onChange={(v) => setStatusFilter(v)}
+                options={[
+                  { value: 'ALL', label: 'All Status' },
+                  { value: 'DRAFT', label: 'Draft' },
+                  { value: 'SENT', label: 'Sent' },
+                  { value: 'PAID', label: 'Paid' },
+                  { value: 'VOID', label: 'Void' },
+                ]}
+                placeholder="Status"
+              />
 
-              <span className="text-xs text-slate-400">Type:</span>
-              <select
+              <span className="text-xs text-stone-500">Type:</span>
+              <CustomSelect
                 value={typeFilter}
-                onChange={(e) => setTypeFilter(e.target.value)}
-                className="bg-[#0B132B] border border-slate-700 rounded-lg py-1 px-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
-              >
-                <option value="ALL">All Types</option>
-                <option value="REGULER">Regular</option>
-                <option value="PROFORMA">Proforma</option>
-                <option value="DOWN_PAYMENT">Down Payment</option>
-                <option value="PELUNASAN">Settlement</option>
-              </select>
+                onChange={(v) => setTypeFilter(v)}
+                options={[
+                  { value: 'ALL', label: 'All Types' },
+                  { value: 'REGULER', label: 'Regular' },
+                  { value: 'PROFORMA', label: 'Proforma' },
+                  { value: 'DOWN_PAYMENT', label: 'Down Payment' },
+                  { value: 'PELUNASAN', label: 'Settlement' },
+                ]}
+                placeholder="Type"
+              />
             </div>
           </div>
 
@@ -288,7 +258,7 @@ export const Dashboard = () => {
           <div className="overflow-x-auto">
             {loading ? (
               <div className="flex items-center justify-center py-20">
-                <div className="w-8 h-8 border-4 border-t-cyan-400 border-r-transparent border-slate-700 rounded-full animate-spin"></div>
+                <div className="w-8 h-8 border-4 border-t-teal-600 border-r-transparent border-[#E2DED7] rounded-full animate-spin"></div>
               </div>
             ) : invoices.length === 0 ? (
               <div className="text-center py-16 text-slate-500">
@@ -298,7 +268,7 @@ export const Dashboard = () => {
             ) : (
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-slate-850 bg-slate-850/20 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                  <tr className="border-b border-slate-200 bg-slate-50/70 text-xs font-bold text-slate-500 uppercase tracking-wider">
                     <th className="py-3 px-4">Invoice No</th>
                     <th className="py-3 px-4">Client</th>
                     <th className="py-3 px-4">Type</th>
@@ -308,23 +278,36 @@ export const Dashboard = () => {
                     <th className="py-3 px-4 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-850 text-xs">
+                <tbody className="divide-y divide-slate-100 text-xs">
                   {invoices.map((inv) => (
-                    <tr key={inv.id} className="hover:bg-slate-850/10 transition-colors">
-                      <td className="py-3.5 px-4 font-semibold text-slate-200">
+                    <tr key={inv.id} className="hover:bg-slate-50/50 transition-colors">
+                      <td className="py-3.5 px-4 font-semibold text-slate-900">
                         {inv.invoiceNumber}
                         {inv.title && <div className="text-[10px] text-slate-500 font-normal mt-0.5">{inv.title}</div>}
                       </td>
-                      <td className="py-3.5 px-4 text-slate-300">
+                      <td className="py-3.5 px-4 text-slate-700">
                         {inv.client?.name || '-'}
                       </td>
-                      <td className="py-3.5 px-4 text-slate-400">
-                        {inv.type.replace('_', ' ')}
+                      <td className="py-3.5 px-4">
+                        {(() => {
+                          const typeConfig: Record<string, { bg: string; color: string; label: string }> = {
+                            REGULER:      { bg: '#CCFBF1', color: '#0F766E', label: '● Regular' },
+                            PROFORMA:     { bg: '#FEF3C7', color: '#92400E', label: '◆ Proforma' },
+                            DOWN_PAYMENT: { bg: '#EDE9FE', color: '#3730A3', label: '▲ Down Payment' },
+                            PELUNASAN:    { bg: '#D1FAE5', color: '#065F46', label: '✓ Settlement' },
+                          };
+                          const cfg = typeConfig[inv.type] || { bg: '#F1F5F9', color: '#475569', label: inv.type };
+                          return (
+                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wide" style={{ background: cfg.bg, color: cfg.color }}>
+                              {cfg.label}
+                            </span>
+                          );
+                        })()}
                       </td>
-                      <td className="py-3.5 px-4 text-slate-400">
+                      <td className="py-3.5 px-4 text-slate-550">
                         {new Date(inv.invoiceDate).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })}
                       </td>
-                      <td className="py-3.5 px-4 text-right font-medium text-slate-200">
+                      <td className="py-3.5 px-4 text-right font-medium text-slate-900">
                         {inv.currency} {Number(inv.total).toLocaleString()}
                       </td>
                       <td className="py-3.5 px-4 text-center">
@@ -337,7 +320,7 @@ export const Dashboard = () => {
                         {inv.status === 'DRAFT' && (
                           <button
                             onClick={() => handleUpdateStatus(inv.id, 'SENT')}
-                            className="px-2 py-1 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 rounded font-semibold transition-colors"
+                            className="px-2 py-1 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 rounded font-semibold transition-colors"
                             title="Mark as Sent"
                           >
                             Send
@@ -346,7 +329,7 @@ export const Dashboard = () => {
                         {inv.status === 'SENT' && (
                           <button
                             onClick={() => handleUpdateStatus(inv.id, 'PAID')}
-                            className="px-2 py-1 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 rounded font-semibold transition-colors"
+                            className="px-2 py-1 bg-emerald-500/10 hover:bg-emerald-500/20 text-teal-600 rounded font-semibold transition-colors"
                             title="Mark as Paid"
                           >
                             Paid
@@ -355,35 +338,35 @@ export const Dashboard = () => {
 
                         <button
                           onClick={() => navigate(`/invoices/${inv.id}/view`)}
-                          className="p-1 text-slate-400 hover:text-cyan-400 rounded transition-colors"
+                          className="p-1 text-stone-400 hover:text-teal-600 rounded transition-colors"
                           title="View Public Link"
                         >
                           <Eye size={14} />
                         </button>
                         <button
                           onClick={() => handleDownloadPDF(inv.id)}
-                          className="p-1 text-slate-400 hover:text-cyan-400 rounded transition-colors"
+                          className="p-1 text-stone-400 hover:text-teal-600 rounded transition-colors"
                           title="Download PDF"
                         >
                           <Download size={14} />
                         </button>
                         <button
                           onClick={() => handleDuplicate(inv.id)}
-                          className="p-1 text-slate-400 hover:text-cyan-400 rounded transition-colors"
+                          className="p-1 text-stone-400 hover:text-teal-600 rounded transition-colors"
                           title="Duplicate Invoice"
                         >
                           <Copy size={14} />
                         </button>
                         <button
                           onClick={() => navigate(`/invoices/${inv.id}/edit`)}
-                          className="p-1 text-slate-400 hover:text-cyan-400 rounded transition-colors"
+                          className="p-1 text-stone-400 hover:text-teal-600 rounded transition-colors"
                           title="Edit"
                         >
                           <Edit size={14} />
                         </button>
                         <button
                           onClick={() => handleDelete(inv.id)}
-                          className="p-1 text-slate-400 hover:text-red-400 rounded transition-colors"
+                          className="p-1 text-stone-400 hover:text-red-500 rounded transition-colors"
                           title="Delete"
                         >
                           <Trash size={14} />

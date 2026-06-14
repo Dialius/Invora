@@ -11,6 +11,7 @@ interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
   loading: boolean;
+  initialized: boolean;
   error: string | null;
   login: (email: string, password: string) => Promise<boolean>;
   register: (name: string, email: string, password: string) => Promise<boolean>;
@@ -22,7 +23,8 @@ interface AuthState {
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   isAuthenticated: false,
-  loading: true,
+  loading: false,
+  initialized: false,
   error: null,
 
   clearError: () => set({ error: null }),
@@ -34,13 +36,15 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({
         user: response.data.user,
         isAuthenticated: true,
-        loading: false
+        loading: false,
+        initialized: true
       });
     } catch (error: any) {
       set({
         user: null,
         isAuthenticated: false,
-        loading: false
+        loading: false,
+        initialized: true
       });
     }
   },
@@ -52,7 +56,8 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({
         user: response.data.user,
         isAuthenticated: true,
-        loading: false
+        loading: false,
+        initialized: true
       });
       return true;
     } catch (error: any) {
@@ -72,7 +77,8 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({
         user: response.data.user,
         isAuthenticated: true,
-        loading: false
+        loading: false,
+        initialized: true
       });
       return true;
     } catch (error: any) {
@@ -95,7 +101,8 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({
         user: null,
         isAuthenticated: false,
-        loading: false
+        loading: false,
+        initialized: true
       });
     }
   }

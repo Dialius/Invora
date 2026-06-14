@@ -57,6 +57,7 @@ interface Invoice {
   taxPercent: string;
   taxAmount: string;
   extraFee?: string;
+  shippingFee?: string;
   total: string;
   dpPercent?: string;
   dpAmount?: string;
@@ -79,6 +80,7 @@ export default function PublicInvoiceView() {
   const [copied, setCopied] = useState(false);
 
   const backendUrl = (import.meta as any).env.VITE_API_URL || 'http://localhost:5000';
+  const brandUrl   = (import.meta as any).env.VITE_APP_BRAND_URL || 'invora.id';
 
   useEffect(() => {
     const fetchInvoice = async () => {
@@ -98,8 +100,8 @@ export default function PublicInvoiceView() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0B132B] flex flex-col items-center justify-center text-slate-350">
-        <RefreshCw className="animate-spin text-cyan-400 mb-4" size={32} />
+      <div className="min-h-screen bg-[#FAF9F5] flex flex-col items-center justify-center text-slate-350">
+        <RefreshCw className="animate-spin text-teal-600 mb-4" size={32} />
         <p className="text-sm font-semibold uppercase tracking-wider">Loading Invoice details...</p>
       </div>
     );
@@ -107,7 +109,7 @@ export default function PublicInvoiceView() {
 
   if (error || !invoice) {
     return (
-      <div className="min-h-screen bg-[#0B132B] flex flex-col items-center justify-center px-4 text-center">
+      <div className="min-h-screen bg-[#FAF9F5] flex flex-col items-center justify-center px-4 text-center">
         <div className="w-16 h-16 rounded-full bg-red-950/20 border border-red-900/50 flex items-center justify-center text-red-400 mb-4 animate-bounce">
           <X size={28} />
         </div>
@@ -165,6 +167,7 @@ export default function PublicInvoiceView() {
       sigLabel: 'Authorized Signature',
       noBank: 'No bank details provided',
       subject: 'Subject',
+      shippingLabel: 'Shipping Cost',
       thanks: 'Thank you for your business!'
     },
     ID: {
@@ -190,25 +193,42 @@ export default function PublicInvoiceView() {
       sigLabel: 'Tanda Tangan Resmi',
       noBank: 'Detail bank tidak tersedia',
       subject: 'Perihal',
+      shippingLabel: 'Biaya Pengiriman',
       thanks: 'Terima kasih atas kerja sama Anda!'
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0B132B] py-8 px-4 sm:px-6 lg:px-8 print:bg-white print:py-0 print:px-0">
+    <div className="min-h-screen bg-[#FAF9F5] py-8 px-4 sm:px-6 lg:px-8 print:bg-white print:py-0 print:px-0">
+      {/* Print styles override */}
+      <style>{`
+        @media print {
+          @page {
+            margin: 0 !important;
+          }
+          body {
+            margin: 1.6cm 1.6cm 1.6cm 1.6cm !important;
+            background: white !important;
+            color: black !important;
+          }
+          header, footer, .print\\:hidden, [class*="print:hidden"] {
+            display: none !important;
+          }
+        }
+      `}</style>
       
       {/* Control Bar (Hidden on Print) */}
-      <div className="max-w-4xl mx-auto mb-8 bg-[#1C2541]/40 border border-slate-800 rounded-2xl p-4 flex flex-wrap justify-between items-center gap-4 shadow-xl print:hidden">
+      <div className="max-w-4xl mx-auto mb-8 bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-wrap justify-between items-center gap-4 shadow-sm print:hidden">
         <div className="flex items-center gap-2">
           <Link
             to="/"
-            className="p-2 bg-slate-800 hover:bg-slate-750 text-slate-400 hover:text-slate-200 rounded-xl transition-all border border-slate-700"
+            className="p-2 bg-white hover:bg-slate-50 text-slate-500 hover:text-slate-850 rounded-xl transition-all border border-slate-250 shadow-sm"
             title="Go to landing page"
           >
             <ArrowLeft size={16} />
           </Link>
-          <div className="text-slate-100 font-bold text-sm tracking-tight flex items-center gap-2">
-            <FileText className="text-cyan-400" size={16} />
+          <div className="text-slate-900 font-bold text-sm tracking-tight flex items-center gap-2">
+            <FileText className="text-teal-600" size={16} />
             <span>Invoice Details</span>
           </div>
         </div>
@@ -217,27 +237,27 @@ export default function PublicInvoiceView() {
           {/* Language Switcher */}
           <button
             onClick={() => setLang(lang === 'EN' ? 'ID' : 'EN')}
-            className="flex items-center gap-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-750 text-slate-300 hover:text-slate-200 border border-slate-700 text-xs font-bold rounded-xl transition-all"
+            className="flex items-center gap-1.5 px-3 py-2 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-800 border border-slate-250 shadow-sm text-xs font-bold rounded-xl transition-all"
           >
-            <Languages size={14} className="text-cyan-400" />
+            <Languages size={14} className="text-teal-600" />
             <span>{lang === 'EN' ? 'Indonesia' : 'English'}</span>
           </button>
 
           {/* Share Button */}
           <button
             onClick={handleShare}
-            className="flex items-center gap-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-750 text-slate-300 hover:text-slate-200 border border-slate-700 text-xs font-bold rounded-xl transition-all"
+            className="flex items-center gap-1.5 px-3 py-2 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-800 border border-slate-250 shadow-sm text-xs font-bold rounded-xl transition-all"
           >
-            {copied ? <Check size={14} className="text-emerald-400 animate-scale-up" /> : <Share2 size={14} className="text-cyan-400" />}
+            {copied ? <Check size={14} className="text-emerald-400 animate-scale-up" /> : <Share2 size={14} className="text-teal-600" />}
             <span>{copied ? 'Copied!' : 'Share Link'}</span>
           </button>
 
           {/* Print Button */}
           <button
             onClick={handlePrint}
-            className="flex items-center gap-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-750 text-slate-300 hover:text-slate-200 border border-slate-700 text-xs font-bold rounded-xl transition-all"
+            className="flex items-center gap-1.5 px-3 py-2 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-800 border border-slate-250 shadow-sm text-xs font-bold rounded-xl transition-all"
           >
-            <Printer size={14} className="text-cyan-400" />
+            <Printer size={14} className="text-teal-600" />
             <span>Print Invoice</span>
           </button>
 
@@ -245,7 +265,7 @@ export default function PublicInvoiceView() {
           <a
             href={`${backendUrl}/api/invoices/public/${id}/pdf`}
             download
-            className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-slate-900 text-xs font-extrabold rounded-xl transition-all"
+            className="flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-850 text-white text-xs font-bold rounded-xl transition-all shadow-sm"
           >
             <Download size={14} />
             <span>Download PDF</span>
@@ -270,7 +290,7 @@ export default function PublicInvoiceView() {
                 </div>
               ) : (
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-8 h-8 rounded-lg bg-[#0B132B] flex items-center justify-center text-white font-bold text-sm">I</div>
+                  <div className="w-8 h-8 rounded-lg bg-teal-700 flex items-center justify-center text-white font-bold text-sm">I</div>
                   <span className="text-lg font-bold tracking-tight text-slate-900">Invora</span>
                 </div>
               )}
@@ -286,8 +306,14 @@ export default function PublicInvoiceView() {
             </div>
             
             <div className="text-right">
-              <h1 className="text-xl font-extrabold text-[#1E3A5F] tracking-wide mb-1 uppercase">{t[lang].title}</h1>
-              <div className="text-xs font-semibold text-slate-500 mb-4">{invoice.invoiceNumber}</div>
+              <h1 className="text-xl font-extrabold tracking-wide mb-2 uppercase" style={{
+                color:
+                  invoice.type === 'PROFORMA'     ? '#92400E' :
+                  invoice.type === 'DOWN_PAYMENT' ? '#3730A3' :
+                  invoice.type === 'PELUNASAN'    ? '#065F46' : '#1E3A5F'
+              }}>{t[lang].title}</h1>
+
+              <div className="text-xs font-semibold text-slate-500 mb-3">{invoice.invoiceNumber}</div>
               <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 text-[11px] text-slate-500 justify-items-end">
                 <span className="font-semibold">{t[lang].invoiceDate}:</span>
                 <span>{new Date(invoice.invoiceDate).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })}</span>
@@ -302,6 +328,14 @@ export default function PublicInvoiceView() {
               </div>
             </div>
           </div>
+
+          {/* Proforma disclaimer */}
+          {invoice.type === 'PROFORMA' && (
+            <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2.5 text-[10px] text-amber-800 font-medium print:border print:border-amber-200">
+              <span className="text-amber-500 font-black text-base leading-none">!</span>
+              <span>This is a <strong>Proforma Invoice</strong> — for estimation purposes only and does not constitute a demand for payment.</span>
+            </div>
+          )}
 
           {/* Customer info & Subject */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 py-4 text-[11px] border-b border-slate-100">
@@ -415,18 +449,32 @@ export default function PublicInvoiceView() {
                 </div>
               )}
 
-              <div className="flex justify-between text-xs font-bold text-slate-900 border-t border-slate-200 pt-2 mt-1">
+              {Number(invoice.shippingFee) > 0 && (
+                <div className="flex justify-between text-slate-500">
+                  <span>{lang === 'EN' ? 'Shipping Cost' : 'Biaya Pengiriman'}:</span>
+                  <span>{symbol} {formatMoney(invoice.shippingFee)}</span>
+                </div>
+              )}
+
+              <div className="flex justify-between text-xs font-bold border-t border-slate-200 pt-2 mt-1" style={{
+                color:
+                  invoice.type === 'PROFORMA'     ? '#92400E' :
+                  invoice.type === 'DOWN_PAYMENT' ? '#3730A3' :
+                  invoice.type === 'PELUNASAN'    ? '#065F46' : '#0F766E'
+              }}>
                 <span>{t[lang].total}:</span>
-                <span className="text-cyan-700">{symbol} {formatMoney(invoice.total)}</span>
+                <span>{symbol} {formatMoney(invoice.total)}</span>
               </div>
 
               {invoice.type === 'DOWN_PAYMENT' && (
-                <div className="border-t border-slate-150 pt-2 space-y-1">
-                  <div className="flex justify-between text-slate-700 font-semibold">
-                    <span>{t[lang].dpLabel}:</span>
-                    <span>{symbol} {formatMoney(invoice.dpAmount)}</span>
+                <div className="mt-2 space-y-1">
+                  <div className="bg-indigo-50 border border-indigo-200 rounded-xl px-3 py-2">
+                    <div className="flex justify-between font-bold text-indigo-800">
+                      <span>{t[lang].dpLabel}:</span>
+                      <span>{symbol} {formatMoney(invoice.dpAmount)}</span>
+                    </div>
                   </div>
-                  <div className="flex justify-between text-slate-500">
+                  <div className="flex justify-between text-slate-500 px-1">
                     <span>{t[lang].remLabel}:</span>
                     <span>{symbol} {formatMoney(invoice.remainingAmount)}</span>
                   </div>
@@ -434,14 +482,16 @@ export default function PublicInvoiceView() {
               )}
 
               {invoice.type === 'PELUNASAN' && (
-                <div className="border-t border-slate-150 pt-2 space-y-1">
-                  <div className="flex justify-between text-slate-500">
+                <div className="mt-2 space-y-1">
+                  <div className="flex justify-between text-slate-500 px-1">
                     <span>{t[lang].paidLabel}:</span>
-                    <span>{symbol} {formatMoney(invoice.paidAmount)}</span>
+                    <span>-{symbol} {formatMoney(invoice.paidAmount)}</span>
                   </div>
-                  <div className="flex justify-between text-slate-700 font-semibold">
-                    <span>{t[lang].remPayLabel}:</span>
-                    <span>{symbol} {formatMoney(invoice.remainingAmount)}</span>
+                  <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-2">
+                    <div className="flex justify-between font-bold text-emerald-800">
+                      <span>{t[lang].remPayLabel}:</span>
+                      <span>{symbol} {formatMoney(invoice.remainingAmount)}</span>
+                    </div>
                   </div>
                 </div>
               )}
@@ -480,6 +530,13 @@ export default function PublicInvoiceView() {
               
               <div className="w-32 border-b border-slate-200 mx-auto mt-2"></div>
             </div>
+          </div>
+
+          {/* Watermark footer */}
+          <div className="mt-8 pt-3 border-t border-slate-100 text-center print:mt-6">
+            <span className="text-[9px] text-slate-300 tracking-wide select-none">
+              Powered by <strong className="text-slate-400">Invora</strong> &bull; {brandUrl}
+            </span>
           </div>
 
         </div>

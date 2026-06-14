@@ -200,6 +200,18 @@ export const createInvoice = async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Missing required parameters' });
     }
 
+    // Verify company belongs to the user
+    const company = await prisma.company.findFirst({ where: { id: companyId, userId } });
+    if (!company) {
+      return res.status(400).json({ error: 'Company not found or unauthorized' });
+    }
+
+    // Verify client belongs to the user
+    const client = await prisma.client.findFirst({ where: { id: clientId, userId } });
+    if (!client) {
+      return res.status(400).json({ error: 'Client not found or unauthorized' });
+    }
+
     // Auto-generate invoice number if not provided
     let finalInvoiceNumber = invoiceNumber;
     if (!finalInvoiceNumber) {
@@ -310,6 +322,20 @@ export const updateInvoice = async (req: Request, res: Response) => {
       dpAmount,
       paidAmount
     } = req.body;
+
+    if (companyId) {
+      const company = await prisma.company.findFirst({ where: { id: companyId, userId } });
+      if (!company) {
+        return res.status(400).json({ error: 'Company not found or unauthorized' });
+      }
+    }
+
+    if (clientId) {
+      const client = await prisma.client.findFirst({ where: { id: clientId, userId } });
+      if (!client) {
+        return res.status(400).json({ error: 'Client not found or unauthorized' });
+      }
+    }
 
     // Build update object
     const updateData: any = {};
@@ -540,8 +566,17 @@ export const getInvoicePDF = async (req: Request, res: Response) => {
     const htmlContent = generateInvoiceHTML(invoice);
     const pdfBuffer = await generatePDF(htmlContent);
 
+    const typePrefixes: Record<string, string> = {
+      REGULER: 'Invoice',
+      PROFORMA: 'Proforma',
+      DOWN_PAYMENT: 'DP',
+      PELUNASAN: 'Settlement'
+    };
+    const prefix = typePrefixes[invoice.type] || 'Invoice';
+    const cleanNum = invoice.invoiceNumber.replace(/\//g, '-');
+
     res.contentType('application/pdf');
-    res.setHeader('Content-Disposition', `attachment; filename=Invoice-${invoice.invoiceNumber.replace(/\//g, '-')}.pdf`);
+    res.setHeader('Content-Disposition', `attachment; filename=${prefix}-${cleanNum}.pdf`);
     return res.send(pdfBuffer);
   } catch (error: any) {
     return res.status(500).json({ error: error.message || 'Failed to generate PDF' });
@@ -593,8 +628,17 @@ export const getPublicInvoicePDF = async (req: ExpressRequest, res: Response) =>
     const htmlContent = generateInvoiceHTML(invoice);
     const pdfBuffer = await generatePDF(htmlContent);
 
+    const typePrefixes: Record<string, string> = {
+      REGULER: 'Invoice',
+      PROFORMA: 'Proforma',
+      DOWN_PAYMENT: 'DP',
+      PELUNASAN: 'Settlement'
+    };
+    const prefix = typePrefixes[invoice.type] || 'Invoice';
+    const cleanNum = invoice.invoiceNumber.replace(/\//g, '-');
+
     res.contentType('application/pdf');
-    res.setHeader('Content-Disposition', `attachment; filename=Invoice-${invoice.invoiceNumber.replace(/\//g, '-')}.pdf`);
+    res.setHeader('Content-Disposition', `attachment; filename=${prefix}-${cleanNum}.pdf`);
     return res.send(pdfBuffer);
   } catch (error: any) {
     return res.status(500).json({ error: error.message || 'Failed to generate PDF' });

@@ -1,5 +1,15 @@
 import puppeteer from 'puppeteer';
 
+export const escapeHTML = (str: any): string => {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+};
+
 export const formatCurrency = (amount: any, currency: string = 'IDR') => {
   const numberValue = Number(amount) || 0;
   try {
@@ -70,9 +80,9 @@ export const generateInvoiceHTML = (invoice: any) => {
         <td class="py-3 text-center text-gray-500">${idx + 1}</td>
         <td class="py-3">
           <div class="font-medium text-gray-800">${item.category === 'jasa' ? 'Jasa' : 'Produk'}</div>
-          <div class="text-xs text-gray-500 mt-0.5">${item.description || ''}</div>
+          <div class="text-xs text-gray-500 mt-0.5">${escapeHTML(item.description || '')}</div>
         </td>
-        <td class="py-3 text-center text-gray-700">${item.qty} ${item.unit || 'unit'}</td>
+        <td class="py-3 text-center text-gray-700">${item.qty} ${escapeHTML(item.unit || 'unit')}</td>
         <td class="py-3 text-right text-gray-700">${formatCurrency(item.unitPrice, currency)}</td>
         <td class="py-3 text-center text-gray-700">${item.discountPct ? `${item.discountPct}%` : '-'}</td>
         <td class="py-3 text-right font-medium text-gray-800">${formatCurrency(item.subtotal, currency)}</td>
@@ -87,7 +97,7 @@ export const generateInvoiceHTML = (invoice: any) => {
     const amount = discountType === 'percent' ? Number(subtotal) * (Number(discountValue) / 100) : Number(discountValue);
     discountRow = `
       <div class="flex justify-between py-1 text-sm text-gray-600">
-        <span>${label}:</span>
+        <span>${escapeHTML(label)}:</span>
         <span>-${formatCurrency(amount, currency)}</span>
       </div>
     `;
@@ -145,9 +155,9 @@ export const generateInvoiceHTML = (invoice: any) => {
   const bankAccountsList = company?.bankAccounts?.map((bank: any) => {
     return `
       <div class="mb-2 text-xs text-gray-600">
-        <div class="font-semibold text-gray-700">${bank.bankName}</div>
-        <div>Account: ${bank.accountName}</div>
-        <div>No. Rek: ${bank.accountNo}</div>
+        <div class="font-semibold text-gray-700">${escapeHTML(bank.bankName)}</div>
+        <div>Account: ${escapeHTML(bank.accountName)}</div>
+        <div>No. Rek: ${escapeHTML(bank.accountNo)}</div>
       </div>
     `;
   }).join('') || '<div class="text-xs text-gray-400">No bank details provided</div>';
@@ -160,13 +170,14 @@ export const generateInvoiceHTML = (invoice: any) => {
   };
 
   const typeLabel = typeLabels[type] || 'INVOICE';
+  const brandUrl = process.env.APP_BRAND_URL || 'invora.id';
 
   return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
       <meta charset="UTF-8">
-      <title>${typeLabel} ${invoiceNumber}</title>
+      <title>${escapeHTML(typeLabel)} ${escapeHTML(invoiceNumber)}</title>
       <script src="https://cdn.tailwindcss.com"></script>
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -187,7 +198,7 @@ export const generateInvoiceHTML = (invoice: any) => {
           <div>
             ${company?.logo ? `
               <div class="mb-4">
-                <img src="${company.logo}" style="max-height: 50px; max-width: 150px; object-fit: contain;" />
+                <img src="${company.logo.replace(/"/g, '&quot;')}" style="max-height: 50px; max-width: 150px; object-fit: contain;" />
               </div>
             ` : `
               <!-- Simple textless logo concept: stylized minimal glyph of paper/flow -->
@@ -202,20 +213,20 @@ export const generateInvoiceHTML = (invoice: any) => {
               </div>
             `}
             <div class="text-xs text-gray-500">
-              <div class="font-bold text-sm text-gray-700">${company?.name || 'My Company'}</div>
-              <div>${company?.address || '-'}</div>
-              <div>Email: ${company?.email || '-'} | Phone: ${company?.phone || '-'}</div>
-              ${company?.npwp ? `<div>NPWP: ${company.npwp}</div>` : ''}
+              <div class="font-bold text-sm text-gray-700">${escapeHTML(company?.name || 'My Company')}</div>
+              <div>${escapeHTML(company?.address || '-')}</div>
+              <div>Email: ${escapeHTML(company?.email || '-')} | Phone: ${escapeHTML(company?.phone || '-')}</div>
+              ${company?.npwp ? `<div>NPWP: ${escapeHTML(company.npwp)}</div>` : ''}
             </div>
           </div>
           <div class="text-right">
-            <h1 class="text-2xl font-bold text-[#1E3A5F] tracking-wide mb-1">${typeLabel}</h1>
-            <div class="text-sm font-semibold text-gray-600 mb-4">${invoiceNumber}</div>
+            <h1 class="text-2xl font-bold text-[#1E3A5F] tracking-wide mb-1">${escapeHTML(typeLabel)}</h1>
+            <div class="text-sm font-semibold text-gray-600 mb-4">${escapeHTML(invoiceNumber)}</div>
             
             <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-500 justify-items-end">
               <span class="font-medium">Date:</span> <span>${formatDate(invoiceDate)}</span>
               <span class="font-medium">Due Date:</span> <span>${formatDate(dueDate)}</span>
-              ${projectRef ? `<span class="font-medium">Project Ref:</span> <span>${projectRef}</span>` : ''}
+              ${projectRef ? `<span class="font-medium">Project Ref:</span> <span>${escapeHTML(projectRef)}</span>` : ''}
             </div>
           </div>
         </div>
@@ -224,15 +235,15 @@ export const generateInvoiceHTML = (invoice: any) => {
         <div class="grid grid-cols-2 gap-8 py-6 text-xs border-b border-gray-100">
           <div>
             <div class="text-gray-400 font-semibold tracking-wider uppercase mb-2">Billed To</div>
-            <div class="text-sm font-bold text-gray-700 mb-1">${client?.name || 'Client Name'}</div>
-            ${client?.pic ? `<div class="font-medium text-gray-600 mb-1">u.p. ${client.pic}</div>` : ''}
-            <div class="text-gray-500 leading-relaxed">${client?.address || '-'}</div>
-            <div class="text-gray-500 mt-1">Phone: ${client?.phone || '-'} | Email: ${client?.email || '-'}</div>
+            <div class="text-sm font-bold text-gray-700 mb-1">${escapeHTML(client?.name || 'Client Name')}</div>
+            ${client?.pic ? `<div class="font-medium text-gray-600 mb-1">u.p. ${escapeHTML(client.pic)}</div>` : ''}
+            <div class="text-gray-500 leading-relaxed">${escapeHTML(client?.address || '-')}</div>
+            <div class="text-gray-500 mt-1">Phone: ${escapeHTML(client?.phone || '-')} | Email: ${escapeHTML(client?.email || '-')}</div>
           </div>
           <div>
             ${title ? `
               <div class="text-gray-400 font-semibold tracking-wider uppercase mb-2">Subject</div>
-              <div class="text-sm font-medium text-gray-700 leading-relaxed">${title}</div>
+              <div class="text-sm font-medium text-gray-700 leading-relaxed">${escapeHTML(title)}</div>
             ` : ''}
           </div>
         </div>
@@ -264,12 +275,12 @@ export const generateInvoiceHTML = (invoice: any) => {
             </div>
             ${notes ? `
               <div class="mt-4 text-[11px] text-gray-500 leading-relaxed">
-                <span class="font-semibold text-gray-700">Notes:</span> ${notes}
+                <span class="font-semibold text-gray-700">Notes:</span> ${escapeHTML(notes)}
               </div>
             ` : ''}
             ${terms ? `
               <div class="mt-2 text-[11px] text-gray-500 leading-relaxed">
-                <span class="font-semibold text-gray-700">Terms & Conditions:</span> ${terms}
+                <span class="font-semibold text-gray-700">Terms & Conditions:</span> ${escapeHTML(terms)}
               </div>
             ` : ''}
           </div>
@@ -298,7 +309,7 @@ export const generateInvoiceHTML = (invoice: any) => {
         <!-- Footer / Signature -->
         <div class="mt-12 pt-6 border-t border-gray-100 flex justify-between items-end text-xs text-gray-400">
           <div>
-            <div class="font-semibold text-gray-600">${company?.name || 'Invora Invoicing'}</div>
+            <div class="font-semibold text-gray-600">${escapeHTML(company?.name || 'Invora Invoicing')}</div>
             <div>Thank you for your business!</div>
           </div>
           ${signature ? `
@@ -306,15 +317,22 @@ export const generateInvoiceHTML = (invoice: any) => {
               <div class="text-gray-500 font-medium mb-2" style="font-size: 11px;">Authorized Signature</div>
               ${signature.startsWith('data:image/') ? `
                 <div class="mb-2" style="height: 60px; display: flex; align-items: center; justify-content: center;">
-                  <img src="${signature}" style="max-height: 60px; max-width: 120px; object-fit: contain;" />
+                  <img src="${signature.replace(/"/g, '&quot;')}" style="max-height: 60px; max-width: 120px; object-fit: contain;" />
                 </div>
               ` : `
                 <div class="mb-10"></div>
-                <div class="font-semibold text-gray-700">${signature}</div>
+                <div class="font-semibold text-gray-700">${escapeHTML(signature)}</div>
               `}
               <div class="w-32 border-b border-gray-300 mx-auto mb-1"></div>
             </div>
           ` : ''}
+        </div>
+
+        <!-- Watermark footer -->
+        <div style="margin-top: 32px; padding-top: 10px; border-top: 1px solid #F1F0ED; text-align: center;">
+          <span style="font-size: 9px; color: #C4BDB4; letter-spacing: 0.05em; font-family: 'Inter', sans-serif;">
+            Powered by <strong style="color: #A8A097;">Invora</strong> &bull; ${escapeHTML(brandUrl)}
+          </span>
         </div>
       </div>
     </body>
@@ -325,7 +343,11 @@ export const generateInvoiceHTML = (invoice: any) => {
 export const generatePDF = async (htmlContent: string): Promise<Buffer> => {
   const browser = await puppeteer.launch({
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-local-file-access'
+    ]
   });
 
   try {
@@ -349,3 +371,4 @@ export const generatePDF = async (htmlContent: string): Promise<Buffer> => {
     await browser.close();
   }
 };
+
