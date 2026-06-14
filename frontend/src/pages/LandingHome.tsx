@@ -243,123 +243,211 @@ export const LandingHome = () => {
             </div>
 
             {/* Invoice Preview */}
-            <div className="lg:col-span-8 bg-white text-stone-800 rounded-2xl p-7 sm:p-9 shadow-lg border border-[#E2DED7] max-w-3xl mx-auto w-full">
-              {/* Invoice Header */}
-              <div className="flex justify-between items-start border-b border-stone-100 pb-6">
-                <div>
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <div className="w-8 h-8 rounded-lg bg-stone-900 flex items-center justify-center text-white font-bold text-sm">I</div>
-                    <span className="font-extrabold text-lg text-stone-900 tracking-tight">INVORA Tech</span>
+            <div className="lg:col-span-8 w-full">
+              <div className="bg-white text-slate-800 p-8 rounded-xl shadow-2xl overflow-x-auto max-w-4xl mx-auto w-full border border-slate-200">
+                <div className="min-w-[650px] space-y-6 text-left">
+                  
+                  {/* Top Header */}
+                  <div className="flex justify-between items-start border-b border-slate-100 pb-6">
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-lg bg-teal-750 flex items-center justify-center text-white font-bold text-sm">I</div>
+                        <span className="text-lg font-bold tracking-tight text-slate-900">Invora</span>
+                      </div>
+                      
+                      <div className="text-[11px] text-slate-500 space-y-0.5">
+                        <div className="font-bold text-xs text-slate-800">INVORA Tech Inc.</div>
+                        <div>Kebayoran Baru, Jakarta Selatan, Indonesia</div>
+                        <div>Email: support@invora.co | Phone: +62 21 555 1234</div>
+                        <div>NPWP: 01.234.567.8-012.000</div>
+                      </div>
+                    </div>
+                    
+                    <div className="text-right">
+                      <h1 className="text-xl font-extrabold tracking-wide mb-2 uppercase" style={{
+                        color:
+                          invoiceType === 'PROFORMA'     ? '#92400E' :
+                          invoiceType === 'DOWN_PAYMENT' ? '#3730A3' :
+                          invoiceType === 'PELUNASAN'    ? '#065F46' : '#1E3A5F'
+                      }}>{iv.title}</h1>
+
+                      <div className="text-xs font-semibold text-slate-500 mb-3">#INV-2026-001</div>
+                      
+                      <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 text-[11px] text-slate-500 justify-items-end">
+                        <span className="font-semibold">{iv.date}:</span>
+                        <span>14 June 2026</span>
+                        <span className="font-semibold">{iv.due}:</span>
+                        <span>28 June 2026</span>
+                        <span className="font-semibold">{demoLang === 'ID' ? 'Referensi Proyek:' : 'Project Ref:'}</span>
+                        <span>PRJ-2026</span>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-[10px] text-stone-400">Kebayoran Baru, Jakarta Selatan, Indonesia</p>
-                </div>
-                <div className="text-right">
-                  <h2 className="text-2xl font-black text-stone-900 tracking-tight">{iv.title}</h2>
-                  <p className="text-xs font-bold text-teal-700">#INV-2026-001</p>
-                </div>
-              </div>
 
-              {/* Parties */}
-              <div className="grid grid-cols-2 gap-4 py-5 text-xs border-b border-stone-100">
-                <div>
-                  <span className="block font-bold text-stone-400 uppercase text-[9px] tracking-wider mb-1">{iv.from}</span>
-                  <p className="font-bold text-stone-800">INVORA Tech Inc.</p>
-                  <p className="text-stone-400 text-[10px]">support@invora.co</p>
-                </div>
-                <div className="text-right">
-                  <span className="block font-bold text-stone-400 uppercase text-[9px] tracking-wider mb-1">{iv.to}</span>
-                  <p className="font-bold text-stone-800">{clientName || 'Unnamed Client'}</p>
-                  <p className="text-stone-400 text-[10px]">finance@client.com</p>
-                </div>
-              </div>
-
-              {/* Dates */}
-              <div className="grid grid-cols-2 gap-4 py-3 text-xs border-b border-stone-100">
-                <div><span className="font-bold text-stone-500">{iv.date}:</span> 14 June 2026</div>
-                <div className="text-right"><span className="font-bold text-stone-500">{iv.due}:</span> 28 June 2026</div>
-              </div>
-
-              {/* Table */}
-              <table className="w-full mt-6 text-xs">
-                <thead>
-                  <tr className="bg-stone-50 text-stone-500 border-b border-stone-200">
-                    <th className="py-2.5 text-left font-bold px-2">{iv.desc}</th>
-                    <th className="py-2.5 text-right font-bold w-16 px-2">{iv.qty}</th>
-                    <th className="py-2.5 text-right font-bold w-28 px-2">{iv.price}</th>
-                    <th className="py-2.5 text-right font-bold w-28 px-2">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-stone-100">
-                    <td className="py-3.5 px-2">
-                      <p className="font-semibold text-stone-800">Software Architecture Consulting</p>
-                      <p className="text-[10px] text-stone-400">Phase 1 development consultation &amp; design roadmap</p>
-                    </td>
-                    <td className="py-3.5 text-right px-2">{itemQty}</td>
-                    <td className="py-3.5 text-right px-2">{currencySymbol()} {formatMoney(itemPrice)}</td>
-                    <td className="py-3.5 text-right px-2 font-semibold text-stone-900">{currencySymbol()} {formatMoney(subtotal)}</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              {/* Totals */}
-              <div className="mt-8 flex justify-end">
-                <div className="w-64 space-y-2 text-xs">
-                  <div className="flex justify-between text-stone-500">
-                    <span>{iv.subtotal}:</span>
-                    <span>{currencySymbol()} {formatMoney(subtotal)}</span>
-                  </div>
-                  {discountPct > 0 && (
-                    <div className="flex justify-between text-amber-700 font-medium">
-                      <span>{iv.discount} ({discountPct}%):</span>
-                      <span>-{currencySymbol()} {formatMoney(discountVal)}</span>
+                  {/* Proforma disclaimer banner */}
+                  {invoiceType === 'PROFORMA' && (
+                    <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2.5 text-[10px] text-amber-800 font-medium">
+                      <span className="text-amber-500 font-black text-base leading-none">!</span>
+                      <span>
+                        {demoLang === 'ID'
+                          ? 'Ini adalah Faktur Proforma — hanya untuk keperluan estimasi dan bukan merupakan tagihan pembayaran resmi.'
+                          : 'This is a Proforma Invoice — for estimation purposes only and does not constitute a demand for payment.'}
+                      </span>
                     </div>
                   )}
-                  <div className="flex justify-between text-stone-500 border-b border-stone-100 pb-2">
-                    <span>{iv.tax} ({taxPct}%):</span>
-                    <span>{currencySymbol()} {formatMoney(taxVal)}</span>
+
+                  {/* Billing client and subject info */}
+                  <div className="grid grid-cols-2 gap-8 py-4 text-[11px] border-b border-slate-100">
+                    <div>
+                      <div className="text-slate-400 font-bold uppercase tracking-wider text-[9px] mb-1.5">{iv.to}</div>
+                      <div className="text-xs font-bold text-slate-800 mb-0.5">{clientName || 'Unnamed Client'}</div>
+                      <div className="font-medium text-slate-605 mb-0.5">u.p. Finance Department</div>
+                      <div className="text-slate-500 leading-relaxed">Sudirman Central Business District, Jakarta, Indonesia</div>
+                      <div className="text-slate-500 mt-1">Phone: +62 21 888 4321 | Email: finance@client.com</div>
+                    </div>
+                    <div>
+                      <div className="text-slate-400 font-bold uppercase tracking-wider text-[9px] mb-1.5">{demoLang === 'ID' ? 'Perihal' : 'Subject'}</div>
+                      <div className="text-xs font-medium text-slate-700 leading-relaxed">Software Architecture Consulting</div>
+                    </div>
                   </div>
-                  <div className="flex justify-between text-sm font-extrabold text-stone-900 pt-1">
-                    <span>{iv.total}:</span>
-                    <span className={invoiceType === 'REGULER' || invoiceType === 'PROFORMA' ? 'text-teal-700 font-extrabold' : 'text-stone-900 font-extrabold'}>
-                      {currencySymbol()} {formatMoney(total)}
+
+                  {/* Table */}
+                  <table className="w-full text-left border-collapse mt-4 text-[11px]">
+                    <thead>
+                      <tr className="border-b border-slate-300 text-[#1E3A5F] font-bold uppercase tracking-wider text-[9px]">
+                        <th className="py-2.5 w-8 text-center">No</th>
+                        <th className="py-2.5">{iv.desc}</th>
+                        <th className="py-2.5 text-center w-20">{iv.qty}</th>
+                        <th className="py-2.5 text-right w-28">{iv.price}</th>
+                        <th className="py-2.5 text-center w-16">{demoLang === 'ID' ? 'Diskon (%)' : 'Disc (%)'}</th>
+                        <th className="py-2.5 text-right w-28">Subtotal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b border-slate-100 text-xs">
+                        <td className="py-3 text-center text-slate-500">1</td>
+                        <td className="py-3">
+                          <div className="font-medium text-slate-800">{demoLang === 'ID' ? 'Jasa' : 'Services'}</div>
+                          <div className="text-[10px] text-slate-400 mt-0.5 leading-relaxed">Software Architecture Consulting - Phase 1 development & design roadmap</div>
+                        </td>
+                        <td className="py-3 text-center text-slate-700">{itemQty} unit</td>
+                        <td className="py-3 text-right text-slate-700">{currencySymbol()} {formatMoney(itemPrice)}</td>
+                        <td className="py-3 text-center text-slate-700">-</td>
+                        <td className="py-3 text-right font-medium text-slate-800">{currencySymbol()} {formatMoney(subtotal)}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  {/* Bottom Layout Calculations & Notes */}
+                  <div className="grid grid-cols-12 gap-6 mt-4 text-[11px]">
+                    {/* Bank Details & Notes */}
+                    <div className="col-span-7 space-y-4">
+                      <div className="bg-slate-50 rounded-xl p-4">
+                        <div className="font-bold text-slate-600 uppercase tracking-wider text-[9px] mb-2">{demoLang === 'ID' ? 'Detail Pembayaran' : 'Payment Details'}</div>
+                        <div className="text-slate-600 text-[10px]">
+                          <div className="font-bold text-slate-700">Bank Central Asia (BCA)</div>
+                          <div>Account Name: PT INVORA TECH INDONESIA</div>
+                          <div>Account No: 8830-1234-56</div>
+                        </div>
+                      </div>
+                      
+                      <div className="text-[11px] text-slate-500 leading-relaxed border-t border-slate-100 pt-3">
+                        <div className="font-bold text-slate-700 uppercase tracking-wider text-[9px] mb-1">{demoLang === 'ID' ? 'Catatan' : 'Notes'}</div>
+                        <div>{demoLang === 'ID' ? 'Pembayaran penuh harus diselesaikan dalam waktu 14 hari dari tanggal invoice.' : 'Full payment should be completed within 14 days of invoice date.'}</div>
+                      </div>
+                    </div>
+
+                    {/* Calculations Totals (right) */}
+                    <div className="col-span-5 flex flex-col justify-start space-y-1.5 text-right">
+                      <div className="flex justify-between text-slate-500">
+                        <span>{iv.subtotal}:</span>
+                        <span>{currencySymbol()} {formatMoney(subtotal)}</span>
+                      </div>
+
+                      {discountPct > 0 && (
+                        <div className="flex justify-between text-amber-600 font-medium">
+                          <span>{iv.discount} ({discountPct}%):</span>
+                          <span>-{currencySymbol()} {formatMoney(discountVal)}</span>
+                        </div>
+                      )}
+
+                      <div className="flex justify-between text-slate-500">
+                        <span>{iv.tax} ({taxPct}%):</span>
+                        <span>{currencySymbol()} {formatMoney(taxVal)}</span>
+                      </div>
+
+                      <div className="flex justify-between text-xs font-bold border-t border-slate-200 pt-2 mt-1" style={{
+                        color:
+                          invoiceType === 'PROFORMA'     ? '#92400E' :
+                          invoiceType === 'DOWN_PAYMENT' ? '#3730A3' :
+                          invoiceType === 'PELUNASAN'    ? '#065F46' : '#0F766E'
+                      }}>
+                        <span>{iv.total}:</span>
+                        <span>{currencySymbol()} {formatMoney(total)}</span>
+                      </div>
+
+                      {invoiceType === 'DOWN_PAYMENT' && (
+                        <div className="mt-2 space-y-1">
+                          <div className="bg-indigo-50 border border-indigo-200 rounded-xl px-3 py-2">
+                            <div className="flex justify-between font-bold text-indigo-800">
+                              <span>{iv.dpLabel}:</span>
+                              <span>{currencySymbol()} {formatMoney(dpAmount)}</span>
+                            </div>
+                          </div>
+                          <div className="flex justify-between text-slate-500 px-1">
+                            <span>{iv.remLabel}:</span>
+                            <span>{currencySymbol()} {formatMoney(remainingAmount)}</span>
+                          </div>
+                        </div>
+                      )}
+
+                      {invoiceType === 'PELUNASAN' && (
+                        <div className="mt-2 space-y-1">
+                          <div className="flex justify-between text-slate-500 px-1">
+                            <span>{iv.paidLabel}:</span>
+                            <span>-{currencySymbol()} {formatMoney(paidAmount)}</span>
+                          </div>
+                          <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-2">
+                            <div className="flex justify-between font-bold text-emerald-800">
+                              <span>{iv.remPayLabel}:</span>
+                              <span>{currencySymbol()} {formatMoney(remainingPayable)}</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Footer message and Signature */}
+                  <div className="mt-10 pt-6 border-t border-slate-100 flex justify-between items-end text-[11px]">
+                    <div>
+                      <div className="font-bold text-slate-700">INVORA Tech Inc.</div>
+                      <div className="text-slate-450 italic mt-0.5">{iv.thanks}</div>
+                    </div>
+
+                    <div className="text-center" style={{ minWidth: '160px' }}>
+                      <div className="text-slate-400 font-medium mb-2 uppercase tracking-wider text-[9px]">{demoLang === 'ID' ? 'Tanda Tangan Resmi' : 'Authorized Signature'}</div>
+
+                      {/* Signature line placeholder */}
+                      <div className="h-14 flex items-end justify-center pb-1">
+                        <span className="font-bold text-slate-800 text-xs italic">INVORA Admin</span>
+                      </div>
+
+                      {/* Signature line */}
+                      <div className="w-36 border-b border-stone-400 mx-auto"></div>
+
+                      {/* Signer name */}
+                      <div className="mt-1.5 text-[10px] font-semibold text-slate-700 tracking-wide">Juliana Silva</div>
+                    </div>
+                  </div>
+
+                  {/* Watermark footer */}
+                  <div className="mt-6 pt-3 border-t border-slate-100 text-center">
+                    <span className="text-[8px] text-slate-300 tracking-wide select-none">
+                      Powered by <strong className="text-slate-350">Invora</strong> &bull; invora.id
                     </span>
                   </div>
 
-                  {invoiceType === 'DOWN_PAYMENT' && (
-                    <>
-                      <div className="flex justify-between text-stone-500 pt-1 border-t border-stone-100">
-                        <span>{iv.dpLabel}:</span>
-                        <span className="text-teal-700 font-bold">{currencySymbol()} {formatMoney(dpAmount)}</span>
-                      </div>
-                      <div className="flex justify-between text-stone-500">
-                        <span>{iv.remLabel}:</span>
-                        <span>{currencySymbol()} {formatMoney(remainingAmount)}</span>
-                      </div>
-                    </>
-                  )}
-
-                  {invoiceType === 'PELUNASAN' && (
-                    <>
-                      <div className="flex justify-between text-amber-700 font-medium pt-1 border-t border-stone-100">
-                        <span>{iv.paidLabel}:</span>
-                        <span>-{currencySymbol()} {formatMoney(paidAmount)}</span>
-                      </div>
-                      <div className="flex justify-between text-sm font-bold text-stone-900">
-                        <span>{iv.remPayLabel}:</span>
-                        <span className="text-teal-700 font-extrabold">{currencySymbol()} {formatMoney(remainingPayable)}</span>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-
-              {/* Footer */}
-              <div className="mt-10 pt-6 border-t border-stone-100 flex justify-between items-end">
-                <p className="text-xs italic text-stone-400">{iv.thanks}</p>
-                <div className="text-right">
-                  <div className="w-32 border-b border-stone-300 h-10 flex items-end justify-center pb-1 text-[10px] italic text-stone-300">Digital Signature</div>
-                  <p className="text-[10px] font-bold text-stone-600 mt-1 uppercase tracking-wider">INVORA Admin</p>
                 </div>
               </div>
             </div>
