@@ -33,6 +33,9 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await api.get('/auth/me');
+      if (!response.data || typeof response.data !== 'object' || !response.data.user) {
+        throw new Error('Invalid authentication response');
+      }
       set({
         user: response.data.user,
         isAuthenticated: true,
@@ -53,6 +56,9 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await api.post('/auth/login', { email, password });
+      if (!response.data || typeof response.data !== 'object' || !response.data.user) {
+        throw new Error('Invalid login response');
+      }
       set({
         user: response.data.user,
         isAuthenticated: true,
@@ -61,7 +67,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       });
       return true;
     } catch (error: any) {
-      const errorMsg = error.response?.data?.error || 'Login failed';
+      const errorMsg = error.response?.data?.error || error.message || 'Login failed';
       set({
         error: errorMsg,
         loading: false
@@ -74,6 +80,9 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await api.post('/auth/register', { name, email, password });
+      if (!response.data || typeof response.data !== 'object' || !response.data.user) {
+        throw new Error('Invalid registration response');
+      }
       set({
         user: response.data.user,
         isAuthenticated: true,
@@ -82,7 +91,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       });
       return true;
     } catch (error: any) {
-      const errorMsg = error.response?.data?.error || 'Registration failed';
+      const errorMsg = error.response?.data?.error || error.message || 'Registration failed';
       set({
         error: errorMsg,
         loading: false
