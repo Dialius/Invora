@@ -257,9 +257,39 @@ export const Dashboard = () => {
           {/* Table Container */}
           <div className="overflow-x-auto">
             {loading ? (
-              <div className="flex items-center justify-center py-20">
-                <div className="w-8 h-8 border-4 border-t-teal-600 border-r-transparent border-[#E2DED7] rounded-full animate-spin"></div>
-              </div>
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-slate-200 bg-slate-50/70 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                    <th className="py-3 px-4">Invoice No</th>
+                    <th className="py-3 px-4">Client</th>
+                    <th className="py-3 px-4">Type</th>
+                    <th className="py-3 px-4">Date</th>
+                    <th className="py-3 px-4 text-right">Amount</th>
+                    <th className="py-3 px-4 text-center">Status</th>
+                    <th className="py-3 px-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {[1, 2, 3, 4, 5, 6].map((i) => (
+                    <tr key={i}>
+                      <td className="py-3.5 px-4">
+                        <div className="skeleton h-3 w-24 rounded mb-1.5" />
+                        <div className="skeleton h-2.5 w-16 rounded" />
+                      </td>
+                      <td className="py-3.5 px-4"><div className="skeleton h-3 w-28 rounded" /></td>
+                      <td className="py-3.5 px-4"><div className="skeleton h-5 w-20 rounded-full" /></td>
+                      <td className="py-3.5 px-4"><div className="skeleton h-3 w-20 rounded" /></td>
+                      <td className="py-3.5 px-4 text-right"><div className="skeleton h-3 w-24 rounded ml-auto" /></td>
+                      <td className="py-3.5 px-4 text-center"><div className="skeleton h-5 w-14 rounded mx-auto" /></td>
+                      <td className="py-3.5 px-4 text-right">
+                        <div className="flex justify-end gap-1.5">
+                          {[1, 2, 3, 4].map((j) => <div key={j} className="skeleton w-6 h-6 rounded" />)}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             ) : invoices.length === 0 ? (
               <div className="text-center py-16 text-slate-500">
                 <FileText size={48} className="mx-auto mb-3 text-slate-600" />

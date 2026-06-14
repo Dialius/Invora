@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Printer, Download, Share2, Languages, ArrowLeft, RefreshCw, FileText, Check, X } from 'lucide-react';
+import { Printer, Download, Share2, Languages, ArrowLeft, FileText, Check, X } from 'lucide-react';
 import axios from 'axios';
 
 interface BankAccount {
@@ -100,9 +100,96 @@ export default function PublicInvoiceView() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#FAF9F5] flex flex-col items-center justify-center text-slate-350">
-        <RefreshCw className="animate-spin text-teal-600 mb-4" size={32} />
-        <p className="text-sm font-semibold uppercase tracking-wider">Loading Invoice details...</p>
+      <div className="min-h-screen bg-[#FAF9F5] py-8 px-4 sm:px-6 lg:px-8">
+        {/* Control bar skeleton */}
+        <div className="max-w-4xl mx-auto mb-8 bg-white border border-slate-200/80 rounded-2xl p-4 flex justify-between items-center gap-4 shadow-sm">
+          <div className="flex items-center gap-2">
+            <div className="skeleton w-8 h-8 rounded-xl" />
+            <div className="skeleton h-4 w-28 rounded" />
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="skeleton h-8 w-24 rounded-xl" />
+            <div className="skeleton h-8 w-24 rounded-xl" />
+            <div className="skeleton h-8 w-24 rounded-xl" />
+            <div className="skeleton h-8 w-32 rounded-xl" />
+          </div>
+        </div>
+
+        {/* Invoice sheet skeleton */}
+        <div className="bg-white rounded-2xl shadow-2xl max-w-4xl mx-auto p-6 sm:p-10 border border-slate-200 space-y-6">
+          {/* Header row */}
+          <div className="flex justify-between items-start border-b border-slate-100 pb-6">
+            <div className="space-y-2">
+              <div className="skeleton h-10 w-28 rounded-lg" />
+              <div className="skeleton h-3 w-40 rounded" />
+              <div className="skeleton h-3 w-32 rounded" />
+              <div className="skeleton h-3 w-36 rounded" />
+            </div>
+            <div className="text-right space-y-2">
+              <div className="skeleton h-6 w-32 rounded ml-auto" />
+              <div className="skeleton h-3 w-24 rounded ml-auto" />
+              <div className="skeleton h-3 w-28 rounded ml-auto" />
+              <div className="skeleton h-3 w-20 rounded ml-auto" />
+            </div>
+          </div>
+
+          {/* Billing info */}
+          <div className="grid grid-cols-2 gap-8 py-4 border-b border-slate-100">
+            {[1, 2].map((i) => (
+              <div key={i} className="space-y-1.5">
+                <div className="skeleton h-2.5 w-16 rounded" />
+                <div className="skeleton h-4 w-36 rounded" />
+                <div className="skeleton h-3 w-48 rounded" />
+                <div className="skeleton h-3 w-32 rounded" />
+              </div>
+            ))}
+          </div>
+
+          {/* Table skeleton */}
+          <div className="space-y-0">
+            <div className="flex gap-4 border-b border-slate-200 pb-2 mb-1">
+              {[8, 40, 10, 14, 10, 14].map((w, i) => (
+                <div key={i} className="skeleton h-2.5 rounded" style={{ width: `${w}%` }} />
+              ))}
+            </div>
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="flex gap-4 border-b border-slate-100 py-3">
+                <div className="skeleton h-3 rounded" style={{ width: '8%' }} />
+                <div className="space-y-1.5" style={{ width: '40%' }}>
+                  <div className="skeleton h-3 w-full rounded" />
+                  <div className="skeleton h-2.5 w-3/4 rounded" />
+                </div>
+                <div className="skeleton h-3 rounded" style={{ width: '10%' }} />
+                <div className="skeleton h-3 rounded" style={{ width: '14%' }} />
+                <div className="skeleton h-3 rounded" style={{ width: '10%' }} />
+                <div className="skeleton h-3 rounded" style={{ width: '14%' }} />
+              </div>
+            ))}
+          </div>
+
+          {/* Totals & payment */}
+          <div className="grid grid-cols-12 gap-6 mt-4">
+            <div className="col-span-7 space-y-3">
+              <div className="bg-slate-50 rounded-xl p-4 space-y-2">
+                <div className="skeleton h-2.5 w-24 rounded" />
+                <div className="skeleton h-3 w-32 rounded" />
+                <div className="skeleton h-3 w-28 rounded" />
+              </div>
+            </div>
+            <div className="col-span-5 space-y-2">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="flex justify-between">
+                  <div className="skeleton h-3 w-20 rounded" />
+                  <div className="skeleton h-3 w-20 rounded" />
+                </div>
+              ))}
+              <div className="border-t border-slate-200 pt-2 flex justify-between">
+                <div className="skeleton h-4 w-24 rounded" />
+                <div className="skeleton h-4 w-24 rounded" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
