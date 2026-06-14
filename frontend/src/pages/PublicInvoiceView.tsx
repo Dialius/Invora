@@ -290,7 +290,12 @@ export default function PublicInvoiceView() {
                 </div>
               ) : (
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-8 h-8 rounded-lg bg-teal-700 flex items-center justify-center text-white font-bold text-sm">I</div>
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm" style={{
+                    backgroundColor:
+                      invoice.type === 'PROFORMA'     ? '#92400E' :
+                      invoice.type === 'DOWN_PAYMENT' ? '#3730A3' :
+                      invoice.type === 'PELUNASAN'    ? '#065F46' : '#0F766E'
+                  }}>I</div>
                   <span className="text-lg font-bold tracking-tight text-slate-900">Invora</span>
                 </div>
               )}

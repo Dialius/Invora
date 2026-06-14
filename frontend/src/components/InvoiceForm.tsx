@@ -1395,7 +1395,12 @@ export const InvoiceForm = ({ invoiceId }: InvoiceFormProps) => {
                         </div>
                       ) : (
                         <div className="flex items-center gap-2 mb-3">
-                          <div className="w-8 h-8 rounded-lg bg-teal-700 flex items-center justify-center text-white font-bold text-sm">I</div>
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm" style={{
+                            backgroundColor:
+                              type === 'PROFORMA'     ? '#92400E' :
+                              type === 'DOWN_PAYMENT' ? '#3730A3' :
+                              type === 'PELUNASAN'    ? '#065F46' : '#0F766E'
+                          }}>I</div>
                           <span className="text-lg font-bold tracking-tight text-slate-900">Invora</span>
                         </div>
                       )}
