@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Mail, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { useAuthStore } from '../store/auth';
+import { Logo } from '../components/Logo';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -35,12 +36,7 @@ export const Login = () => {
           {/* Brand */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-5">
-              <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="20" y="15" width="60" height="70" rx="12" stroke="#0F766E" strokeWidth="8" />
-                <path d="M35 35H65" stroke="#0F766E" strokeWidth="8" strokeLinecap="round" />
-                <path d="M35 50H65" stroke="#1C1917" strokeWidth="8" strokeLinecap="round" />
-                <path d="M35 65H55" stroke="#1C1917" strokeWidth="8" strokeLinecap="round" />
-              </svg>
+              <Logo size={48} variant="colored" />
             </div>
             <h2 className="text-2xl font-bold tracking-tight text-stone-900 font-serif">Welcome back</h2>
             <p className="text-stone-400 text-sm mt-1.5">Sign in to your Invora console</p>

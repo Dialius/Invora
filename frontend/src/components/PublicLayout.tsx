@@ -3,6 +3,7 @@ import { useAuthStore } from '../store/auth';
 import { Menu, X, Globe } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from '../context/i18n';
+import { Logo } from './Logo';
 
 export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuthStore();
@@ -30,15 +31,7 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
           {/* Logo - Column 1 */}
           <div className="flex items-center justify-start">
             <Link to="/" className="flex items-center gap-2.5 group">
-              <svg className="w-8 h-8 flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="20" y="15" width="60" height="70" rx="10" stroke="#0F766E" strokeWidth="8" />
-                <path d="M35 35H65" stroke="#0F766E" strokeWidth="8" strokeLinecap="round" />
-                <path d="M35 50H65" stroke="#1C1917" strokeWidth="8" strokeLinecap="round" />
-                <path d="M35 65H55" stroke="#1C1917" strokeWidth="8" strokeLinecap="round" />
-              </svg>
-              <span className="text-[17px] font-bold tracking-tight text-stone-900 group-hover:text-teal-700 transition-colors">
-                Invora
-              </span>
+              <Logo size={32} showText={true} textColor="text-stone-900 group-hover:text-teal-700" />
             </Link>
           </div>
 
@@ -165,10 +158,7 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
 
             {/* Brand */}
             <div className="flex items-center gap-2.5">
-              <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="20" y="15" width="60" height="70" rx="10" stroke="#0F766E" strokeWidth="8" />
-                <path d="M35 35H65" stroke="#0F766E" strokeWidth="8" strokeLinecap="round" />
-              </svg>
+              <Logo size={22} />
               <span className="font-bold text-stone-700 text-sm tracking-tight">Invora Invoicing</span>
             </div>
 

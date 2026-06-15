@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { useAuthStore } from '../store/auth';
 import { useTranslation } from '../context/i18n';
+import { Logo } from './Logo';
 
 export const ConsoleLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -109,15 +110,7 @@ export const ConsoleLayout = () => {
         {/* Logo / Brand */}
         <div className={`h-16 flex items-center border-b border-[#44403C] flex-shrink-0 ${collapsed ? 'justify-center px-0' : 'px-4 gap-2.5'}`}>
           <Link to="/dashboard" className="flex items-center gap-2.5 overflow-hidden min-w-0">
-            <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
-              <rect x="20" y="15" width="60" height="70" rx="10" stroke="#0D9488" strokeWidth="8" />
-              <path d="M35 35H65" stroke="#0D9488" strokeWidth="8" strokeLinecap="round" />
-              <path d="M35 50H65" stroke="#5EEAD4" strokeWidth="8" strokeLinecap="round" />
-              <path d="M35 65H55" stroke="#5EEAD4" strokeWidth="8" strokeLinecap="round" />
-            </svg>
-            {!collapsed && (
-              <span className="text-[15px] font-bold tracking-tight text-white truncate">Invora</span>
-            )}
+            <Logo size={26} showText={!collapsed} textColor="text-white" />
           </Link>
         </div>
 
@@ -216,13 +209,7 @@ export const ConsoleLayout = () => {
             {/* Header */}
             <div className="h-16 flex items-center justify-between px-4 border-b border-[#44403C]">
               <Link to="/dashboard" onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5">
-                <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="20" y="15" width="60" height="70" rx="10" stroke="#0D9488" strokeWidth="8" />
-                  <path d="M35 35H65" stroke="#0D9488" strokeWidth="8" strokeLinecap="round" />
-                  <path d="M35 50H65" stroke="#5EEAD4" strokeWidth="8" strokeLinecap="round" />
-                  <path d="M35 65H55" stroke="#5EEAD4" strokeWidth="8" strokeLinecap="round" />
-                </svg>
-                <span className="font-bold text-white text-sm">Invora</span>
+                <Logo size={24} showText={true} textColor="text-white" />
               </Link>
               <button onClick={() => setMobileOpen(false)} className="text-stone-500 hover:text-white p-1 rounded">
                 <X size={18} />
