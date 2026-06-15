@@ -99,7 +99,7 @@ export const PrivacyPolicy = () => {
         },
         {
           subtitle: 'Account Deletion',
-          text: 'You may request the deletion of your account and all associated data at any time by contacting us at privacy@invora.online. We will process your request within 30 days.'
+          text: 'You may request the deletion of your account and all associated data at any time by contacting us at admin@invora.online. We will process your request within 30 days.'
         }
       ]
     },
@@ -187,11 +187,11 @@ export const PrivacyPolicy = () => {
                 If you have questions about this Privacy Policy or how we handle your data, please contact our privacy team.
               </p>
               <a
-                href="mailto:privacy@invora.online"
+                href="mailto:admin@invora.online"
                 className="inline-flex items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white font-semibold px-6 py-2.5 rounded-xl text-sm transition-all"
               >
                 <Mail size={15} />
-                privacy@invora.online
+                admin@invora.online
               </a>
             </div>
 

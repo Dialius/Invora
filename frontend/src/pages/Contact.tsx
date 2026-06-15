@@ -25,15 +25,15 @@ export const Contact = () => {
     {
       icon: Mail,
       label: 'Email Us',
-      value: 'support@invora.online',
-      href: 'mailto:support@invora.online',
+      value: 'admin@invora.online',
+      href: 'mailto:admin@invora.online',
       description: 'For general inquiries and support'
     },
     {
       icon: Mail,
       label: 'Privacy & Data',
-      value: 'privacy@invora.online',
-      href: 'mailto:privacy@invora.online',
+      value: 'admin@invora.online',
+      href: 'mailto:admin@invora.online',
       description: 'For privacy policy and data requests'
     },
     {
