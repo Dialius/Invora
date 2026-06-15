@@ -31,7 +31,7 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
           {/* Logo - Column 1 */}
           <div className="flex items-center justify-start">
             <Link to="/" className="flex items-center gap-2.5 group">
-              <Logo size={32} showText={true} textColor="text-stone-900 group-hover:text-teal-700" />
+              <Logo size={32} showText={false} />
             </Link>
           </div>
 
@@ -158,8 +158,7 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
 
             {/* Brand */}
             <div className="flex items-center gap-2.5">
-              <Logo size={22} />
-              <span className="font-bold text-stone-700 text-sm tracking-tight">Invora Invoicing</span>
+              <Logo size={40} />
             </div>
 
             {/* Footer Nav Links */}

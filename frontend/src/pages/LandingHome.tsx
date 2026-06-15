@@ -3,6 +3,7 @@ import { PublicLayout } from '../components/PublicLayout';
 import { Sparkles, ArrowRight, DollarSign, Languages, FileText } from 'lucide-react';
 import { useTranslation } from '../context/i18n';
 import { useState } from 'react';
+import { Logo } from '../components/Logo';
 
 export const LandingHome = () => {
   const { t } = useTranslation();
@@ -251,13 +252,7 @@ export const LandingHome = () => {
                   <div className="flex justify-between items-start border-b border-slate-100 pb-6">
                     <div>
                       <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm shrink-0" style={{
-                          backgroundColor:
-                            invoiceType === 'PROFORMA'     ? '#92400E' :
-                            invoiceType === 'DOWN_PAYMENT' ? '#3730A3' :
-                            invoiceType === 'PELUNASAN'    ? '#065F46' : '#0F766E'
-                        }}>I</div>
-                        <span className="text-lg font-bold tracking-tight text-slate-900">Invora</span>
+                        <Logo size={36} variant="colored" />
                       </div>
                       
                       <div className="text-[11px] text-slate-500 space-y-0.5">
