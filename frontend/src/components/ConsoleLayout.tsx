@@ -110,7 +110,7 @@ export const ConsoleLayout = () => {
         {/* Logo / Brand */}
         <div className={`h-16 flex items-center border-b border-[#44403C] flex-shrink-0 ${collapsed ? 'justify-center px-0' : 'px-4 gap-2.5'}`}>
           <Link to="/dashboard" className="flex items-center gap-2.5 overflow-hidden min-w-0">
-            <Logo size={26} showText={false} />
+            <Logo size={38} showText={false} />
           </Link>
         </div>
 
@@ -209,7 +209,7 @@ export const ConsoleLayout = () => {
             {/* Header */}
             <div className="h-16 flex items-center justify-between px-4 border-b border-[#44403C]">
               <Link to="/dashboard" onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5">
-                <Logo size={24} showText={false} />
+                <Logo size={36} showText={false} />
               </Link>
               <button onClick={() => setMobileOpen(false)} className="text-stone-500 hover:text-white p-1 rounded">
                 <X size={18} />

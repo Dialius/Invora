@@ -37,7 +37,7 @@ export const Register = () => {
           {/* Brand */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-5">
-              <Logo size={48} variant="colored" />
+              <Logo size={64} variant="colored" />
             </div>
             <h2 className="text-2xl font-bold tracking-tight text-stone-900 font-serif">Create your account</h2>
             <p className="text-stone-400 text-sm mt-1.5">Get started with Invora invoicing today</p>

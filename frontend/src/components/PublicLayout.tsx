@@ -31,7 +31,7 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
           {/* Logo - Column 1 */}
           <div className="flex items-center justify-start">
             <Link to="/" className="flex items-center gap-2.5 group">
-              <Logo size={32} showText={false} />
+              <Logo size={44} showText={false} />
             </Link>
           </div>
 
@@ -158,7 +158,7 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
 
             {/* Brand */}
             <div className="flex items-center gap-2.5">
-              <Logo size={40} />
+              <Logo size={56} />
             </div>
 
             {/* Footer Nav Links */}

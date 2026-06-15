@@ -252,7 +252,7 @@ export const LandingHome = () => {
                   <div className="flex justify-between items-start border-b border-slate-100 pb-6">
                     <div>
                       <div className="flex items-center gap-2 mb-3">
-                        <Logo size={36} variant="colored" />
+                        <Logo size={48} variant="colored" />
                       </div>
                       
                       <div className="text-[11px] text-slate-500 space-y-0.5">
