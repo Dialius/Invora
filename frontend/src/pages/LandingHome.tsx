@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { PublicLayout } from '../components/PublicLayout';
 import { Sparkles, ArrowRight, DollarSign, Languages, FileText } from 'lucide-react';
 import { useTranslation } from '../context/i18n';
@@ -449,7 +449,7 @@ export const LandingHome = () => {
                   {/* Watermark footer */}
                   <div className="mt-6 pt-3 border-t border-slate-100 text-center">
                     <span className="text-[8px] text-slate-300 tracking-wide select-none">
-                      Powered by <strong className="text-slate-350">Invora</strong> &bull; invora.id
+                      Powered by <strong className="text-slate-350">Invora</strong> &bull; invora.online
                     </span>
                   </div>
 

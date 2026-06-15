@@ -49,7 +49,7 @@ interface InvoiceFormProps {
 
 export const InvoiceForm = ({ invoiceId }: InvoiceFormProps) => {
   const navigate = useNavigate();
-  const brandUrl = (import.meta as any).env.VITE_APP_BRAND_URL || 'invora.id';
+  const brandUrl = (import.meta as any).env.VITE_APP_BRAND_URL || 'invora.online';
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState<string | null>(null);

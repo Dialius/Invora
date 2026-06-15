@@ -170,7 +170,7 @@ export const generateInvoiceHTML = (invoice: any) => {
   };
 
   const typeLabel = typeLabels[type] || 'INVOICE';
-  const brandUrl = process.env.APP_BRAND_URL || 'invora.id';
+  const brandUrl = process.env.APP_BRAND_URL || 'invora.online';
 
   return `
     <!DOCTYPE html>

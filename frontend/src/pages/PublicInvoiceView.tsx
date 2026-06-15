@@ -80,7 +80,7 @@ export default function PublicInvoiceView() {
   const [copied, setCopied] = useState(false);
 
   const backendUrl = (import.meta as any).env.VITE_API_URL || 'http://localhost:5000';
-  const brandUrl   = (import.meta as any).env.VITE_APP_BRAND_URL || 'invora.id';
+  const brandUrl   = (import.meta as any).env.VITE_APP_BRAND_URL || 'invora.online';
 
   useEffect(() => {
     const fetchInvoice = async () => {
