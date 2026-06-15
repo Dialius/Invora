@@ -9,6 +9,9 @@ import { Dashboard } from './pages/Dashboard';
 import { LandingHome } from './pages/LandingHome';
 import { Features } from './pages/Features';
 import { FAQ } from './pages/FAQ';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsOfService } from './pages/TermsOfService';
+import { Contact } from './pages/Contact';
 import PublicInvoiceView from './pages/PublicInvoiceView';
 import { useAuthStore } from './store/auth';
 import { I18nProvider } from './context/i18n';
@@ -93,6 +96,9 @@ function App() {
           <Route path="/" element={<LandingHome />} />
           <Route path="/features" element={<Features />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/invoices/:id/view" element={<PublicInvoiceView />} />
 
           {/* Auth routes */}

@@ -160,17 +160,34 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
 
       {/* ─── Footer ──────────────────────────────────────────────────────── */}
       <footer className="bg-[#EAE7E2] border-t border-[#E2DED7] py-10 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-5">
-          <div className="flex items-center gap-2.5">
-            <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="20" y="15" width="60" height="70" rx="10" stroke="#0F766E" strokeWidth="8" />
-              <path d="M35 35H65" stroke="#0F766E" strokeWidth="8" strokeLinecap="round" />
-            </svg>
-            <span className="font-bold text-stone-700 text-sm tracking-tight">Invora Invoicing</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+
+            {/* Brand */}
+            <div className="flex items-center gap-2.5">
+              <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="15" width="60" height="70" rx="10" stroke="#0F766E" strokeWidth="8" />
+                <path d="M35 35H65" stroke="#0F766E" strokeWidth="8" strokeLinecap="round" />
+              </svg>
+              <span className="font-bold text-stone-700 text-sm tracking-tight">Invora Invoicing</span>
+            </div>
+
+            {/* Footer Nav Links */}
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              <Link to="/" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Home</Link>
+              <Link to="/features" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Features</Link>
+              <Link to="/faq" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">FAQ</Link>
+              <Link to="/contact" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Contact</Link>
+              <Link to="/privacy-policy" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Terms of Service</Link>
+            </div>
+
           </div>
-          <p className="text-xs text-stone-400">
-            © {new Date().getFullYear()} Invora. {t('footer.rights')}
-          </p>
+          <div className="mt-6 pt-6 border-t border-[#D8D3CB]">
+            <p className="text-xs text-stone-400 text-center">
+              © {new Date().getFullYear()} Invora. {t('footer.rights')}
+            </p>
+          </div>
         </div>
       </footer>
     </div>
