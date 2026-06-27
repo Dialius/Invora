@@ -36,7 +36,7 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
           {/* Logo - Column 1 */}
           <div className="flex items-center justify-start">
             <Link to="/" className="flex items-center gap-2.5 group">
-              <Logo size={44} showText={false} />
+              <Logo size={32} showText={false} />
             </Link>
           </div>
 
@@ -163,16 +163,16 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
 
             {/* Brand */}
             <div className="flex items-center gap-2.5">
-              <Logo size={56} />
+              <Logo size={40} />
             </div>
 
             {/* Footer Nav Links */}
             <div className="flex flex-wrap gap-x-6 gap-y-2">
-              <Link to="/" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Home</Link>
-              <Link to="/features" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Features</Link>
-              <Link to="/blog" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Blog</Link>
-              <Link to="/faq" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">FAQ</Link>
-              <Link to="/contact" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Contact</Link>
+              <Link to="/" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">{t('nav.home')}</Link>
+              <Link to="/features" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">{t('nav.features')}</Link>
+              <Link to="/blog" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">{t('nav.blog')}</Link>
+              <Link to="/faq" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">{t('nav.faq')}</Link>
+              <Link to="/contact" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">{t('nav.contact')}</Link>
               <Link to="/privacy-policy" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Terms of Service</Link>
             </div>

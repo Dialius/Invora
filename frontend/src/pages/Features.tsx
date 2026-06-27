@@ -2,50 +2,104 @@ import { PublicLayout } from '../components/PublicLayout';
 import { ShieldCheck, FileCheck, Layers, Eye, RefreshCw, PenTool, Zap, CheckCircle2 } from 'lucide-react';
 import { useTranslation } from '../context/i18n';
 
-export const Features = () => {
-  const { t } = useTranslation();
-
-  const featuresList = [
+const featuresData: Record<'EN' | 'ID', { icon: any, title: string, desc: string }[]> = {
+  ID: [
     {
       icon: PenTool,
-      title: 'Tanda Tangan Digital & Kanvas Terintegrasi',
-      desc: 'Berikan sentuhan profesional dan legalitas pada setiap invoice Anda. Invora menyediakan kanvas tanda tangan langsung di dalam browser. Anda dapat menggambar tanda tangan menggunakan mouse, stylus, atau layar sentuh. Jika Anda sudah memiliki gambar tanda tangan resmi perusahaan, Anda juga dapat mengunggahnya dengan mudah. Tanda tangan ini akan otomatis ditempatkan secara presisi pada dokumen PDF.',
+      title: 'Tanda Tangan Digital & Kanvas',
+      desc: 'Invora menyediakan kanvas tanda tangan langsung di dalam browser. Gambar tanda tangan menggunakan mouse/layar sentuh, atau unggah gambar resmi. Otomatis ditempatkan secara presisi pada PDF.',
     },
     {
       icon: Eye,
-      title: 'Live Preview Real-Time Tanpa Loading',
-      desc: 'Tidak ada lagi proses "Simpan lalu Pratinjau". Setiap kali Anda mengubah harga, menambahkan diskon, atau mengganti mata uang, dokumen di layar sebelah akan langsung memperbarui tampilannya secara real-time. Fitur Live Preview ini memastikan tidak ada kesalahan ketik atau salah hitung sebelum Anda mengirimkan tagihan ke klien.',
+      title: 'Live Preview Tanpa Loading',
+      desc: 'Setiap kali mengubah harga, menambah diskon, atau mengganti mata uang, dokumen di layar akan memperbarui tampilannya secara real-time. Bebas dari kesalahan sebelum dikirim ke klien.',
     },
     {
       icon: Layers,
-      title: 'Manajemen Profil Klien & Perusahaan',
-      desc: 'Hemat waktu Anda dari keharusan mengetik ulang informasi yang sama berulang kali. Simpan profil berbagai perusahaan (Billed From) lengkap dengan logo, alamat, dan nomor rekening. Lakukan hal yang sama untuk klien-klien Anda (Billed To). Saat membuat invoice, cukup pilih dari menu dropdown, dan semua informasi akan terisi otomatis.',
+      title: 'Manajemen Profil Klien',
+      desc: 'Simpan profil berbagai perusahaan (Billed From) lengkap dengan logo. Simpan juga klien (Billed To). Saat membuat invoice, cukup pilih dari dropdown, dan data terisi otomatis.',
     },
     {
       icon: RefreshCw,
-      title: 'Dukungan Multi-Mata Uang (Multi-Currency)',
-      desc: 'Bekerja dengan klien dari luar negeri? Invora mendukung pembuatan invoice dalam berbagai mata uang internasional seperti USD (Dolar AS), EUR (Euro), SGD (Dolar Singapura), dan tentu saja IDR (Rupiah). Simbol dan format angka akan otomatis menyesuaikan dengan standar internasional mata uang yang Anda pilih.',
+      title: 'Dukungan Multi-Mata Uang',
+      desc: 'Mendukung pembuatan invoice dalam USD, EUR, SGD, IDR, dan lainnya. Simbol dan format angka otomatis menyesuaikan dengan standar internasional mata uang pilihan Anda.',
     },
     {
       icon: ShieldCheck,
-      title: 'Keamanan Data Berstandar Enterprise',
-      desc: 'Keamanan data finansial Anda adalah prioritas utama. Seluruh infrastruktur database Invora ditenagai oleh Supabase dengan perlindungan enkripsi canggih (Row Level Security). Kami menerapkan kontrol akses yang ketat sehingga data invoice Anda hanya dapat diakses oleh Anda sendiri.',
+      title: 'Keamanan Data Enterprise',
+      desc: 'Infrastruktur database ditenagai oleh Supabase dengan perlindungan enkripsi canggih (Row Level Security). Data invoice Anda hanya dapat diakses oleh Anda sendiri.',
     },
     {
       icon: FileCheck,
-      title: 'Sistem Pencegahan Kesalahan (Safe Delete)',
-      desc: 'Sistem basis data kami dilengkapi dengan perlindungan integritas referensial. Artinya, Anda tidak akan bisa secara tidak sengaja menghapus profil klien atau perusahaan yang sedang digunakan dalam invoice aktif. Hal ini mencegah terjadinya kerusakan data (orphan records) pada arsip keuangan historis Anda.',
+      title: 'Pencegahan Kesalahan (Safe Delete)',
+      desc: 'Sistem melindungi integritas referensial. Anda tidak bisa menghapus profil yang sedang digunakan dalam invoice aktif, mencegah kerusakan data pada arsip historis Anda.',
     }
-  ];
+  ],
+  EN: [
+    {
+      icon: PenTool,
+      title: 'Digital Signature & Canvas',
+      desc: 'Invora provides an in-browser signature canvas. Draw your signature using a mouse/touchscreen, or upload an official image. Automatically placed precisely on your PDF.',
+    },
+    {
+      icon: Eye,
+      title: 'Zero-Loading Live Preview',
+      desc: 'Every time you change a price, add a discount, or switch currency, the document updates in real-time. Ensure zero mistakes before sending it to clients.',
+    },
+    {
+      icon: Layers,
+      title: 'Client Profile Management',
+      desc: 'Save multiple company profiles (Billed From) with logos, and client profiles (Billed To). Select them from a dropdown to autofill data instantly.',
+    },
+    {
+      icon: RefreshCw,
+      title: 'Multi-Currency Support',
+      desc: 'Supports invoicing in USD, EUR, SGD, IDR, and more. Currency symbols and number formats automatically adapt to the international standards of your chosen currency.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Enterprise Data Security',
+      desc: 'Database infrastructure powered by Supabase with advanced encryption (Row Level Security). Your invoice data is strictly accessible only by you.',
+    },
+    {
+      icon: FileCheck,
+      title: 'Safe Delete Protection',
+      desc: 'The system protects referential integrity. You cannot delete a profile that is used in an active invoice, preventing data corruption in your historical archives.',
+    }
+  ]
+};
 
-  const benefitsList = [
+const benefitsData: Record<'EN' | 'ID', string[]> = {
+  ID: [
     'Berbagi via Tautan Publik (Public Link)',
     'Ekspor Dokumen ke Format PDF (Siap Cetak)',
-    'Hitung Otomatis (Subtotal, Pajak, Diskon, Total)',
+    'Hitung Otomatis (Subtotal, Pajak, Diskon)',
     'Antarmuka Bersih dan Bebas Distraksi',
-    'Responsive di Komputer, Tablet, maupun Ponsel',
-    'Gratis Tanpa Biaya Berlangganan Bulanan'
-  ];
+    'Responsive di Komputer maupun Ponsel',
+    'Gratis Tanpa Biaya Berlangganan'
+  ],
+  EN: [
+    'Share via Secure Public Link',
+    'Export to Print-Ready PDF Format',
+    'Auto-Calculate (Subtotal, Tax, Discount)',
+    'Clean & Distraction-Free Interface',
+    'Responsive on Desktop and Mobile',
+    'Completely Free, No Subscriptions'
+  ]
+};
+
+export const Features = () => {
+  const { lang } = useTranslation();
+  
+  const featuresList = featuresData[lang];
+  const benefitsList = benefitsData[lang];
+
+  const ui = {
+    headerTitle1: lang === 'ID' ? 'Fitur Lengkap untuk' : 'Comprehensive Features for',
+    headerTitle2: lang === 'ID' ? 'Invoicing Profesional' : 'Professional Invoicing',
+    headerDesc: lang === 'ID' ? 'Invora dirancang untuk menghilangkan kerumitan administratif. Dari pembuatan invoice hingga pengiriman ke klien, semua dibangun untuk kecepatan dan akurasi.' : 'Invora is designed to eliminate administrative hassle. From invoice creation to client delivery, everything is built for speed and accuracy.',
+    benefitTitle: lang === 'ID' ? 'Lebih Banyak Kemudahan' : 'Even More Benefits'
+  };
 
   return (
     <PublicLayout>
@@ -57,11 +111,11 @@ export const Features = () => {
               <Zap size={26} />
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-stone-900 font-serif tracking-tight mb-6">
-              Fitur Lengkap untuk <br className="hidden sm:block" />
-              <span className="text-teal-700">Invoicing Profesional</span>
+              {ui.headerTitle1} <br className="hidden sm:block" />
+              <span className="text-teal-700">{ui.headerTitle2}</span>
             </h1>
             <p className="text-stone-600 text-base leading-relaxed">
-              Invora dirancang untuk menghilangkan kerumitan administratif dari bisnis Anda. Dari pembuatan invoice hingga pengiriman ke klien, semua fitur kami dibangun untuk kecepatan, akurasi, dan profesionalisme.
+              {ui.headerDesc}
             </p>
           </div>
 
@@ -90,7 +144,7 @@ export const Features = () => {
             <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-stone-700 rounded-full blur-3xl opacity-30"></div>
             
             <h2 className="text-2xl sm:text-3xl font-bold text-white font-serif mb-10 relative z-10">
-              Lebih Banyak Kemudahan
+              {ui.benefitTitle}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10 max-w-4xl mx-auto text-left">
               {benefitsList.map((benefit, idx) => (
