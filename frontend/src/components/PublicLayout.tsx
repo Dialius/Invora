@@ -67,7 +67,7 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
                 title={lang === 'EN' ? 'Switch to Indonesian' : 'Switch to English'}
               >
                 <Globe size={13} />
-                <span>{lang === 'EN' ? 'ID' : 'EN'}</span>
+                <span>{lang}</span>
               </button>
 
               {isAuthenticated ? (
@@ -128,7 +128,7 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
                 className="flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-sm text-stone-600 hover:bg-stone-100 transition-colors"
               >
                 <Globe size={15} />
-                <span>{lang === 'EN' ? 'Bahasa Indonesia' : 'English'}</span>
+                <span>{lang === 'EN' ? 'English (Switch)' : 'Bahasa Indonesia (Ubah)'}</span>
               </button>
               {isAuthenticated ? (
                 <Link
