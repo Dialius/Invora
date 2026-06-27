@@ -9,6 +9,11 @@ import { Dashboard } from './pages/Dashboard';
 import { LandingHome } from './pages/LandingHome';
 import { Features } from './pages/Features';
 import { FAQ } from './pages/FAQ';
+import { Blog } from './pages/Blog';
+import { BlogPost1 } from './pages/BlogPost1';
+import { BlogPost2 } from './pages/BlogPost2';
+import { BlogPost3 } from './pages/BlogPost3';
+import { BlogPost4 } from './pages/BlogPost4';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfService } from './pages/TermsOfService';
 import { Contact } from './pages/Contact';
@@ -96,6 +101,11 @@ function App() {
           <Route path="/" element={<LandingHome />} />
           <Route path="/features" element={<Features />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/apa-itu-invoice-dan-fungsinya" element={<BlogPost1 />} />
+          <Route path="/blog/cara-membuat-invoice-profesional" element={<BlogPost2 />} />
+          <Route path="/blog/perbedaan-invoice-faktur-kwitansi" element={<BlogPost3 />} />
+          <Route path="/blog/tips-mengelola-keuangan-freelancer" element={<BlogPost4 />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/contact" element={<Contact />} />

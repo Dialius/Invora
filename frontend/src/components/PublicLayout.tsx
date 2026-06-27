@@ -17,6 +17,7 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
     { nameKey: 'nav.home',     path: '/' },
     { nameKey: 'nav.features', path: '/features' },
     { nameKey: 'nav.faq',      path: '/faq' },
+    { nameKey: 'nav.blog',     path: '/blog' },
   ];
 
   const toggleLang = () => setLang(lang === 'EN' ? 'ID' : 'EN');
@@ -166,6 +167,7 @@ export const PublicLayout = ({ children }: { children: React.ReactNode }) => {
               <Link to="/" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Home</Link>
               <Link to="/features" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Features</Link>
               <Link to="/faq" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">FAQ</Link>
+              <Link to="/blog" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Blog</Link>
               <Link to="/contact" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Contact</Link>
               <Link to="/privacy-policy" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="text-xs text-stone-400 hover:text-stone-700 transition-colors">Terms of Service</Link>
