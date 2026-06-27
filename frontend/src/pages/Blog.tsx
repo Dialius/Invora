@@ -58,7 +58,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Tutorial Invora',
       readTime: '4 menit',
       date: '27 Juni 2026',
-      coverImage: 'https://images.unsplash.com/photo-1568225367111-4405256e2ebc?auto=format&fit=crop&w=800&q=80',
+      coverImage: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'cara-mengelola-database-klien-dan-perusahaan',
@@ -132,7 +132,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Invora Tutorial',
       readTime: '4 min',
       date: 'Jun 27, 2026',
-      coverImage: 'https://images.unsplash.com/photo-1568225367111-4405256e2ebc?auto=format&fit=crop&w=800&q=80',
+      coverImage: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'cara-mengelola-database-klien-dan-perusahaan',
