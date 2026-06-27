@@ -12,12 +12,11 @@ interface I18nContextValue {
 // ─── Translations ────────────────────────────────────────────────────────────
 const translations: Record<Lang, Record<string, string>> = {
   EN: {
-    // Nav
     'nav.home':     'Home',
     'nav.features': 'Features',
+    'nav.blog':     'Blog',
     'nav.pricing':  'Pricing',
     'nav.faq':      'FAQ',
-    'nav.blog':     'Blog',
     'nav.contact':  'Contact',
     'nav.login':    'Login',
     'nav.register': 'Register',
@@ -136,9 +135,9 @@ const translations: Record<Lang, Record<string, string>> = {
     // Nav
     'nav.home':     'Beranda',
     'nav.features': 'Fitur',
+    'nav.blog':     'Blog',
     'nav.pricing':  'Harga',
     'nav.faq':      'FAQ',
-    'nav.blog':     'Blog',
     'nav.contact':  'Kontak',
     'nav.login':    'Masuk',
     'nav.register': 'Daftar',

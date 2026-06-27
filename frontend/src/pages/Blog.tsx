@@ -2,132 +2,133 @@ import { Link } from 'react-router-dom';
 import { PublicLayout } from '../components/PublicLayout';
 import { BookOpen, Clock, ArrowRight, Tag } from 'lucide-react';
 
-export const blogPosts = [
-  {
-    slug: 'apa-itu-invoice-dan-fungsinya',
-    title: 'Apa Itu Invoice? Pengertian, Fungsi, dan Contoh Lengkap',
-    excerpt: 'Invoice adalah dokumen tagihan resmi yang dikirim penjual ke pembeli. Pelajari pengertian lengkap, fungsi penting, dan elemen wajib yang harus ada di setiap invoice profesional.',
-    category: 'Panduan Dasar',
-    readTime: '7 menit',
-    date: '10 Juni 2026',
-    color: 'teal',
-  },
+export interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  readTime: string;
+  date: string;
+  coverEmoji: string;
+}
+
+export const blogPosts: BlogPost[] = [
   {
     slug: 'cara-membuat-invoice-profesional',
-    title: 'Cara Membuat Invoice yang Profesional dan Sah Secara Hukum',
-    excerpt: 'Panduan lengkap langkah demi langkah membuat invoice profesional untuk freelancer, UMKM, dan bisnis kecil di Indonesia agar terlihat kredibel dan mempercepat pembayaran.',
-    category: 'Tutorial',
-    readTime: '10 menit',
-    date: '12 Juni 2026',
-    color: 'stone',
+    title: 'Cara Membuat Invoice Profesional untuk Bisnis Anda',
+    excerpt: 'Invoice yang profesional bukan sekadar dokumen tagihan — ini adalah representasi dari bisnis Anda. Pelajari elemen-elemen wajib yang harus ada di setiap invoice dan bagaimana desain yang rapi dapat meningkatkan kepercayaan klien serta mempercepat pembayaran.',
+    category: 'Panduan Invoicing',
+    readTime: '7 menit',
+    date: '10 Juni 2026',
+    coverEmoji: '📄',
   },
   {
-    slug: 'perbedaan-invoice-faktur-kwitansi',
-    title: 'Perbedaan Invoice, Faktur Pajak, dan Kwitansi yang Wajib Diketahui',
-    excerpt: 'Banyak pelaku usaha masih bingung membedakan invoice, faktur pajak, dan kwitansi. Artikel ini menjelaskan perbedaan mendasar, kapan menggunakannya, dan contoh nyata di lapangan.',
-    category: 'Pengetahuan Bisnis',
-    readTime: '8 menit',
-    date: '14 Juni 2026',
-    color: 'amber',
+    slug: 'perbedaan-invoice-proforma-dan-invoice-reguler',
+    title: 'Perbedaan Invoice Proforma dan Invoice Reguler: Mana yang Harus Anda Gunakan?',
+    excerpt: 'Banyak pelaku bisnis masih bingung mengenai kapan harus menggunakan Proforma Invoice dan kapan menggunakan Invoice Reguler. Artikel ini membahas perbedaan mendasar keduanya dari segi hukum, akuntansi, dan praktik bisnis sehari-hari di Indonesia.',
+    category: 'Edukasi Bisnis',
+    readTime: '6 menit',
+    date: '5 Juni 2026',
+    coverEmoji: '📑',
   },
   {
-    slug: 'tips-mengelola-keuangan-freelancer',
-    title: '7 Tips Mengelola Keuangan untuk Freelancer dan UMKM Indonesia',
-    excerpt: 'Mengelola keuangan bisnis kecil tidak harus rumit. Temukan 7 tips praktis untuk mengatur arus kas, menghindari telat bayar, dan membuat laporan keuangan sederhana yang efektif.',
+    slug: 'tips-agar-invoice-dibayar-tepat-waktu',
+    title: '7 Tips Ampuh Agar Invoice Dibayar Tepat Waktu oleh Klien',
+    excerpt: 'Keterlambatan pembayaran adalah salah satu masalah terbesar bagi freelancer dan pemilik bisnis kecil. Dengan strategi invoicing yang tepat — mulai dari penulisan syarat pembayaran yang jelas hingga pengiriman invoice di waktu yang tepat — Anda bisa memangkas keterlambatan secara signifikan.',
     category: 'Tips Bisnis',
-    readTime: '9 menit',
-    date: '16 Juni 2026',
-    color: 'indigo',
+    readTime: '8 menit',
+    date: '1 Juni 2026',
+    coverEmoji: '💡',
+  },
+  {
+    slug: 'panduan-faktur-pajak-dan-npwp-untuk-umkm',
+    title: 'Panduan Lengkap Faktur Pajak dan NPWP untuk UMKM Indonesia',
+    excerpt: 'Sebagai pelaku UMKM di Indonesia, memahami kewajiban perpajakan dalam setiap transaksi adalah hal yang krusial. Artikel ini membahas kapan Anda perlu mencantumkan NPWP di invoice, bagaimana cara menghitung PPN 11%, dan apa bedanya faktur pajak dengan invoice biasa.',
+    category: 'Perpajakan',
+    readTime: '10 menit',
+    date: '25 Mei 2026',
+    coverEmoji: '🏛️',
   },
 ];
 
-const categoryColor: Record<string, string> = {
-  'Panduan Dasar':     'bg-teal-50   text-teal-700   border-teal-200',
-  'Tutorial':          'bg-stone-100 text-stone-700  border-stone-200',
-  'Pengetahuan Bisnis':'bg-amber-50  text-amber-700  border-amber-200',
-  'Tips Bisnis':       'bg-indigo-50 text-indigo-700 border-indigo-200',
-};
-
 export const Blog = () => {
+  const categories = [...new Set(blogPosts.map(p => p.category))];
+
   return (
     <PublicLayout>
       <div className="min-h-screen bg-[#F0EDE8]">
         {/* Hero */}
         <section className="bg-[#FDFCFA] border-b border-[#E2DED7] py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-teal-50 border border-teal-200 mb-6">
               <BookOpen className="text-teal-700" size={28} />
             </div>
-            <h1 className="text-4xl font-bold text-stone-900 font-serif mb-4">Blog & Panduan Invoicing</h1>
+            <h1 className="text-4xl font-bold text-stone-900 font-serif mb-4">
+              Blog & Panduan Invoicing
+            </h1>
             <p className="text-stone-500 text-lg leading-relaxed max-w-2xl mx-auto">
-              Artikel edukatif seputar invoicing, keuangan bisnis, dan tips praktis untuk freelancer dan UMKM Indonesia.
+              Artikel, panduan praktis, dan tips seputar invoicing, perpajakan, dan pengelolaan keuangan bisnis untuk pelaku usaha di Indonesia.
             </p>
           </div>
         </section>
 
-        {/* Articles Grid */}
-        <section className="py-16">
+        {/* Category Pills */}
+        <section className="bg-[#FDFCFA] border-b border-[#E2DED7] py-4">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+            <div className="flex gap-2 flex-wrap">
+              <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-teal-700 text-white">Semua</span>
+              {categories.map(cat => (
+                <span key={cat} className="text-xs font-medium px-3 py-1.5 rounded-full border border-[#E2DED7] text-stone-500 hover:border-teal-300 hover:text-teal-700 transition-colors cursor-pointer">
+                  {cat}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Articles Grid */}
+        <section className="py-12">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {blogPosts.map((post) => (
                 <Link
                   key={post.slug}
                   to={`/blog/${post.slug}`}
-                  className="group bg-white border border-[#E2DED7] rounded-2xl overflow-hidden hover:shadow-md hover:border-teal-300/50 transition-all duration-200 hover:-translate-y-0.5 flex flex-col"
+                  className="group bg-white border border-[#E2DED7] rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  {/* Card Header Color */}
-                  <div className={`h-2 w-full ${
-                    post.color === 'teal'   ? 'bg-teal-500' :
-                    post.color === 'stone'  ? 'bg-stone-400' :
-                    post.color === 'amber'  ? 'bg-amber-400' :
-                    'bg-indigo-500'
-                  }`} />
+                  {/* Cover */}
+                  <div className="bg-gradient-to-br from-teal-50 to-stone-100 h-36 flex items-center justify-center border-b border-[#E2DED7]">
+                    <span className="text-6xl">{post.coverEmoji}</span>
+                  </div>
 
-                  <div className="p-7 flex flex-col flex-1">
-                    {/* Category + Read Time */}
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full border ${categoryColor[post.category] || 'bg-stone-100 text-stone-600 border-stone-200'}`}>
-                        <Tag size={10} />
-                        {post.category}
-                      </span>
-                      <span className="flex items-center gap-1 text-xs text-stone-400">
-                        <Clock size={11} />
-                        {post.readTime}
-                      </span>
+                  {/* Content */}
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Tag size={11} className="text-teal-600" />
+                      <span className="text-xs font-semibold text-teal-700 uppercase tracking-wider">{post.category}</span>
                     </div>
-
-                    {/* Title */}
-                    <h2 className="text-lg font-bold text-stone-900 font-serif leading-snug mb-3 group-hover:text-teal-700 transition-colors">
+                    <h2 className="text-base font-bold text-stone-900 font-serif leading-snug mb-3 group-hover:text-teal-700 transition-colors">
                       {post.title}
                     </h2>
-
-                    {/* Excerpt */}
-                    <p className="text-sm text-stone-500 leading-relaxed flex-1">
+                    <p className="text-xs text-stone-500 leading-relaxed mb-4 line-clamp-3">
                       {post.excerpt}
                     </p>
-
-                    {/* Footer */}
-                    <div className="flex items-center justify-between mt-5 pt-5 border-t border-[#E2DED7]">
-                      <span className="text-xs text-stone-400">{post.date}</span>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3 text-xs text-stone-400">
+                        <div className="flex items-center gap-1">
+                          <Clock size={11} />
+                          <span>{post.readTime} baca</span>
+                        </div>
+                        <span>·</span>
+                        <span>{post.date}</span>
+                      </div>
                       <span className="flex items-center gap-1 text-xs font-semibold text-teal-700 group-hover:gap-2 transition-all">
-                        Baca selengkapnya <ArrowRight size={13} />
+                        Baca <ArrowRight size={12} />
                       </span>
                     </div>
                   </div>
                 </Link>
               ))}
-            </div>
-
-            {/* Bottom CTA */}
-            <div className="mt-12 bg-white border border-[#E2DED7] rounded-2xl p-8 text-center">
-              <h2 className="text-lg font-bold text-stone-900 font-serif mb-2">Siap Membuat Invoice Profesional?</h2>
-              <p className="text-sm text-stone-500 mb-5">Gunakan Invora secara gratis — buat invoice, kelola klien, dan ekspor PDF dalam hitungan menit.</p>
-              <Link
-                to="/register"
-                className="inline-flex items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white font-bold px-7 py-3 rounded-xl text-sm transition-all shadow-sm shadow-teal-700/20"
-              >
-                Mulai Gratis Sekarang <ArrowRight size={15} />
-              </Link>
             </div>
           </div>
         </section>

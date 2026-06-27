@@ -1,0 +1,3089 @@
+Delivered-To: davinza30@gmail.com
+Received: by 2002:a05:6f02:890c:b0:122:f2f8:80f8 with SMTP id r12csp2358833rci;
+        Tue, 16 Jun 2026 19:29:03 -0700 (PDT)
+X-Received: by 2002:a17:903:1a4e:b0:2c2:8659:da44 with SMTP id d9443c01a7336-2c6bc230f17mr16841005ad.36.1781663343176;
+        Tue, 16 Jun 2026 19:29:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781663343; cv=none;
+        d=google.com; s=arc-20240605;
+        b=bctSzq1lWSTAGA75xoNenYg0E2AQjCuud6znaV5wadkeUcLMmZ9Y9WFfMoys6V98Rd
+         ehglPQ6SoIV64dz8OeBlb1IqaUhH+NkD4th7ixllwfFnKDoFrN0/s9PV6ptFV1dTnthb
+         yHaXAT2VavCKY+DaQoTothtZBLy8OqpcDEX2N6NSHRZnl5oldYD3//rINsqzx3fe4XrL
+         bb7+GV7tQctthqgSF8QnKdKZp2tseI/4OyXmHN0NU8cnW7QLsSskMygZr9Ts1eNiaCfv
+         X9o0fBgfWQTV1eFc0UZNPJ1w3qNs1qXoWTBqtfsMSbfqW61lLuQ/bETHy5xtEsmvVI1N
+         ncxA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:from:subject:message-id:gmsai:feedback-id:reply-to:date
+         :mime-version:dkim-signature;
+        bh=s8KyFuL9L2KZFRpVx+wDGVjr8kdHipuc5S6vbyneGmM=;
+        fh=7bZKxx0dTssynvIwgz6KlKU9Twpu8lrpp6TFYjOCDFE=;
+        b=A3MRx9y0oCbEmHOTNtVqPvH0FMMGk+R1LDjoy4FSk52+506BgYIyrVw/zG9ffIh+hU
+         B5DbSNCxEM58ahso5Kyg6p9TytHlB4lGQ3LMzu7ja49buzVE/lR3+ZcTLFG4OTHyt4ai
+         pB6kSa8By2R5M4c/71XrzKLEgvGHRvGlaywC7VkEz8GsRYOrxGijyWEfGv1sz1/8hEvh
+         nPVEPyWfixm5TJ0ILcaMa5qEiFcbjyB0i6HIurFfm+K+CF6fPoQm/7pLgb9rBl5WETH5
+         BW0hBxCViGBkbylBsIfK1/IPOlsfzKGzYR7McFc2MfHCgt3bTwKS4ZqbFMpDdrFp3QF1
+         3ZkQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20251104 header.b="U/lXgE3V";
+       spf=pass (google.com: domain of 3bgyyagskczs58n-ijm9kgtbjjbg9.7jh85qdiu5yvbh5dg.7jh@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3bgYyagsKCZs58N-IJM9KGTBJJBG9.7JH85QDIU5YVBH5DG.7JH@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <3bgYyagsKCZs58N-IJM9KGTBJJBG9.7JH85QDIU5YVBH5DG.7JH@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id d9443c01a7336-2c6c1214824sor477605ad.3.2026.06.16.19.29.02
+        for <davinza30@gmail.com>
+        (Google Transport Security);
+        Tue, 16 Jun 2026 19:29:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3bgyyagskczs58n-ijm9kgtbjjbg9.7jh85qdiu5yvbh5dg.7jh@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20251104 header.b="U/lXgE3V";
+       spf=pass (google.com: domain of 3bgyyagskczs58n-ijm9kgtbjjbg9.7jh85qdiu5yvbh5dg.7jh@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3bgYyagsKCZs58N-IJM9KGTBJJBG9.7JH85QDIU5YVBH5DG.7JH@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20251104; t=1781663342; x=1782268142; dara=google.com;
+        h=to:from:subject:message-id:gmsai:feedback-id:reply-to:date
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=s8KyFuL9L2KZFRpVx+wDGVjr8kdHipuc5S6vbyneGmM=;
+        b=U/lXgE3VBVdpF1lmevNqxnQI3SOzRddCb5WKCpHVjjKYhKSxgPOQT0F6dWlFp4E4eb
+         pDe6iAMMK+5dR9k3/qxQciDwQBkF+sV9IOq99r/Ie8G0dQdrHkX0XfDBtNkS8mY7Nnik
+         DX3kvb8nzhsIuiwybFiCL1CQOGO1s424RR2eaLsPieXEH17OykqeGp8NmTnQpHuCOC00
+         +XaD3cNR8/DdYF1hyTFQwdlor4XtjI1BamoNArls3NaGswrPf6tqyN34yN70AEryOa9B
+         rXfLMpP7jP3vkWDoNX3JT4NESpr7Dmv9xYpiw9p0yBspPuXDUznyzQwm9iXKDrrg6FfZ
+         RjCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781663342; x=1782268142;
+        h=to:from:subject:message-id:gmsai:feedback-id:reply-to:date
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=s8KyFuL9L2KZFRpVx+wDGVjr8kdHipuc5S6vbyneGmM=;
+        b=tHL4d35+CxO2GNYMrSJl/UPDVQPzB2geKRD6r6tFQV4MhZvMpokKmy22Lyg2Wufyb6
+         mu7xihYK1xzDCUvsl21+LVhPZOsYthxY+9BADEi6zibH9PKbVSaSowhn9prSF1RfakZy
+         5zibvs4ixyP2OnjS4nMMGKjink0lJSUOeq++N/MO/+vtYV3QPGqDfS9MsYE/85my4kHq
+         lk5CmHbmjQFMe5TrQ18nVNOuhLktLzM4rLHB/5uPrpGL7DSuq+oVoL6HlEZeo0T9cByb
+         MFKV+q+6VOH4prHjQeiIiYZG4z9fx0RM+OC9siohSmsAQOE1vMiNpCb+OqiTOexgHZmP
+         MI/A==
+X-Gm-Message-State: AOJu0YxG4AquCh+B8Jrwszj91WXLXrjESLBSkyytP7/gz2SZigRZLau3
+	A0ZXsymr+3HhX6CVjtQiLPEmTAunzkeqZCMwH1t130D6A8ZtNPHV1huM5Z6D
+MIME-Version: 1.0
+X-Received: by 2002:a05:6a20:729c:b0:3b4:7eb0:479f with SMTP id
+ adf61e73a8af0-3b8b5728afemr1934555637.5.1781663342807; Tue, 16 Jun 2026
+ 19:29:02 -0700 (PDT)
+Date: Tue, 16 Jun 2026 19:29:02 -0700
+Reply-To: Google Ads <ads-noreply@google.com>
+X-Google-Id: 4243997
+Feedback-ID: P1-0:C20247541:M110651417-id:gamma
+gmsai: true
+X-Google-Notification-Metadata: CgISAA
+X-Notifications: e1f12b818d4e0000
+X-Notifications-Bounce-Info: AZJPhI1GHwgxLnkxWMgFeN7DqFmCehbyCWKqsG2cP9m6eDX_4fOXg4YOUgrCLcJBKjxYGeeVhcyE4stVJ6NF3f6rxnPxzJPkSqB9a74ZKHCqzpR4o9o8jUqEAVwmyZQTttOBsRVgRPR1GN_maGKu8OOIH869bKvOnB8svK9lJqEVK-UUbuW56PeC-fyDCfsA_GUEItC3evoxm5L9SPAY79t1iUbMMBo9_r7YBFYhvtXR_0SHysDAavd227PMZnjkS-sQtr-Y-tWvv8sfpk6q7iV3-nBWISQVzhv3xK5Y22htACcCfn3MHeM2wKwtIoaH7pWJyRYlLuDPrvTRw1KtiIBkgjaY5-d2DRqKIj32HOdVQwAiVOGWR_yCo9mP7zVLdNQx5mKgOvNzZMCKgkqP-ybaNkj8YTYfpA2unKLsUUcICOYhwufnpv-h4zCWK4lBf95avnGQY_k9mEKXMTmnhaQh112HbC76KV8rQFxASRzYRgmCfBMSjJi2c1iHCOuWOkUNjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <c437e9b53012af9da3e884fd94f4fda22529effd-20247541-111841622@google.com>
+Subject: Pelanggan baru menanti Anda
+From: Google Ads <ads-noreply@google.com>
+To: davinza30@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000a84cce065469d2af"
+
+--000000000000a84cce065469d2af
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+SUQgUGVsYW5nZ2FuIEFuZGE6IDg5MC0xODItOTIwMSAgDQpMb2dpbjxodHRwczovL2MuZ2xlL0FP
+UHlES1JYd2Z0b0VNZzNCaUQyVzNHd0t6OXlaamhBQU05b2J1WV9IVnFvSmxFUGR2QXN3ZEhCcWxF
+QlZiaDhTYnNCYXRNTTdBZlRCa2JkMTBYOUZUdy12MUF5UVlQTW1JX3pDdndoWm5zdUlGSENTQ1JL
+LWNiM20wRDd6ZGlHYnBmbFI1S2NaUzd5d2FLY3I1OHR3QmliT1E3S1F4UVQ0OVozU3lCam0zYXhM
+Mlk+DQoNClBFUkZPUk1BIE1BS1NJTUFMDQoNClNlbGVzYWlrYW4gcGVyc2lhcGFuIEFuZGEgdW50
+dWsgbXVsYWkgbWVuZGFwYXRrYW4gaGFzaWwgeWFuZyBtZW5ndW50dW5na2FuDQoNClRpbmdnYWwg
+c2VkaWtpdCBsYWdpIHVudHVrIG1lbmphbmdrYXUgbGViaWggYmFueWFrIHBlbGFuZ2dhbiB5YW5n
+ICANCmJlcnBvdGVuc2kgbWVsYWt1a2FuIGtvbnZlcnNpIGRpIHNlbXVhIHNhbHVyYW4gR29vZ2xl
+LiBDdWt1cCBzZWxlc2Fpa2FuICANCmthbXBhbnllIFBlcmZvcm1hIE1ha3NpbWFsIEFuZGEgdW50
+dWsgbWVuZ2VtYmFuZ2thbiBiaXNuaXMgZGVuZ2FuIHRla25vbG9naSAgDQpBSSBHb29nbGUuDQoN
+ClNlbGVzYWlrYW4ga2FtcGFueWUgIA0KQW5kYTxodHRwczovL2MuZ2xlL0FPUHlES1J2OWdheXFO
+VGlZaEI1M0RtcGtKeUlXMkVrbVNCUHh0SHowTmg4ZjVfaEFhaUhtZlc4RW9qa0U5Y1NJTmR4T0VM
+d1VaWnRKMmJGTTlhbHVPTC1HTlVCMGxveV9xWmZJOE12X09keTZvcGVLZVhIdVo1Q1pXSUhHbHRP
+ak9WS2dQSXJzS0JvWnBvdElpbUl2c0x0M210ak9mek5GNEZmcWFpWTdMNFZFVEhjLU1jRTRwMmdY
+bHZWV2JSQklUb0t1a0Z1S2c+DQoNClByb2R1ayBBbmRhDQoNCklrbGFuIHlvdXItYnVzaW5lc3Mu
+Y29tDQoNCkxha3VrYW4gbGViaWggYmFueWFrIGRhcmkgc2F0dSBrYW1wYW55ZQ0KDQpUZW11a2Fu
+IGxlYmloIGJhbnlhayBwZWxhbmdnYW4geWFuZyBiZXJwb3RlbnNpIG1lbGFrdWthbiBrb252ZXJz
+aQ0KDQpNYWtzaW1hbGthbiBpa2xhbiBBbmRhIHVudHVrIG1lcmFpaCBzYXNhcmFuIGtvbnZlcnNp
+IHlhbmcgdW5payDigJMgc2VwZXJ0aSAgDQpwZW5qdWFsYW4sIHByb3NwZWssIGF0YXUgdHJhZmZp
+YyBzaXR1cy4NCg0KVGluZ2thdGthbiBuaWxhaQ0KDQpQZXJmb3JtYSBNYWtzaW1hbCBtZW5nZ3Vu
+YWthbiBBSSBHb29nbGUgdW50dWsgbWVuZW11a2FuIHBvaW4ga29udGFrIHV0YW1hICANCmRhbiBt
+ZW1wcmVkaWtzaSBkZW5nYW4gbGViaWggYmFpayBpa2xhbiBtYW5hIHlhbmcgcGFsaW5nIGJlcnBl
+cmZvcm1hLg0KDQpQcm9zcGVrIHRlcmZpbmFsaXNhc2kNCg0KS29udmVyc2kNCg0KVGVsdXN1cmkN
+Cg0KVGVtdWthbiBsZWJpaCBiYW55YWsgaW5zaWdodA0KDQpNYW5mYWF0a2FuIHRyZW4gcGVuZWx1
+c3VyYW4gdGVyYmFydSBkYW4gbGloYXQgYXNldCBtYW5hIHlhbmcgcGFsaW5nIGVmZWt0aWYgIA0K
+c2VoaW5nZ2EgQW5kYSBkYXBhdCBtZW5nb3B0aW1hbGthbiBrZXN1a3Nlc2FuLg0KDQpTZWxlc2Fp
+a2FuIGthbXBhbnllICANCkFuZGE8aHR0cHM6Ly9jLmdsZS9BT1B5REtUM2xidkYzWkNaYXVSSXBC
+NEpWY2JhQ25LRlpYTHpCdTRHUXljMWVFYTVSVUlkLWJ0R2NFRG1YcXdJTG04TXM1cThxdGF4bmh5
+Y1FORHY2cF9zYkFtckUzSkZhRGRTX05SWTZHR2dVcTlTaFYwdkpjcEdyVmRpdTBsdTJpRmdYaFBh
+dFhpOE5CaV8yWUN3Mmp4TklEcVd4cGhnZG9kQWdGSEtoOWppQ3Y0SWx0Szhkb3VRcjZsQ21rRlNF
+ZWp0TWhKWjdRPg0KDQoNClN0YXJ0dXAgcGVyYXdhdGFuIGdpZ2kgWmVueXVtIG1lbmluZ2thdGth
+biBwcm9zcGVrIGRhbiBtZW51cnVua2FuIGJpYXlhDQoNCjM3JQ0KDQpsZWJpaCByZW5kYWggYmlh
+eWEgcGVyIHByb3NwZWsgZGkgc2VsdXJ1aCBzYWx1cmFuDQoNCjYsNXgNCg0KbGlwYXQgbGViaWgg
+YmFueWFrIHBlcm9sZWhhbiBwcm9zcGVrDQoNCjcwMCsNCg0KcHJvc3BlayB5YW5nIGRpcGVyb2xl
+aCBkYWxhbSAzIGJ1bGFuDQoNCkx1bmN1cmthbiBrYW1wYW55ZSBBbmRhIGRlbmdhbiB0YW1iYWhh
+biBScCAzLDAwMCwwMDANCg0KRGFwYXRrYW4ga3JlZGl0IGlrbGFuIHNlbmlsYWkgUnAgMywwMDAs
+MDAwIHNldGVsYWggbWVtYmVsYW5qYWthbiBScCAgDQozLDAwMCwwMDAgcGVydGFtYSBBbmRhIGRp
+IEdvb2dsZSBBZHMuIEtyZWRpdCBha2FuIG90b21hdGlzIGRpdGVyYXBrYW4ga2UgIA0KYWt1biBB
+bmRhIGRlbmdhbiBJRCBQZWxhbmdnYW4gODkwLTE4Mi05MjAxIHNldGVsYWggbWVtYmVsYW5qYWth
+biBScCAgDQozLDAwMCwwMDAgZGFsYW0gd2FrdHUgNjAgaGFyaSBzZWphayBwZW5kYWZ0YXJhbiwg
+amlrYSBtZW1lbnVoaSBzeWFyYXQuDQoNCktodXN1cyBwZW5naWtsYW4gYmFydS4gUGVuYXdhcmFu
+IGhhbnlhIGRhcGF0IGRpdGVyYXBrYW4ga2UgYWt1biBHb29nbGUgQWRzICANCnlhbmcgZGlrYWl0
+a2FuIGRlbmdhbiBhbGFtYXQgZW1haWwgeWFuZyBtZW5lcmltYSBlbWFpbCBpbmkuIExpaGF0ICAN
+CnBlcnN5YXJhdGFuIGRhbiBrZXRlbnR1YW4gc2VsZW5na2FwbnlhLioNCg0KS2xhaW0gcGVuYXdh
+cmFuIHVudHVrICANCkFuZGE8aHR0cHM6Ly9jLmdsZS9BT1B5REtUYkZya2xXU0ZwTDQ1bU9OdU1u
+bnF2VEphaGJHQkg2QVB5VHZUdkdTd203TGYyd0xfOXhvR3dsT2VkLVRNQlJNWUFibDFDaGxSd1Ra
+RVYwY1VMa0tYUWJYZWpLbkxnUUpiTjYyNlBSelFTRk9tT1Npa2hPT2xQOUZFQVR6NW4zWnpicGo5
+aW44VzBhb1JrWXk1OUVqLS1Nd1lOb25uMkwwSkpuTGtlbGVsUkxERlVOdHhaWlJTYUNHUFZ1eVRR
+NkZmN2lLYzZqeGlNPg0KDQpHb29nbGUgTExDIDE2MDAgQW1waGl0aGVhdHJlIFBhcmt3YXksIE1v
+dW50YWluIFZpZXcsIENBIDk0MDQzIHd3dy5nb29nbGUuY29tDQoNCkthbWkgbWVuZ2lyaW0gZW1h
+aWwgaW5mb3JtYXNpIGluaSB1bnR1ayBtZW1iZXJpa2FuIGluZm9ybWFzaSB0ZXJiYXJ1ICANCnRl
+bnRhbmcgYWt1biBHb29nbGUgQWRzIEFuZGEuIEppa2EgQW5kYSB0aWRhayBpbmdpbiBtZW5lcmlt
+YSBlbWFpbCBzZW1hY2FtICANCmluaSBkaSBtYXNhIG1lbmRhdGFuZywgYmVyaGVudGkgYmVybGFu
+Z2dhbmFuIGRpIHNpbmkgIA0KPGh0dHBzOi8vYy5nbGUvQU9QeURLU0dUdGZoSkpaOUxMWkR3UnZW
+NG03R3RMcWJESjVDRG0wLWQxVzY3R1oxc0pFaG5LbHdJWU9RWW5mdEZLeS1UVWNtWW1pM1dBb2Zz
+ZXVfTTlLQ2ZLRkdBcWdSQnNNamFvR0FSQUk3M2VUUUczTGFoMDhzbWJRdjdZUGJrcW1tTXRTak9j
+YVk4a0hickk0dDkycURKNTR6QkI1am1wMUFwVlMtYjYwNzNGV3lIYXMyZUVFWnlldHJaUEJWOFBr
+LUlZV3luRzBoUElTQktWX25CTmF6NnhPQjlCZ2VLTlJOdDAySEIteFF2cHIyRkhxbDNTWFM5Yldx
+Znl4aGxZb0NjbXdES1lsRDhVeHJhVDZiT3VUcnBPdERXNzFrTUN5d1p4bEdtVkpnOURTS3dIWDN5
+TUFmZnBnNXo0eUIyMFJ1cFg2enhKZDJEQXN6akQ4YURYbU1vaC1wNHRIcjNYazV4MXc+Lg0KDQoq
+UGVyc3lhcmF0YW4gZGFuIGtldGVudHVhbiB1bnR1ayBwZW5hd2FyYW4gaW5pOg0KMS4gUGVuYXdh
+cmFuIGhhbnlhIHRlcnNlZGlhIHNlbGFtYSBwZXJzZWRpYWFuIG1hc2loIGFkYS4NCjIuIFBlbmF3
+YXJhbiBoYW55YSB0ZXJzZWRpYSB1bnR1ayBwZW5naWtsYW4geWFuZyBiYXJ1IG1lbmdndW5ha2Fu
+IEdvb2dsZSAgDQpBZHMsIGRlbmdhbiBhbGFtYXQgcGVuYWdpaGFuIGRpIEluZG9uZXNpYS4gU2F0
+dSBwZW5hd2FyYW4gcHJvbW9zaSBiZXJsYWt1ICANCnVudHVrIHNhdHUgcGVuZ2lrbGFuLg0KMy4g
+VW50dWsgbWVuZ2FrdGlma2FuIHBlbmF3YXJhbiBpbmk6IEtsaWsgdG9tYm9sIGF0YXUgbGluayB5
+YW5nIHRlcmthaXQgIA0KZGVuZ2FuIHBlbmF3YXJhbiBpbmkgYWdhciBwZW5hd2FyYW4gcHJvbW9z
+aW55YSBvdG9tYXRpcyBkaXRlcmFwa2FuIGtlIGFrdW4gIA0KR29vZ2xlIEFkcyBwZXJ0YW1hIEFu
+ZGEuIFBlbmF3YXJhbiBwcm9tb3NpIHRlcnNlYnV0IGhhcnVzIGRpdGVyYXBrYW4ga2UgIA0KYWt1
+biBHb29nbGUgQWRzIHBlcnRhbWEgQW5kYSBkYWxhbSB3YWt0dSAxNCBoYXJpIHNlamFrIHRheWFu
+Z2FuIGlrbGFuICANCnBlcnRhbWEgQW5kYSBkaXRheWFuZ2thbi4NCjQuIFBlbmF3YXJhbiBwcm9t
+b3NpIGhhbnlhIGFrYW4gZGliZXJpa2FuIGtlIGFrdW4gQW5kYSBqaWthIHByb2ZpbCAgDQpwZW1i
+YXlhcmFuIGRhbiBtZXRvZGUgcGVtYmF5YXJhbiB5YW5nIHZhbGlkIGRpdGFtYmFoa2FuIHNhYXQg
+cHJvc2VzIGF3YWwgIA0KcGVuZGFmdGFyYW4uDQo1LiBVbnR1ayBtZW1wZXJvbGVoIGtyZWRpdCBH
+b29nbGUgQWRzOiBTZXRlbGFoIHBlbmF3YXJhbiBwcm9tb3NpIGRpdGVyYXBrYW4gIA0Ka2UgYWt1
+biBHb29nbGUgQWRzIEFuZGEsIGthbXBhbnllIGlrbGFuIEFuZGEgaGFydXMgbWVuZ2FrdW11bGFz
+aSBiaWF5YSAgDQptaW5pbWFsIHNlYmVzYXIgUnAgMywwMDAsMDAwICh0aWRhayB0ZXJtYXN1ayBw
+YWphayBkYW4gYmlheWEgeWFuZyBiZXJsYWt1KSAgDQpkYWxhbSB3YWt0dSA2MCBoYXJpLiBNZWxh
+a3VrYW4gcGVtYmF5YXJhbiBzZWJlc2FyIFJwIDMsMDAwLDAwMCBzYWphIHRpZGFrICANCmN1a3Vw
+LiBQZWxhY2FrYW4gYmlheWEgaWtsYW4gaGluZ2dhIG1lbmNhcGFpIGp1bWxhaCBScCAzLDAwMCww
+MDAgZGltdWxhaSAgDQpzZXRlbGFoIHBlbmF3YXJhbiBwcm9tb3NpIGRpdGVyYXBrYW4uDQo2LiBT
+ZXRlbGFoIGxhbmdrYWggNSBzZWxlc2FpLCBkZW5nYW4gY2F0YXRhbiBiYWh3YSBwZXJzeWFyYXRh
+biBrZWxheWFrYW4gIA0KdGVsYWggdGVycGVudWhpLCBrcmVkaXQgcHJvbW8gaW5pIGJpYXNhbnlh
+IGFrYW4gZGliZXJpa2FuIGRhbGFtIHdha3R1IDM1ICANCmhhcmkga2UgUmluZ2thc2FuIFBlbmFn
+aWhhbiBha3VuIEdvb2dsZSBBZHMgQW5kYS4NCjcuIE1hc2EgYmVybGFrdSBrcmVkaXQgaW5pIGJl
+cmFraGlyIDYwIGhhcmkgc2V0ZWxhaCBrcmVkaXQgZGliZXJpa2FuIGtlICANCmFrdW4gQW5kYS4N
+CjguIEtyZWRpdCBoYW55YSBiZXJsYWt1IHVudHVrIGJpYXlhIGlrbGFuIGRpIG1hc2EgbWVuZGF0
+YW5nLiBLcmVkaXQgdGlkYWsgIA0KYmVybGFrdSB1bnR1ayBiaWF5YSB5YW5nIHRlcmFrdW11bGFz
+aSBzZWJlbHVtIHBlbmF3YXJhbiBwcm9tb3NpIGRpdGVyYXBrYW4gIA0KZGkgYWt1biBHb29nbGUg
+QWRzIEFuZGEuDQo5LiBBbmRhIHRpZGFrIGFrYW4gbWVuZXJpbWEgbm90aWZpa2FzaSBzZXRlbGFo
+IGtyZWRpdCBkaSBha3VuIEdvb2dsZSBBZHMgIA0KQW5kYSBoYWJpcyBkaWd1bmFrYW4gZGFuIHNl
+bXVhIGJpYXlhIGlrbGFuIHRhbWJhaGFuIGFrYW4gZGliZWJhbmthbiBrZSAgDQptZXRvZGUgcGVt
+YmF5YXJhbiBBbmRhLiBKaWthIEFuZGEgdGlkYWsgaW5naW4gbWVsYW5qdXRrYW4gaWtsYW4sIEFu
+ZGEgZGFwYXQgIA0KbWVuamVkYSBhdGF1IG1lbmdoYXB1cyBrYW1wYW55ZSBBbmRhIGthcGFuIHNh
+amEuDQoxMC4gQWt1biBBbmRhIGhhcnVzIGJlcmhhc2lsIGRpdGFnaWggb2xlaCBHb29nbGUgQWRz
+IGRhbiB0ZXRhcCBtZW1pbGlraSAgDQpyZXB1dGFzaSBiYWlrIGFnYXIgbWVtZW51aGkgc3lhcmF0
+IHVudHVrIG1lbmdndW5ha2FuIGtyZWRpdCB0ZXJzZWJ1dC4NCjExLiBQVCBHb29nbGUgSW5kb25l
+c2lhIGJlcmhhayBtZW5naGFwdXMgcGVuYXdhcmFuIHByb21vc2kgZGFyaSBha3VuIEFuZGEgIA0K
+amlrYSBwZW1iYXlhcmFuIGdhZ2FsLCBwZW5hd2FyYW4ga2VsaXJ1IGRpYmVyaWthbiwgQW5kYSBt
+ZWxhbmdnYXIgIA0KcGVyc3lhcmF0YW4gaW5pLCBhdGF1IGFrdW4gQW5kYSB0aWRhayBsYWdpIG1l
+bWlsaWtpIHJlcHV0YXNpIGJhaWsuIERhbGFtICANCmthc3VzIHRlcnNlYnV0LCBqaWthIGtyZWRp
+dCBwcm9tbyB0ZWxhaCBkaWJlcmlrYW4sIFBUIEdvb2dsZSBJbmRvbmVzaWEgIA0KYmVyaGFrIHVu
+dHVrIG1lbWJhdGFsa2FuIGtyZWRpdCB0ZXJzZWJ1dC4NCjEyLiBQZXJzeWFyYXRhbiBkYW4ga2V0
+ZW50dWFuIGxlbmdrYXAgZGFwYXQgZGlsaWhhdCBkaSBzaW5pOiAgDQo8aHR0cHM6Ly93d3cuZ29v
+Z2xlLmNvbS9pbnRsL2lkX0lEL2Fkcy9jb3Vwb25zL3Rlcm1zLz4NCg==
+--000000000000a84cce065469d2af
+Content-Type: text/x-amp-html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+ <!doctype html>
+<html =E2=9A=A14email lang=3D"" data-css-strict>
+<head>
+<meta charset=3Dutf-8>
+<script async src=3Dhttps://cdn.ampproject.org/v0.js></script>
+<script async custom-element=3Damp-bind src=3Dhttps://cdn.ampproject.org/v0=
+/amp-bind-0.1.js></script>
+<script async custom-element=3Damp-carousel src=3Dhttps://cdn.ampproject.or=
+g/v0/amp-carousel-0.1.js></script>
+<script async custom-element=3Damp-selector src=3Dhttps://cdn.ampproject.or=
+g/v0/amp-selector-0.1.js></script>
+<style amp4email-boilerplate>body{visibility:hidden}</style>
+<style amp-custom>
+table td { border-collapse: collapse; } *:focus { outline: 0; border: none;=
+ } img + div { display:none; display:none ; } .email-layout-width { max-wid=
+th: 730px; } .mobile_only { height: 0px ; overflow: hidden ; display: none =
+; max-height: 0px ; font-size:0px ; line-height:0px ; } .cid_text_mobile_on=
+ly{white-space:nowrap;} .mob_show { display:none; } @media screen and (max-=
+width:961px) { .desktop_only { display:none ; font-size:0px ; line-height:0=
+ ; height:0px ; max-height:0px ; overflow:hidden ; } .mobile_only { height:=
+ auto ; overflow: visible ; display: block ; max-height: inherit ; width: 1=
+00% ; font-size:inherit ; line-height:inherit ; } .cid_text_mobile_only{whi=
+te-space:normal ;} } .inline{ display:inline ;} .inline_block{display:inlin=
+e-block ;}
+.amp-mode-mouse .amp-carousel-button{
+border: none;
+outline:none;
+}
+.amp-carousel-button-next{ right:18px;background-image:url("https://service=
+s.google.com/fh/files/emails/adwords-pmax-right-arrow-transparent-w96px-h96=
+px-2x.png");background-size: 99%;}
+.amp-carousel-button-prev{left:18px;background-image:url("https://services.=
+google.com/fh/files/emails/adwords-pmax-left-arrow-transparent-w96px-h96px-=
+2x.png");background-size: 99%;}
+.amp-carousel-button{height:48px;width:48px;background-color:transparent;cu=
+rsor: pointer;}
+.amp-carousel-button:focus {
+outline:none;
+border:none;
+}
+.circle_div {
+text-align: center;
+background: #ffffff;
+cursor: pointer;
+height:90px;
+}
+.circle_div span {
+display: inline-block;
+background:#E8EAED;
+border-radius: 14px;
+width: 8px;
+height: 8px;
+margin: 0 8px 0px 8px;
+}
+.circle_div span.active {
+}
+amp-selector [option][selected] {
+background: #1967D2;
+outline: none;}
+amp-carousel .amp-carousel-button-next {
+right:44px;
+top:66%;
+}
+amp-carousel .amp-carousel-button-prev {
+left:44px;
+top:66%;
+}
+.carousel_class {
+height:362px;
+}
+.amp_text_class{
+padding:0px 8px;
+}
+.table_spacer_class {
+max-width:688px;
+}
+.icon_module_main_head, .icon_module_main_subhead, .icon_module_head, .icon=
+_module_subhead, .icon_module_subhead_2, .side_bg_main_head{padding-left:80=
+px; padding-right:80px;}
+.inner_table_td_class {padding-left:61px; padding-right:61px;}
+.side_bg_main_head {font-size:32px; line-height:40px;}
+.first_logo{
+text-align:left;
+padding-left:53px;
+padding-top:0;
+padding-bottom:2px;
+padding-right:20px;
+}
+.mobile-spacing, .mob_icon_center_hero{
+text-align: center;
+}
+.pad_top_mob {padding-top: 49px;}
+.second_logo_mob{width:30%;}
+.dsa_head_top_spacing {padding-left:170px; padding-right:170px;font-size: 3=
+2px;line-height: 40px;}
+.dsa_module_head_mob {font-size: 32px;line-height: 38px;}
+.dsa_mod_img_para {padding-left: 180px;padding-right: 180px;}
+.head_font_fix_rem1{font-size:40px;}
+@media screen and (max-width: 961px){
+.dsa_module_head_mob {font-size: 22px;line-height: 33px;}
+.dsa_head_top_spacing {font-size: 20px;line-height: 30px;}
+.carousel_class {height:480px;}
+.mob_spacing, .mobile-spacing {padding-left:28px; padding-right:28px;}
+.side_bg_main_head {font-size:20px; line-height:30px;}
+amp-carousel .amp-carousel-button-next {
+right:5px;
+top:45%;
+}
+amp-carousel .amp-carousel-button-prev {
+left:5px;
+top:45%;
+}
+.first_logo{
+text-align: center;
+padding-left:28px;
+padding-right:28px;
+}
+.mob_icon_center_hero, .align-left, .amp_left_bg{
+text-align: left;
+}
+.pad_top_mob {padding-top: 15px;}
+.second_logo_mob{width:26%;}
+}
+*:focus {
+outline: 0;
+border: none;
+}
+</style>
+</head>
+<body style=3D"margin:0;padding:0;width:100%; " class=3Dbody_class>
+<div style=3Dwidth:auto;line-height:0;font-size:0;height:0;overflow:hidden;=
+border-collapse:collapse><amp-img alt=3D"" height=3D1 src=3Dhttps://notific=
+ations.google.com/g/img/AOPyDKRaukYT_SGvYZFypq5KfnLW9MigQbca8UFh3zy24L-SrXL=
+mQ30uCgpYHRU9tshRqXJ2fifoleRWSOQ9dHJzsIQzItKbDE8VGKu7B1LkB-_UZiTvEhpYq6J3Wf=
+p_XCOQrWjSCg.gif width=3D3></div>
+<table role=3Dpresentation align=3Dcenter cellpadding=3D0 cellspacing=3D0 s=
+tyle=3D"margin:0 auto;padding:0; width:100%; " class=3Demail-layout-width w=
+idth=3D100%>
+<tr>
+<td class=3Demail-layout-width style=3D"line-height:0px; margin:0px auto; p=
+adding:0px; border: 1px solid #E8EAED; ">
+<table role=3Dpresentation border=3D0 cellpadding=3D0 cellspacing=3D0 width=
+=3D100% style=3D"border-collapse: collapse; border-spacing: 0; padding: 0; =
+margin: 0; min-width:100%; width:100%; " class=3Dmain_table_class>
+<table role=3Dpresentation dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=
+=3D0 width=3D100% align=3Dcenter style=3D"">
+<tr>
+<td style=3D"line-height:0px; background-image:url(&#39;https://www.gstatic=
+.com/gumdrop/files/adwords-gray-rectangle-pmax-transparent-w1456px-h50px-2x=
+.png&#39;); background-size:100%; background-repeat: repeat-y; background-c=
+olor:#ffffff; ">
+<table class=3Dmobile-email-width role=3Dpresentation align=3Dcenter cellpa=
+dding=3D0 cellspacing=3D0 style=3D"width:100%; min-width:100%; max-width:72=
+0px;" bgcolor=3D"">
+<tr>
+<td class=3D"bg-white pad_logo" dir=3Dltr bgcolor=3D"" style=3D"direction:l=
+tr; padding-left:0px;padding-right:0px; padding-bottom:10px; padding-top:13=
+px; width:100%; ">
+<table class=3Dmobile-email-width role=3Dpresentation dir=3Dltr style=3D"bo=
+rder-spacing:0; border-collapse:collapse; width:100%; min-width:100%">
+<tr>
+<td align=3Dleft style=3Dwidth:50%;line-height:0px; class=3D"pad30 first_lo=
+go" aria-hidden=3Dtrue>
+<amp-img height=3D48 src=3Dhttps://www.gstatic.com/gumdrop/files/adwords-go=
+ogle-ads-logo-11y-transparent-w277px-h96px-2x.png width=3D139 style=3Dheigh=
+t:auto;></amp-img>
+</td>
+<td align=3Dright style=3D"line-height:0px;text-align:left; margin:0px; pad=
+ding:0px;" class=3Ddesktop_only width=3D360>
+<table align=3Dright role=3Dpresentation dir=3Dltr style=3D"border-spacing:=
+0; border-collapse:collapse; width:360;">
+<tr>
+<td class=3D"id_text text-gray" align=3Dright style=3D"text-align: right; f=
+ont-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-=
+serif;font-size:14px; line-height:21px; padding-top:6px; direction:ltr; col=
+or:#202124; ">ID Pelanggan Anda: <span style=3D" font-family:&#39;Google Sa=
+ns&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif;"><strong class=3Df=
+orApple style=3Dfont-weight:normal;direction:ltr; dir=3Dltr><a role=3Dtext =
+style=3D" color: #202124; text-decoration: none;" target=3D_blank><span sty=
+le=3D"color: #202124; white-space: nowrap; text-decoration: none; color: #2=
+02124;" dir=3Dltr role=3Dtext aria-label=3D" 8 9 0 1 8 2 9 2 0 1 ">890-182-=
+9201</span></a></strong></span></td>
+<td align=3Dright style=3D"padding-left:14px; padding-top:0; padding-bottom=
+:0; padding-right:49px; width:48px; text-align:right;line-height:0px;" clas=
+s=3D"pad30 second_logo">
+<a href=3Dhttps://c.gle/AOPyDKSrub0_xyyZEeVtgF4t0UHHoI54XAaEbxsTg-obdYW2q5_=
+CgDCnXinkPBa9saTwaS_c72KGSTtGilWT5ERDmZjLwY43-mrWFlKZhs62-42cNpnaKSEACXvVSy=
+RRCUZYGZOP-wOgEqkEwXzchUZgLcpJqzCIsH4GpVgJty97-KmmzQ target=3D_blank style=
+=3D"text-decoration:none; line-height:0px; ">
+<amp-img alt=3DLogin width=3D48 height=3D48 src=3Dhttps://www.gstatic.com/g=
+umdrop/files/merchant-center-sign-in-11y-transparent-w192px-h192px-2x.png s=
+tyle=3Dheight:auto;></amp-img>
+</a>
+</td></tr>
+</table></td>
+</tr>
+<tr>
+<td style=3D"line-height:0px; width:100%;" class=3D"mobile-email-width mobi=
+le_only" width=3D360>
+<table align=3Dcenter role=3Dpresentation dir=3Dltr style=3D"border-spacing=
+:0; border-collapse:collapse; width:360px " class=3Dmobile-email-width>
+<tr>
+<td class=3D"id_text text-gray" align=3Dright style=3D"text-align: right; f=
+ont-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-=
+serif;font-size:14px; line-height:21px; color:#202124; direction:ltr; paddi=
+ng-left:10px; padding-top:0px; ">ID Pelanggan Anda: <span style=3D"font-fam=
+ily:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif;"=
+><strong class=3DforApple style=3Dfont-weight:normal;direction:ltr; dir=3Dl=
+tr><a role=3Dtext style=3D" color: #202124; text-decoration: none;" target=
+=3D_blank><span style=3D"color: #202124; white-space: nowrap; text-decorati=
+on: none; color: #202124;" dir=3Dltr role=3Dtext aria-label=3D" 8 9 0 1 8 2=
+ 9 2 0 1 ">890-182-9201</span></a></strong></span></td>
+<td align=3Dleft style=3D"padding:0px; padding-right:10px; text-align:left;=
+line-height:0px;" class=3Dsecond_logo_mob>
+<a href=3Dhttps://c.gle/AOPyDKSrub0_xyyZEeVtgF4t0UHHoI54XAaEbxsTg-obdYW2q5_=
+CgDCnXinkPBa9saTwaS_c72KGSTtGilWT5ERDmZjLwY43-mrWFlKZhs62-42cNpnaKSEACXvVSy=
+RRCUZYGZOP-wOgEqkEwXzchUZgLcpJqzCIsH4GpVgJty97-KmmzQ target=3D_blank style=
+=3D"text-decoration:none; line-height:0px; ">
+<amp-img alt=3DLogin width=3D48 height=3D48 src=3Dhttps://www.gstatic.com/g=
+umdrop/files/merchant-center-sign-in-11y-transparent-w192px-h192px-2x.png s=
+tyle=3Dheight:auto;></amp-img>
+</a></td></tr>
+</table></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table align=3Dcenter role=3Dpresentation cellpadding=3D0 cellspacing=3D0 w=
+idth=3D100% bgcolor=3D"" border=3D0 style=3D"border-spacing:0; border:0; bo=
+rder-collapse:collapse; max-width:728px; margin:0px auto;">
+<tbody>
+<tr><td dir=3Dltr style=3D"line-height:0px; text-align:center; padding:19px=
+ 0px 11px; padding:15px 0px 11px;">
+<div>
+<span style=3D"background-color:#FEF7E0; border-radius:40px; color:#B35900;=
+ display:inline-block; font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;,=
+ Arial, Helvetica, sans-serif; font-size:14px;font-weight:bold;line-height:=
+21px;text-align:center;text-decoration:none; direction:ltr; padding:2px 25p=
+x; letter-spacing:0.5px; ">PERFORMA MAKSIMAL</span>
+</div>
+</td></tr>
+<tr>
+<td style=3D"font-family: &#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; line-height:40px; direction:ltr; word-break:normal; c=
+olor: #202124;padding-top:8px;padding-bottom:20px; font-weight:bold; font-f=
+amily: &#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-seri=
+f; line-height:48px; padding-top:10px; padding-bottom:21px;" class=3D"mobil=
+e-spacing text-gray icon_module_head mobile-spacing head_font_fix_rem1 mob_=
+icon_center_hero">Selesaikan persiapan Anda untuk mulai mendapatkan <span s=
+tyle=3D"color:#1A73E8; " class=3D"span " dir=3D"">hasil yang menguntungkan<=
+/span></td>
+</tr>
+<tr>
+<td style=3D"font-size:16px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;line-height:24px;direction:ltr;word-bre=
+ak:normal;color: #202124; padding-top:0px; padding-bottom:13px; padding-bot=
+tom:10px;" class=3D"mobile-spacing text-gray icon_module_subhead mobile-spa=
+cing mob_icon_center_hero">Tinggal sedikit lagi untuk menjangkau lebih bany=
+ak pelanggan yang berpotensi melakukan konversi di semua saluran Google. Cu=
+kup selesaikan kampanye Performa Maksimal Anda untuk mengembangkan bisnis d=
+engan teknologi <!--[if gte mso 9]><br><![endif]--><span style=3D"white-spa=
+ce:nowrap; word-break: break-word; " class=3D"span " dir=3D"">AI Google.</s=
+pan></td>
+</tr>
+<tr><td dir=3Dltr class=3D"mobile-spacing align-left" style=3D"line-height:=
+0px; padding-top:10px; padding-bottom:10px;">
+<div>
+<a href=3Dhttps://c.gle/AOPyDKQdnHy_eoYA_Oo8exns2rZ_dv50xEAI5kLGQnJ8jXvQ6cj=
+6rROk1WIf-t6GlqznZqn-lWjAL_U4elvNKMDF4V3qUk9DxO9Q9JB8BVPRqqLl115YlPx1JpEuQu=
+T62dG1U5I46crO1GAAXTljdj7Md5_aJkvdimENUedc6vBrT-q4WyTvPSMYk8YoyRwTKJQRu9AS-=
+zxK target=3D_blank style=3D"background-color:#1A73E8; border-radius:8px; c=
+olor:#FFFFFF; display:inline-block; font-family:&#39;Google Sans&#39;, &#39=
+;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:16px;font-weight:bold=
+;line-height:24px;text-align:center;text-decoration:none; direction:ltr; pa=
+dding:12px 21px; ">Selesaikan kampanye Anda</a>
+</div>
+</td></tr>
+</tbody>
+</table>
+</td></tr></table>
+<table bgcolor=3D#ffffff cellspacing=3D0 cellpadding=3D0 dir=3Dltr border=
+=3D0 width=3D100% role=3Dpresentation style=3D"border:0; border-spacing:0; =
+border-collapse:collapse; background-color:#ffffff; max-width:728px;" class=
+=3Dads_background_new>
+<tr>
+<td dir=3Dltr class=3D"desktop_only " style=3D"line-height:0px; direction:l=
+tr; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dright cellpadding=
+=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse:=
+collapse; border:0;" class=3D"width-100 text-center table-transparent">
+<tr>
+<td dir=3Dltr valign=3Dbottom width=3D100% height=3D276 style=3D"line-heigh=
+t:0px; vertical-align:bottom; ">
+<table align=3Dcenter dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 =
+role=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:co=
+llapse;" class=3Dtable-transparent>
+<tr>
+<td dir=3Dltr style=3D"background-image:url(&#39;https://www.gstatic.com/gu=
+mdrop/files/adwords-hero-local-ltr-small-desk-transparent-w1454px-h552px-2x=
+.png&#39;); background-size:728px; background-repeat:no-repeat; vertical-al=
+ign:middle" width=3D728 valign=3Dcenter>
+<div>
+<table dir=3Dltr role=3Dpresentation cellspacing=3D0 cellpadding=3D0 border=
+=3D0 width=3D100% class=3Dtable-transparent>
+<tr>
+<td valign=3Dtop height=3D276 style=3D"line-height:0px; text-align:right;">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:coll=
+apse; text-align:center;" class=3Dbg_inner_section_outer_table_class>
+<tr>
+<td width=3D100% style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3Dbg_right_content_table_class>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; text-align:left; font-size:13px; line-height:20px; col=
+or:#1C6EF2; padding-top:160px; padding-left:464px; font-size:10px; line-hei=
+ght:15px;" class=3Dright_text_3_class dir=3Dltr>Produk Anda</td>
+</tr>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; text-align:left; font-size:9px; line-height:14px; colo=
+r:#298541; padding-left:464px;" class=3Dright_text_4_class dir=3Dltr>
+<span style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, =
+Helvetica, sans-serif;border:1px solid #298541; border-radius:5px; padding:=
+0px 3px; font-size: 10px;line-height: 15px; "><!--[if gte mso 9]>&nbsp;<![e=
+ndif]-->Iklan<!--[if gte mso 9]>&nbsp;<![endif]--></span>
+<!--[if gte mso 9]>&nbsp;<![endif]--><span style=3D"padding:0px 3px;">your-=
+business.com</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+</td></tr>
+</table>
+</td></tr>
+<tr>
+<td dir=3Dltr class=3D"mobile_only " style=3D" border-radius:10px; ">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"width:100%; border:0; border-spacing:0; border-c=
+ollapse:collapse;background-image:url(&#39;https://www.gstatic.com/gumdrop/=
+files/adwords-gray-bg-mob-pmax-transparent-w1456px-h240px-2x.png&#39;);back=
+ground-size:100%; background-repeat:no-repeat; background-color:#ffffff;" c=
+lass=3D"table-transparent mob-bg-grey">
+<tr>
+<td style=3D"line-height:0px; ">
+<table dir=3Dltr align=3Dcenter cellspacing=3D0 cellpadding=3D0 border=3D0 =
+role=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:co=
+llapse; margin:0px auto;" class=3D"margin-auto table-transparent">
+<tr>
+<td dir=3Dltr style=3D"background-size:343px; background-repeat:no-repeat; =
+vertical-align:top; background-image:url(&#39;https://www.gstatic.com/gumdr=
+op/files/adwords-email2-mob-transparent-w686px-h742px-2x.png&#39;);" width=
+=3D343 height=3D371>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:coll=
+apse; text-align:center;" class=3Dbg_inner_section_outer_table_class>
+<tr>
+<td width=3D100% style=3D"line-height:0px; vertical-align:top; padding-left=
+:122px;">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3Dbg_right_content_table_class>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; text-align:left; font-size:13px; line-height:20px; col=
+or:#1C6EF2; padding-top:274px; padding-left:82px;" class=3Dright_text_3_cla=
+ss dir=3Dltr>Produk Anda</td>
+</tr>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; text-align:left; font-size:9px; line-height:14px; colo=
+r:#298541; padding-left:82px;font-size:7px;" class=3Dright_text_4_class dir=
+=3Dltr>
+<span style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, =
+Helvetica, sans-serif;border:1px solid #298541; border-radius:5px; padding:=
+0px 3px; font-size: 10px;line-height: 15px; font-size:7px;"><!--[if gte mso=
+ 9]>&nbsp;<![endif]-->Iklan<!--[if gte mso 9]>&nbsp;<![endif]--></span>
+<!--[if gte mso 9]>&nbsp;<![endif]--><span style=3D"padding:0px 3px;">your-=
+business.com</span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<amp-state id=3DAmpStateId>
+<script type=3Dapplication/json>
+{
+"index_value": 0
+}
+</script>
+</amp-state>
+<amp-carousel class=3Dcarousel_class id=3Dcarousel_id layout=3Dresponsive w=
+idth=3D480 height=3D350 type=3Dslides delay=3D5000 controls loop on=3D"slid=
+eChange:carouselWithPreviewSelector.toggle(index=3Devent.index, value=3Dtru=
+e)">
+<table bgcolor=3D#FFFFFF cellspacing=3D0 cellpadding=3D0 dir=3Dltr border=
+=3D0 width=3D440 role=3Dpresentation style=3D"border:0; border-spacing:0; b=
+order-collapse:collapse; background-color:#FFFFFF; " class=3D"width-100 ads=
+_background">
+<tr>
+<td style=3D"font-family: &#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif;direction:ltr; word-break:normal; color: #202124; padd=
+ing-bottom:20px; font-weight:bold; padding-bottom:26px;text-align:center;" =
+class=3D"mobile-spacing text-gray icon_module_main_head side_bg_main_head m=
+ob_icon_center_hero pad_top_mob">Lakukan lebih banyak dari satu kampanye</t=
+d>
+</tr>
+<tr>
+<td dir=3Dltr class=3D"desktop_only dt-darkblue-bg" style=3D"line-height:0p=
+x; direction:ltr; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0; max-width:480px;" class=3D"margin-auto width-100 text-=
+center table-transparent">
+<tr>
+<td dir=3Dltr valign=3Dbottom width=3D200 height=3D200 style=3D"line-height=
+:0px; vertical-align:top; padding-top:10px; ">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 role=3Dpresenta=
+tion style=3D"border:0; border-spacing:0; border-collapse:collapse;" class=
+=3Dtable-transparent width=3D200>
+<tr>
+<td dir=3Dltr style=3D"background-image:url(&#39;https://www.gstatic.com/gu=
+mdrop/files/adwords-carousel-1-desk-transparent-w483px-h436px-2x.png&#39;);=
+ background-size:200px; background-repeat:no-repeat; vertical-align:top; " =
+width=3D200 valign=3Dcenter>
+<div>
+<table dir=3Dltr role=3Dpresentation cellspacing=3D0 cellpadding=3D0 border=
+=3D0 width=3D200 class=3Dtable-transparent>
+<tr>
+<td valign=3Dtop height=3D200 style=3Dline-height:0px;>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D200 rol=
+e=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:colla=
+pse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td dir=3Dltr valign=3Dtop style=3D"line-height:0px; padding-left:19px;">
+<table role=3Dpresentation width=3D240 cellpadding=3D0 cellspacing=3D0 bord=
+er=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" clas=
+s=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:18px; line-height:27px; color:#3C4043; padd=
+ing-top:14px; padding-bottom:11px; word-break:normal; direction:ltr; paddin=
+g-right:5px; font-weight:bold; padding-top:18px; padding-bottom:8px;" class=
+=3D"text-light p-t-20">Temukan lebih banyak pelanggan yang berpotensi melak=
+ukan konversi</td>
+</tr>
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:16px; line-height:24px; color:#202124; word=
+-break:normal; padding-bottom:10px; padding-right:10px; direction:ltr; " cl=
+ass=3Dtext-light>Maksimalkan iklan Anda untuk meraih sasaran konversi yang =
+unik =E2=80=93 seperti penjualan, prospek, atau traffic situs.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td dir=3Dltr class=3D"mobile_only dt-darkblue-bg" style=3D"border-radius:1=
+0px; padding-top:20px; padding-bottom:0px;">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"width:100%; border:0; border-spacing:0; border-c=
+ollapse:collapse;" class=3Dtable-transparent>
+<tr>
+<td style=3Dline-height:0px;>
+<table dir=3Dltr align=3Dcenter cellspacing=3D0 cellpadding=3D0 border=3D0 =
+role=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:co=
+llapse; margin:0px auto;" class=3D"margin-auto table-transparent">
+<tr>
+<td dir=3Dltr style=3D"background-image:url(&#39;https://www.gstatic.com/gu=
+mdrop/files/adwords-carousel-1-mob-transparent-w474px-h352px-2x.png&#39;); =
+background-size:237px; background-repeat:no-repeat; vertical-align:top" wid=
+th=3D237 height=3D176 valign=3Dcenter>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:coll=
+apse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td dir=3Dltr class=3D"mobile-spacing amp_left_bg" style=3Dline-height:0px;=
+>
+<table role=3Dpresentation width=3D100% cellpadding=3D0 cellspacing=3D0 bor=
+der=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" cla=
+ss=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:18px; line-height:27px; color:#3C4043; padd=
+ing-top:14px; padding-bottom:11px; word-break:normal; direction:ltr; paddin=
+g-right:5px; font-weight:bold; " class=3D"text-light p-t-20">Temukan lebih =
+banyak pelanggan yang berpotensi melakukan konversi</td>
+</tr>
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:16px; line-height:24px; color:#202124; word=
+-break:normal; padding-bottom:10px; padding-right:10px; direction:ltr; " cl=
+ass=3Dtext-light>Maksimalkan iklan Anda untuk meraih sasaran konversi yang =
+unik =E2=80=93 seperti penjualan, prospek, atau traffic situs.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table bgcolor=3D#FFFFFF cellspacing=3D0 cellpadding=3D0 dir=3Dltr border=
+=3D0 width=3D440 role=3Dpresentation style=3D"border:0; border-spacing:0; b=
+order-collapse:collapse; background-color:#FFFFFF; " class=3D"width-100 ads=
+_background">
+<tr>
+<td style=3D"font-family: &#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif;direction:ltr; word-break:normal; color: #202124; padd=
+ing-bottom:20px; font-weight:bold; padding-bottom:26px;text-align:center;" =
+class=3D"mobile-spacing text-gray icon_module_main_head side_bg_main_head m=
+ob_icon_center_hero pad_top_mob">Lakukan lebih banyak dari satu kampanye</t=
+d>
+</tr>
+<tr>
+<td dir=3Dltr class=3D"desktop_only dt-darkblue-bg" style=3D"line-height:0p=
+x; direction:ltr; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0; max-width:480px;" class=3D"margin-auto width-100 text-=
+center table-transparent">
+<tr>
+<td dir=3Dltr valign=3Dbottom width=3D200 height=3D200 style=3D"line-height=
+:0px; vertical-align:top; padding-top:10px; ">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 role=3Dpresenta=
+tion style=3D"border:0; border-spacing:0; border-collapse:collapse;" class=
+=3Dtable-transparent width=3D200>
+<tr>
+<td dir=3Dltr style=3D"background-image:url(&#39;https://www.gstatic.com/gu=
+mdrop/files/adwords-locale-educational3-domore-static-desk-large-transparen=
+t-w406px-h349px-2x.png&#39;); background-size:202px; background-repeat:no-r=
+epeat; vertical-align:top; padding-right:15px;" width=3D202 valign=3Dcenter=
+>
+<div>
+<table dir=3Dltr role=3Dpresentation cellspacing=3D0 cellpadding=3D0 border=
+=3D0 width=3D200 class=3Dtable-transparent>
+<tr>
+<td valign=3Dtop height=3D200 style=3Dline-height:0px;>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D200 rol=
+e=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:colla=
+pse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold; padding-top: 98px; line-height:16px; padding-top: 98px;paddin=
+g-left: 68px;text-align: left;" class=3D"" dir=3Dltr>Prospek terfinalisasi<=
+/td>
+</tr>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold;padding-top:4px; padding-top: 4px;padding-left: 68px;text-alig=
+n: left;" class=3D"" dir=3Dltr>Konversi</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td dir=3Dltr valign=3Dtop style=3D"line-height:0px; padding-left:19px;">
+<table role=3Dpresentation width=3D240 cellpadding=3D0 cellspacing=3D0 bord=
+er=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" clas=
+s=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:18px; line-height:27px; color:#3C4043; padd=
+ing-top:14px; padding-bottom:11px; word-break:normal; direction:ltr; paddin=
+g-right:5px; font-weight:bold; " class=3D"text-light p-t-20">Tingkatkan nil=
+ai</td>
+</tr>
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:16px; line-height:24px; color:#202124; word=
+-break:normal; padding-bottom:10px; padding-right:10px; direction:ltr; " cl=
+ass=3Dtext-light>Performa Maksimal menggunakan AI Google untuk menemukan po=
+in kontak utama dan memprediksi dengan lebih baik iklan mana yang paling be=
+rperforma.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td dir=3Dltr class=3D"mobile_only dt-darkblue-bg" style=3D"border-radius:1=
+0px; padding-top:20px; padding-bottom:0px;">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"width:100%; border:0; border-spacing:0; border-c=
+ollapse:collapse;" class=3Dtable-transparent>
+<tr>
+<td style=3Dline-height:0px;>
+<table dir=3Dltr align=3Dcenter cellspacing=3D0 cellpadding=3D0 border=3D0 =
+role=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:co=
+llapse; margin:0px auto;" class=3D"margin-auto table-transparent">
+<tr>
+<td dir=3Dltr style=3D"background-image:url(&#39;https://www.gstatic.com/gu=
+mdrop/files/adwords-locale-educational3-static-mob-transparent-w602px-h349p=
+x-2x.png&#39;); background-size:301px; background-repeat:no-repeat; vertica=
+l-align:top" width=3D301 height=3D175 valign=3Dcenter>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:coll=
+apse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold; padding-top: 98px; padding-left: 100px;padding-top:90px;text-=
+align: left;" class=3D"" dir=3Dltr>Prospek terfinalisasi</td>
+</tr>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold;padding-top:4px; padding-left: 100px;text-align: left;padding-=
+top:10px;" class=3D"" dir=3Dltr>Konversi</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td dir=3Dltr class=3D"mobile-spacing amp_left_bg" style=3Dline-height:0px;=
+>
+<table role=3Dpresentation width=3D100% cellpadding=3D0 cellspacing=3D0 bor=
+der=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" cla=
+ss=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:18px; line-height:27px; color:#3C4043; padd=
+ing-top:14px; padding-bottom:11px; word-break:normal; direction:ltr; paddin=
+g-right:5px; font-weight:bold; " class=3D"text-light p-t-20">Tingkatkan nil=
+ai</td>
+</tr>
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:16px; line-height:24px; color:#202124; word=
+-break:normal; padding-bottom:10px; padding-right:10px; direction:ltr; " cl=
+ass=3Dtext-light>Performa Maksimal menggunakan AI Google untuk menemukan po=
+in kontak utama dan memprediksi dengan lebih baik iklan mana yang paling be=
+rperforma.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table bgcolor=3D#FFFFFF cellspacing=3D0 cellpadding=3D0 dir=3Dltr border=
+=3D0 width=3D440 role=3Dpresentation style=3D"border:0; border-spacing:0; b=
+order-collapse:collapse; background-color:#FFFFFF; " class=3D"width-100 ads=
+_background">
+<tr>
+<td style=3D"font-family: &#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif;direction:ltr; word-break:normal; color: #202124; padd=
+ing-bottom:20px; font-weight:bold; padding-bottom:26px;text-align:center;" =
+class=3D"mobile-spacing text-gray icon_module_main_head side_bg_main_head m=
+ob_icon_center_hero pad_top_mob">Lakukan lebih banyak dari satu kampanye</t=
+d>
+</tr>
+<tr>
+<td dir=3Dltr class=3D"desktop_only dt-darkblue-bg" style=3D"line-height:0p=
+x; direction:ltr; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0; max-width:480px;" class=3D"margin-auto width-100 text-=
+center table-transparent">
+<tr>
+<td dir=3Dltr valign=3Dbottom width=3D200 height=3D200 style=3D"line-height=
+:0px; vertical-align:top; padding-top:10px; ">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 role=3Dpresenta=
+tion style=3D"border:0; border-spacing:0; border-collapse:collapse;" class=
+=3Dtable-transparent width=3D200>
+<tr>
+<td dir=3Dltr style=3D"background-image:url(&#39;https://www.gstatic.com/gu=
+mdrop/files/adwords-carousel-3-static-transparent-w383px-h349px-2x.png&#39;=
+); background-size:192px; background-repeat:no-repeat; vertical-align:top; =
+" width=3D192 valign=3Dcenter>
+<div>
+<table dir=3Dltr role=3Dpresentation cellspacing=3D0 cellpadding=3D0 border=
+=3D0 width=3D200 class=3Dtable-transparent>
+<tr>
+<td valign=3Dtop height=3D200 style=3Dline-height:0px;>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D200 rol=
+e=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:colla=
+pse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold; padding-top: 98px; color:#FFFFFF; text-align:left; padding-le=
+ft: 64px; padding-top: 49px;font-size:11px" class=3D"" dir=3Dltr>Telusuri</=
+td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td dir=3Dltr valign=3Dtop style=3D"line-height:0px; padding-left:19px;">
+<table role=3Dpresentation width=3D240 cellpadding=3D0 cellspacing=3D0 bord=
+er=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" clas=
+s=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:18px; line-height:27px; color:#3C4043; padd=
+ing-top:14px; padding-bottom:11px; word-break:normal; direction:ltr; paddin=
+g-right:5px; font-weight:bold; padding-right:12px;" class=3D"text-light p-t=
+-20">Temukan lebih banyak insight</td>
+</tr>
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:16px; line-height:24px; color:#202124; word=
+-break:normal; padding-bottom:10px; padding-right:10px; direction:ltr; " cl=
+ass=3Dtext-light>Manfaatkan tren penelusuran terbaru dan lihat aset mana ya=
+ng paling efektif sehingga Anda dapat mengoptimalkan kesuksesan.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td dir=3Dltr class=3D"mobile_only dt-darkblue-bg" style=3D"border-radius:1=
+0px; padding-top:20px; padding-bottom:0px;">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"width:100%; border:0; border-spacing:0; border-c=
+ollapse:collapse;" class=3Dtable-transparent>
+<tr>
+<td style=3Dline-height:0px;>
+<table dir=3Dltr align=3Dcenter cellspacing=3D0 cellpadding=3D0 border=3D0 =
+role=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:co=
+llapse; margin:0px auto;" class=3D"margin-auto table-transparent">
+<tr>
+<td dir=3Dltr style=3D"background-image:url(&#39;https://www.gstatic.com/gu=
+mdrop/files/adwords-carousel-3-mob-transparent-w547px-h350px-2x.png&#39;); =
+background-size:274px; background-repeat:no-repeat; vertical-align:top" wid=
+th=3D274 height=3D175 valign=3Dcenter>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:coll=
+apse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold; padding-top: 98px; color:#FFFFFF; font-size:14px; line-height=
+:21px; text-align:left;padding-left: 90px;padding-top: 54px;" class=3D"" di=
+r=3Dltr>Telusuri</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td dir=3Dltr class=3D"mobile-spacing amp_left_bg" style=3Dline-height:0px;=
+>
+<table role=3Dpresentation width=3D100% cellpadding=3D0 cellspacing=3D0 bor=
+der=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" cla=
+ss=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:18px; line-height:27px; color:#3C4043; padd=
+ing-top:14px; padding-bottom:11px; word-break:normal; direction:ltr; paddin=
+g-right:5px; font-weight:bold; " class=3D"text-light p-t-20">Temukan lebih =
+banyak insight</td>
+</tr>
+<tr>
+<td style=3D" font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; font-size:16px; line-height:24px; color:#202124; word=
+-break:normal; padding-bottom:10px; padding-right:10px; direction:ltr; " cl=
+ass=3Dtext-light>Manfaatkan tren penelusuran terbaru dan lihat aset mana ya=
+ng paling efektif sehingga Anda dapat mengoptimalkan kesuksesan.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</amp-carousel>
+<amp-selector id=3DcarouselWithPreviewSelector on=3Dselect:carouselWithPrev=
+iew.goToSlide(index=3Devent.targetOption)>
+<table role=3Dpresentation align=3Dcenter class=3Dcircle_div style=3D"backg=
+round-color:#ffffff; width:100%;">
+<tr><td style=3Dline-height:0px;><table role=3Dpresentation align=3Dcenter =
+class=3Dcircle_div style=3Dbackground-color:#ffffff;>
+<tr>
+<td>
+<!--Circle : Starts -->
+<span [class]=3D"(AmpStateId.index_value =3D=3D 0 ? &#39;active&#39; : &#39=
+;&#39;)" class=3Dactive on=3D"tap:carousel_id.goToSlide(index=3D0), AMP.set=
+State({AmpStateId:{index_value:0}})" role=3Dbutton tabindex=3D0 option=3D0 =
+aria-selected=3Dtrue selected></span></td>
+<!--Circle : Ends -->
+<td>
+<!--Circle : Starts -->
+<span [class]=3D"(AmpStateId.index_value =3D=3D 1 ? &#39;active&#39; : &#39=
+;&#39;)" class=3D"" on=3D"tap:carousel_id.goToSlide(index=3D1), AMP.setStat=
+e({AmpStateId:{index_value:1}})" role=3Dbutton tabindex=3D1 option=3D1 aria=
+-selected=3Dfalse></span></td>
+<!--Circle : Ends -->
+<td>
+<!--Circle : Starts -->
+<span [class]=3D"(AmpStateId.index_value =3D=3D 2 ? &#39;active&#39; : &#39=
+;&#39;)" class=3D"" on=3D"tap:carousel_id.goToSlide(index=3D2), AMP.setStat=
+e({AmpStateId:{index_value:2}})" role=3Dbutton tabindex=3D2 option=3D2 aria=
+-selected=3Dfalse></span></td>
+<!--Circle : Ends -->
+</tr>
+</table></td></tr></table>
+</amp-selector>
+<table align=3Dcenter role=3Dpresentation cellpadding=3D0 cellspacing=3D0 w=
+idth=3D100% bgcolor=3D#ffffff border=3D0 style=3D"border-spacing:0; border:=
+0; border-collapse:collapse; max-width:728px; margin:0px auto;">
+<tbody>
+<tr><td dir=3Dltr class=3D"mobile-spacing align-left" style=3D"line-height:=
+0px; padding-top:10px; padding-bottom:10px;padding-top:7px;padding-bottom:3=
+0px;">
+<div>
+<a href=3Dhttps://c.gle/AOPyDKRBOgseST0hjSD8uVja3aJeeOBZhQ5lFsrvsPXsX2l8XPS=
+UAbFxb1JLqYPDwvfTtx4T2mIN7YZynvrlhsXtIry9s5aYY7hLhG91kAcY3BBXGUvmkHJ6A8Nvf1=
+HvSnQae-wJotbcl-_N-QMyAX6ZJya0NZG1cNnnX_-CnQVr_wxelpXmfK-Y-pAmtEm7f7K88Vyw9=
+gQI target=3D_blank style=3D"background-color:#1A73E8; border-radius:8px; c=
+olor:#FFFFFF; display:inline-block; font-family:&#39;Google Sans&#39;, &#39=
+;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:16px;font-weight:bold=
+;line-height:24px;text-align:center;text-decoration:none; direction:ltr; pa=
+dding:12px 21px; ">Selesaikan kampanye Anda</a>
+</div>
+</td></tr>
+</tbody>
+</table>
+<table align=3Dcenter role=3Dpresentation cellpadding=3D0 cellspacing=3D0 w=
+idth=3D100% bgcolor=3D#ffffff border=3D0 style=3D"border-spacing:0; border:=
+0; border-collapse:collapse; max-width:728px; margin:0px auto;">
+<tbody>
+<tr>
+<td class=3Dicon_module_logo style=3D"text-align: center; line-height:0px; =
+padding-top:17px; padding-bottom:10px; margin:0px; padding-top:26px; paddin=
+g-bottom:14px;">
+<amp-img alt=3D"" src=3Dhttps://www.gstatic.com/gumdrop/files/adwords-zenyu=
+m-logo-new-transparent-w310px-h72px-2x.png width=3D155 height=3D36 style=3D=
+"width:155px; "></amp-img>
+</td>
+</tr>
+<tr>
+<td style=3D"font-family: &#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; line-height:40px; direction:ltr; word-break:normal; c=
+olor: #202124;padding-top:8px;padding-bottom:20px; font-weight:bold; font-s=
+ize:32px; font-size:26px; line-height:39px; padding-top:8px; padding-bottom=
+:19px;" class=3D"mobile-spacing text-gray icon_module_head mobile-spacing "=
+>Startup perawatan gigi Zenyum meningkatkan prospek dan menurunkan biaya</t=
+d>
+</tr>
+<tr>
+<td class=3Ddesktop_only style=3D"margin:0px; line-height:0px; direction:lt=
+r; padding-left:118px; padding-right:118px; ">
+<table role=3Dpresentation cellpadding=3D0 cellspacing=3D0 width=3D100% bgc=
+olor=3D#ffffff border=3D0 style=3D"border-spacing:0; border:0; border-colla=
+pse:collapse;" dir=3Dltr class=3Ddesktop_only>
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top; width:164px; ">
+<table align=3Dcenter role=3Dpresentation cellpadding=3D0 cellspacing=3D0 s=
+tyle=3D"background: #ffffff; border-spacing:0; border:0; border-collapse:co=
+llapse; width:164px; " border=3D0 dir=3Dltr class=3D"margin-auto width-100 =
+desktop_only">
+<tbody>
+<tr>
+<td style=3D"font-size:40px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;font-weight:bold; line-height:48px; tex=
+t-align: center;direction:ltr;word-break:normal;color: #1A73E8; padding-bot=
+tom:4px; padding-left:8px; padding-right:8px; " class=3D"mobile-spacing tex=
+t-gray">37%</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+text-align: center;direction:ltr;word-break:normal;color: #202124; padding-=
+left:20px; padding-right:20px; " class=3D"mobile-spacing icon_para_bottom_s=
+pacing text-gray">lebih rendah biaya per prospek di seluruh saluran</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class=3D"" style=3D"vertical-align:top; width:164px; ">
+<table align=3Dcenter role=3Dpresentation cellpadding=3D0 cellspacing=3D0 s=
+tyle=3D"background: #ffffff; border-spacing:0; border:0; border-collapse:co=
+llapse; width:164px; " border=3D0 dir=3Dltr class=3D"margin-auto width-100 =
+desktop_only">
+<tbody>
+<tr>
+<td style=3D"font-size:40px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;font-weight:bold; line-height:48px; tex=
+t-align: center;direction:ltr;word-break:normal;color: #1A73E8; padding-bot=
+tom:4px; padding-left:8px; padding-right:8px; " class=3D"mobile-spacing tex=
+t-gray">6,5x</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+text-align: center;direction:ltr;word-break:normal;color: #202124; padding-=
+left:20px; padding-right:20px; " class=3D"mobile-spacing icon_para_bottom_s=
+pacing text-gray">lipat lebih banyak perolehan prospek</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class=3D"" style=3D"vertical-align:top; width:164px; ">
+<table align=3Dcenter role=3Dpresentation cellpadding=3D0 cellspacing=3D0 s=
+tyle=3D"background: #ffffff; border-spacing:0; border:0; border-collapse:co=
+llapse; width:164px; " border=3D0 dir=3Dltr class=3D"margin-auto width-100 =
+desktop_only">
+<tbody>
+<tr>
+<td style=3D"font-size:40px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;font-weight:bold; line-height:48px; tex=
+t-align: center;direction:ltr;word-break:normal;color: #1A73E8; padding-bot=
+tom:4px; padding-left:8px; padding-right:8px; " class=3D"mobile-spacing tex=
+t-gray">700+</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+text-align: center;direction:ltr;word-break:normal;color: #202124; padding-=
+left:20px; padding-right:20px; " class=3D"mobile-spacing icon_para_bottom_s=
+pacing text-gray">prospek yang diperoleh dalam 3 bulan</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td class=3Dmobile_only style=3D"width:100%; margin:0px; line-height:0px; d=
+irection:ltr; ">
+<table width=3D100% align=3Dcenter role=3Dpresentation cellpadding=3D0 cell=
+spacing=3D0 style=3D"background: #ffffff; border-spacing:0; border:0; borde=
+r-collapse:collapse; max-width:728px;" border=3D0 dir=3Dltr class=3D"margin=
+-auto width-100">
+<tbody>
+<tr>
+<td style=3D"font-size: 40px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight:bold;line-height:48px;dire=
+ction:ltr;word-break:normal;color: #1A73E8;padding-bottom:0px;" class=3D"mo=
+bile-spacing text-gray ">37%</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+direction:ltr;word-break:normal;color: #202124; padding-bottom:25px;padding=
+-top:10px;" class=3D"mobile-spacing icon_para_bottom_spacing text-gray ">le=
+bih rendah biaya per prospek di seluruh saluran</td>
+</tr>
+<tr>
+<td style=3D"font-size: 40px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight:bold;line-height:48px;dire=
+ction:ltr;word-break:normal;color: #1A73E8;padding-bottom:0px;" class=3D"mo=
+bile-spacing text-gray ">6,5x</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+direction:ltr;word-break:normal;color: #202124; padding-bottom:25px;padding=
+-top:10px;" class=3D"mobile-spacing icon_para_bottom_spacing text-gray ">li=
+pat lebih banyak perolehan prospek</td>
+</tr>
+<tr>
+<td style=3D"font-size: 40px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight:bold;line-height:48px;dire=
+ction:ltr;word-break:normal;color: #1A73E8;padding-bottom:0px;" class=3D"mo=
+bile-spacing text-gray ">700+</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+direction:ltr;word-break:normal;color: #202124; padding-bottom:25px;padding=
+-top:10px;" class=3D"mobile-spacing icon_para_bottom_spacing text-gray ">pr=
+ospek yang diperoleh dalam 3 bulan</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table align=3Dcenter role=3Dpresentation cellpadding=3D0 cellspacing=3D0 w=
+idth=3D100% bgcolor=3D#ffffff border=3D0 style=3D"border-spacing:0; border:=
+0; border-collapse:collapse; max-width:728px; margin:0px auto;">
+<tbody>
+<tr><td class=3D"mobile-spacing inner_table_td_class mob_spacing" style=3D"=
+margin:0px; line-height:0px; padding-top:37px; padding-bottom:47px; padding=
+-top:43px;">
+<table role=3Dpresentation align=3Dcenter cellpadding=3D0 cellspacing=3D0 w=
+idth=3D100% bgcolor=3D#E8F0FE border=3D0 style=3D"border-spacing:0; border:=
+0; border-collapse:collapse; border-radius:25px; max-width:606px; margin:0p=
+x auto; "><tbody>
+<tr>
+<td style=3D"font-family: &#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, H=
+elvetica, sans-serif; line-height:40px; direction:ltr; word-break:normal; c=
+olor: #202124;padding-top:8px;padding-bottom:20px; font-weight:bold; font-s=
+ize:32px; padding-top:26px;padding-bottom:14px;" class=3D"mobile-spacing te=
+xt-gray icon_module_head mobile-spacing mob_icon_center">Luncurkan kampanye=
+ Anda dengan <span style=3D"color:#1A73E8; " class=3D"span " dir=3D"">tamba=
+han <!--[if mso 16]><br><![endif]--><span style=3D"white-space:nowrap; word=
+-break: break-word; " class=3D"span " dir=3Dltr>Rp 3,000,000</span></span><=
+/td>
+</tr>
+<tr>
+<td style=3D"font-size:16px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;line-height:24px;direction:ltr;word-bre=
+ak:normal;color: #202124; padding-top:0px; padding-bottom:13px; " class=3D"=
+mobile-spacing text-gray icon_module_subhead mobile-spacing mob_icon_center=
+">Dapatkan kredit iklan senilai <span style=3D"white-space:nowrap; word-bre=
+ak: break-word; " class=3D"span " dir=3D""><span style=3D"white-space:nowra=
+p; word-break: break-word; " class=3D"span " dir=3Dltr>Rp 3,000,000</span><=
+/span> setelah membelanjakan <span style=3D"white-space:nowrap; word-break:=
+ break-word; " class=3D"span " dir=3D""><span style=3D"white-space:nowrap; =
+word-break: break-word; " class=3D"span " dir=3Dltr>Rp 3,000,000</span></sp=
+an> pertama Anda di <span style=3D"white-space:nowrap; word-break: break-wo=
+rd; " class=3D"span " dir=3D"">Google Ads.</span> Kredit akan otomatis dite=
+rapkan ke akun Anda dengan <!--[if gte mso 9]><br><![endif]--><span style=
+=3D"white-space:nowrap; word-break: break-word; " class=3D"span " dir=3D"">=
+ID Pelanggan <strong class=3DforApple style=3Dfont-weight:normal;direction:=
+ltr; dir=3Dltr><a role=3Dtext style=3D" color: #202124; text-decoration: no=
+ne;" target=3D_blank><span style=3D"color: #202124; white-space: nowrap; te=
+xt-decoration: none; color: #202124;" dir=3Dltr role=3Dtext aria-label=3D" =
+8 9 0 1 8 2 9 2 0 1 ">890-182-9201</span></a></strong></span> setelah membe=
+lanjakan <!--[if gte mso 9]><br><![endif]--><span style=3D"white-space:nowr=
+ap; word-break: break-word; " class=3D"span " dir=3D""><span style=3D"white=
+-space:nowrap; word-break: break-word; " class=3D"span " dir=3Dltr>Rp 3,000=
+,000</span></span> dalam waktu 60 hari sejak pendaftaran, jika memenuhi sya=
+rat.</td>
+</tr>
+<tr>
+<td style=3D"font-size:16px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;line-height:24px;direction:ltr;word-bre=
+ak:normal;color: #202124; padding-top:0px; padding-bottom:13px; " class=3D"=
+mobile-spacing text-gray icon_module_subhead_2 mobile-spacing mob_icon_cent=
+er">Khusus pengiklan baru. Penawaran hanya dapat diterapkan ke akun <span s=
+tyle=3D"white-space:nowrap; word-break: break-word; " class=3D"span " dir=
+=3D"">Google Ads</span> yang dikaitkan dengan alamat email yang menerima em=
+ail ini. Lihat persyaratan dan ketentuan selengkapnya.*</td>
+</tr>
+<tr>
+<td class=3Dcta_arrow_main_td_class style=3Dpadding:0;margin:0;vertical-ali=
+gn:top;line-height:0;padding-top:4px;padding-bottom:35px;>
+<table role=3Dpresentation align=3Dcenter cellpadding=3D0 cellspacing=3D0 b=
+order=3D0 class=3D"cta_arrow_text_class text-gray" dir=3Dltr style=3D"margi=
+n:0px auto;">
+<tbody><tr>
+<td class=3Dcta_arrow_td_class style=3D"font-size:16px;font-weight: bold;fo=
+nt-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-s=
+erif;line-height:24px;text-align:left;direction:ltr;word-break:normal; colo=
+r:#1568D5; "><a href=3Dhttps://c.gle/AOPyDKTL7yz5ZZJTKwE66v3HBDWa4jNXM-eJOB=
+zzpsg-uEbnNC-4sDO7aeqLv8s7FZZYt82qDTCjCv80XUkPobwfpmBmcmL1zz2oVZcWlh38LQJ6-=
+pDKDVrIjBe7avMPKOxSCz-7KjvD9mn0b5Xf33D7EzfmnyE8zgDOaU_2aMCdpmhZOifUCgS1VImT=
+xLy8nf25D32sm27BnhT6sMc style=3D"color:#1568D5;text-decoration:none;padding=
+-right: 5px;" target=3D_blank class=3D"">Klaim penawaran untuk Anda</a>
+<a href=3Dhttps://c.gle/AOPyDKTL7yz5ZZJTKwE66v3HBDWa4jNXM-eJOBzzpsg-uEbnNC-=
+4sDO7aeqLv8s7FZZYt82qDTCjCv80XUkPobwfpmBmcmL1zz2oVZcWlh38LQJ6-pDKDVrIjBe7av=
+MPKOxSCz-7KjvD9mn0b5Xf33D7EzfmnyE8zgDOaU_2aMCdpmhZOifUCgS1VImTxLy8nf25D32sm=
+27BnhT6sMc style=3D"text-decoration:none;vertical-align: sub;" target=3D_bl=
+ank>
+<amp-img src=3Dhttps://www.gstatic.com/gumdrop/files/merchant-center-arrow-=
+ssc-transparent-w36px-h36px-2x.png width=3D18 height=3D18 style=3Dborder:0;=
+outline:none class=3Dcta_arrow_img_class></amp-img>
+</a>
+</td></tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td></tr>
+</tbody>
+</table>
+<table role=3Dpresentation bgcolor=3D#F8F9FA align=3Dcenter cellpadding=3D0=
+ cellspacing=3D0 style=3D"width:100%; max-width:728px; margin:0 auto;paddin=
+g:0;direction:ltr; border:0; border-spacing:0; border-collapse:collapse;" c=
+lass=3D"table-gray footer_table_class">
+<tbody>
+<tr>
+<td style=3D"line-height:0px; padding: 28px 30px 0px; ">
+<table align=3Dcenter width=3D100% role=3Dpresentation align=3Dcenter class=
+=3D"footer_layout_width_mob table-gray footer_table_class" cellpadding=3D0 =
+cellspacing=3D0 style=3D"width:100%; max-width:664px; min-width:300px; marg=
+in: 0 auto;">
+<tr>
+<td style=3D"padding:0px; margin:0px; line-height:0px; vertical-align:top;"=
+>
+<table width=3D100% role=3Dpresentation align=3Dcenter class=3D"footer_layo=
+ut_width_mob table-gray footer_table_class" cellpadding=3D0 cellspacing=3D0=
+ style=3D"width:100%; margin: 0 auto;">
+<tr>
+<td width=3D79 style=3D"padding:0px; margin:0px; line-height:0px; text-alig=
+n:left;vertical-align:top;">
+<table class=3Dfooter_table_class role=3Dpresentation align=3Dleft cellpadd=
+ing=3D0 cellspacing=3D0>
+<tr>
+<td width=3D79 dir=3Dltr style=3D"vertical-align:top; padding-top:40px; tex=
+t-align:left;line-height:0px;">
+<amp-img height=3D26 width=3D79 src=3Dhttps://www.gstatic.com/gumdrop/files=
+/merchant-center-footer-google-transparent-w151px-h48px-2x.png style=3D"bor=
+der:none; outline:none;" class=3Dfoot_logo></amp-img>
+</td>
+</tr>
+</table>
+</td>
+<td width=3D1 style=3D"padding:0px; margin:0px; line-height:0px;text-align:=
+left;vertical-align:top;">
+<table class=3Dfooter_table_class role=3Dpresentation align=3Dleft cellpadd=
+ing=3D0 cellspacing=3D0>
+<tr>
+<td width=3D1 dir=3Dltr style=3D"vertical-align:top; padding-top:16px;paddi=
+ng-left:21px; padding-right:23px; text-align:left;line-height:0px; height:7=
+7px;">
+<amp-img height=3D72 width=3D1 src=3Dhttps://www.gstatic.com/gumdrop/files/=
+divider-line-transparent-w2px-h101px-2x.png style=3D"border:none; outline:n=
+one; height:72px;" class=3Dfoot_sep>
+</amp-img></td>
+</tr>
+</table>
+</td>
+<td style=3D"padding:0px; margin:0px; line-height:0px;text-align:left;verti=
+cal-align:top;">
+<table class=3Dfooter_table_class role=3Dpresentation align=3Dleft cellpadd=
+ing=3D0 cellspacing=3D0>
+<tr>
+<td style=3D"vertical-align:top; padding-top:17px; font-family:&#39;Google =
+Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:12px;l=
+ine-height:18px; font-weight:normal; word-break:normal; color: #5F6368; pad=
+ding-right:0px; padding-bottom:37px;text-align:left; " dir=3Dltr class=3D"f=
+ooter_text footer_text_class footer_address_class">
+<span style=3D"font-size:inherit; color:inherit; font-weight:inherit; line-=
+height:inherit; font-family:inherit;">Google LLC<br>1600 Amphitheatre Parkw=
+ay,<br>Mountain View, CA 94043</span>
+<br><a class=3D"text-gray footer_text" href=3Dhttps://c.gle/AOPyDKQ7gpEU6ID=
+Cc9dOxXHW_bV9V4YAmXMmqSqr2zLJZK2eNQ8IToTMKYRBHLYa8f-dFYJrqz00SPbiG8RAzA9xMZ=
+Sh3_fq453ggvSziwqOcsJA3XcZ target=3D_blank style=3D"text-decoration:none;bo=
+rder:none; color:#5F6368;">www.google.com</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=3D"width:100%;table-layout:fixed;font-family: &#39;Google Sans&#3=
+9;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif;font-size:12px;line-heig=
+ht:18px;font-weight:normal; word-break:break-word; color: #5F6368; padding-=
+left:0px; padding-right:0px; text-align:left; direction:ltr; " dir=3Dltr cl=
+ass=3D"footer_text footer_text_class footnotes_class_0">Kami mengirim email=
+ informasi ini untuk memberikan informasi terbaru tentang akun <span style=
+=3D"white-space: nowrap ;">Google Ads</span> Anda. Jika Anda tidak ingin me=
+nerima email semacam ini di masa mendatang, berhenti berlangganan <a class=
+=3Dlegal-color href=3Dhttps://c.gle/AOPyDKRI2AcqhnK4p5GYVUtUk5En_637lsPZTdu=
+lE7Xh35TgbOAAZxMvPnzP2wh7GOTcwUbaq9wFVwAwheBR8Pmy_wZwdwt5n6yqP7ZJpe1Gzlw0kC=
+LNj6gZJ5jrUax1hFqg3WGK9hlgNHo21lZTqB8xWd1GX9eLm6ifN5G7Ba4w_-g6KyL7fPXAy01hn=
+UDvQvftAMRO--wZuggPvd3kdiGs5pOpXHSNk5B4T-_PPpjExHhP9p8pWuUENPHIilps1XF-vf1D=
+NJ3I6ekDyDRYZ426dCyUfvek8HmF0UMPZK6KxYy0SfFiuDTfiU7VY8BFewHNMRi1Fi4FoMpM1q1=
+xes2lsVEYq2Z2GTJw2miaAA target=3D_blank style=3Dtext-decoration:none;font-w=
+eight:normal;color:#448AFF;>di sini</a>.</td>
+</tr>
+<tr>
+<td style=3D"width:100%;table-layout:fixed;font-family: &#39;Google Sans&#3=
+9;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif;font-size:12px;line-heig=
+ht:18px; font-weight:normal; word-break:normal; word-break:break-word; colo=
+r: #5F6368; padding-top:16px; padding-left:0px; padding-right:0px; padding-=
+bottom:25px;text-align:left; direction:ltr; " dir=3Dltr class=3D"footer_tex=
+t footer_text_class"> <strong style=3D"" class=3D"" dir=3D"">*<strong style=
+=3D"" class=3D"" dir=3D""> Persyaratan dan ketentuan untuk penawaran ini:</=
+strong></strong><br>
+1. Penawaran hanya tersedia selama persediaan masih ada.<br>
+2. Penawaran hanya tersedia untuk pengiklan yang baru menggunakan <span sty=
+le=3D"white-space:nowrap; word-break: break-word; " class=3D"span " dir=3D"=
+"><span style=3Dwhite-space:nowrap;>Google Ads</span></span>, dengan alamat=
+ penagihan di Indonesia. Satu penawaran promosi berlaku untuk satu pengikla=
+n.<br>
+3. Untuk mengaktifkan penawaran ini: Klik tombol atau link yang terkait den=
+gan penawaran ini agar penawaran promosinya otomatis diterapkan ke akun <sp=
+an style=3D"white-space:nowrap; word-break: break-word; " class=3D"span " d=
+ir=3D""><span style=3Dwhite-space:nowrap;>Google Ads</span></span> pertama =
+Anda. Penawaran promosi tersebut harus diterapkan ke akun <span style=3D"wh=
+ite-space:nowrap; word-break: break-word; " class=3D"span " dir=3D""><span =
+style=3Dwhite-space:nowrap;>Google Ads</span></span> pertama Anda dalam wak=
+tu 14 hari sejak tayangan iklan pertama Anda ditayangkan.<br>
+4. Penawaran promosi hanya akan diberikan ke akun Anda jika profil pembayar=
+an dan metode pembayaran yang valid ditambahkan saat proses awal pendaftara=
+n.<br>
+5. Untuk memperoleh kredit <span style=3D"white-space:nowrap; word-break: b=
+reak-word; " class=3D"span " dir=3D""><span style=3Dwhite-space:nowrap;>Goo=
+gle Ads</span></span>: Setelah penawaran promosi diterapkan ke akun <span s=
+tyle=3D"white-space:nowrap; word-break: break-word; " class=3D"span " dir=
+=3D""><span style=3Dwhite-space:nowrap;>Google Ads</span></span> Anda, kamp=
+anye iklan Anda harus mengakumulasi biaya minimal sebesar <span style=3D"wh=
+ite-space:nowrap; word-break: break-word; " class=3D"span " dir=3D"">Rp 3,0=
+00,000</span> (tidak termasuk pajak dan biaya yang berlaku) dalam waktu 60 =
+hari. Melakukan pembayaran sebesar <span style=3D"white-space:nowrap; word-=
+break: break-word; " class=3D"span " dir=3D"">Rp 3,000,000</span> saja tida=
+k cukup. Pelacakan biaya iklan hingga mencapai jumlah <!--[if gte mso 9]><b=
+r><![endif]--><span style=3D"white-space:nowrap; word-break: break-word; " =
+class=3D"span " dir=3D"">Rp 3,000,000</span> dimulai setelah penawaran prom=
+osi diterapkan.<br>
+6. Setelah langkah 5 selesai, dengan catatan bahwa persyaratan kelayakan te=
+lah terpenuhi, kredit promo ini biasanya akan diberikan dalam waktu 35 hari=
+ ke Ringkasan Penagihan akun <span style=3D"white-space:nowrap; word-break:=
+ break-word; " class=3D"span " dir=3D""><span style=3Dwhite-space:nowrap;>G=
+oogle Ads</span></span> Anda.<br>
+7. Masa berlaku kredit ini berakhir 60 hari setelah kredit diberikan ke aku=
+n Anda.<br>
+8. Kredit hanya berlaku untuk biaya iklan di masa mendatang. Kredit tidak b=
+erlaku untuk biaya yang terakumulasi sebelum penawaran promosi diterapkan d=
+i akun <span style=3D"white-space:nowrap; word-break: break-word; " class=
+=3D"span " dir=3D""><span style=3Dwhite-space:nowrap;>Google Ads</span></sp=
+an> Anda.<br>
+9. Anda tidak akan menerima notifikasi setelah kredit di akun <span style=
+=3D"white-space:nowrap; word-break: break-word; " class=3D"span " dir=3D"">=
+<span style=3Dwhite-space:nowrap;>Google Ads</span></span> Anda habis digun=
+akan dan semua biaya iklan tambahan akan dibebankan ke metode pembayaran An=
+da. Jika Anda tidak ingin melanjutkan iklan, Anda dapat menjeda atau mengha=
+pus kampanye Anda kapan saja.<br>
+10. Akun Anda harus berhasil ditagih oleh <span style=3D"white-space:nowrap=
+; word-break: break-word; " class=3D"span " dir=3D""><span style=3Dwhite-sp=
+ace:nowrap;>Google Ads</span></span> dan tetap memiliki reputasi baik agar =
+memenuhi syarat untuk menggunakan kredit tersebut.<br>
+11. PT Google Indonesia berhak menghapus penawaran promosi dari akun Anda j=
+ika pembayaran gagal, penawaran keliru diberikan, Anda melanggar persyarata=
+n ini, atau akun Anda tidak lagi memiliki reputasi baik. Dalam kasus terseb=
+ut, jika kredit promo telah diberikan, PT Google Indonesia berhak untuk mem=
+batalkan kredit tersebut.<br>
+12. Persyaratan dan ketentuan lengkap dapat dilihat di sini: <a target=3D_b=
+lank style=3D"color:#1a73e8; text-decoration:none;" href=3Dhttps://c.gle/AO=
+PyDKQBZvWy4iC6murJ9EgP9bvtcCAIUoWi2lsKEivgK6yn2JQkSjxgLqH_47P4csK986rU6BWbv=
+xI__elNz5OsgC1Pecd3LcQOr-0zG4q7jEyI77tMqJGQNzPm0UkgvHD8PlbQahm38QbFaeLLlNec=
+WOcV>https://www.google.com/intl/id_ID/ads/coupons/terms/</a><br>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+--000000000000a84cce065469d2af
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html lang=3Did xmlns=3Dhttp://www.w3.org/1999/xhtml xmlns:v=3Durn:schemas-=
+microsoft-com:vml xmlns:o=3Durn:schemas-microsoft-com:office:office>
+<head>
+<title>Bersiaplah untuk memperluas jangkauan Anda</title>
+<!--[if !mso]><!-- -->
+<meta http-equiv=3DX-UA-Compatible content=3DIE=3Dedge>
+<!--<![endif]-->
+<meta charset=3Dutf-8>
+<meta name=3Dviewport content=3D"width=3Ddevice-width, initial-scale=3D1">
+<style>
+@font-face {
+font-family: Noto Naskh Arabic;
+font-style: normal;
+font-weight: 400;
+src: url(https://fonts.gstatic.com/ea/notonaskharabic/v4/NotoNaskhArabic-Re=
+gular.eot);
+src: url(https://fonts.gstatic.com/ea/notonaskharabic/v4/NotoNaskhArabic-Re=
+gular.eot?#iefix) format('embedded-opentype'),
+url(https://fonts.gstatic.com/ea/notonaskharabic/v4/NotoNaskhArabic-Regular=
+.woff2) format('woff2'),
+url(https://fonts.gstatic.com/ea/notonaskharabic/v4/NotoNaskhArabic-Regular=
+.woff) format('woff'),
+url(https://fonts.gstatic.com/ea/notonaskharabic/v4/NotoNaskhArabic-Regular=
+.ttf) format('truetype');
+}
+</style>
+<style type=3Dtext/css>
+@import url('https://fonts.googleapis.com/css?family=3DGoogle+Sans:400,300,=
+500,700');
+@import url('https://fonts.googleapis.com/css?family=3DRoboto:400,500,700')=
+;
+</style>
+<!--[if gte mso 9]>
+<style>
+li {
+text-indent: -0.65em; /* Normalise space between bullets and text */
+}
+</style>
+<![endif]-->
+<style type=3Dtext/css>
+/* Basic reset & common css classes for mobile email clients */
+#outlook a{padding:0}
+body{margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:=
+100%}
+table,td{border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0}
+img{border:0;height:auto;line-height:100%;outline:0;text-decoration:none;-m=
+s-interpolation-mode:bicubic;}
+p{display:block;margin:0;}
+.mobile_only { display:none; font-size:0px; line-height:0; height:0px; max-=
+height:0px; overflow:hidden; }
+@media screen and (max-width:951px){
+.desktop_only{display:none!important;font-size:0!important;line-height:0!im=
+portant;height:0!important;max-height:0!important;overflow:hidden!important=
+}
+.mobile_only{height:auto!important;overflow:visible!important;display:block=
+!important;max-height:inherit!important;width:100%!important;font-size:inhe=
+rit!important;line-height:inherit!important}
+.margin-auto{ margin-left:auto !important; margin-right:auto !important;}
+.width-100{width:100% !important;}
+.width-480{ width:360px !important; min-width:360px !important;}
+.inline{ display:inline !important;}
+.inline-block{display:inline-block !important;}
+.d-block{ display:block !important;}
+.d-table-row{display: table-row !important;}
+.d-table{display: table !important;}
+.mobile-spacing{padding-left:28px !important; padding-right:28px !important=
+; }
+.mob_icon_center{text-align: center !important;}
+.mob_left{text-align: left !important;}
+.mob_pad42 {padding-bottom:42px !important;}
+.mob_pad_headline {padding-top:42px !important; padding-bottom:21px !import=
+ant;}
+.mob_pad_top {padding-top:42px !important;}
+.height_mob{padding-bottom:30px !important;}
+.height_mob_30{padding-bottom:30px !important;}
+.balloon_img{padding-top:0px !important; padding-bottom:37px !important;}
+.mobile-spacing-top{padding-top:42px !important; }
+.text-left{ text-align:left !important;}
+.p-t-0{ padding-top:0 !important; }
+.p-b-0{ padding-bottom:0 !important; }
+.p-l-0{ padding-left:0 !important; }
+.p-r-0{ padding-right:0 !important; }
+.m-t-0{margin-top:0 !important;}
+.m-b-0{margin-bottom:0 !important;}
+.p-t-50{ padding-top:50px !important; }
+.p-t-30{ padding-top:30px !important; }
+.p-b-30{ padding-bottom:30px !important; }
+.p-b-40{ padding-bottom:40px !important; }
+.align-left {text-align:left!important;}
+.align-right {text-align:right!important;}
+.cid_text_mobile_only{white-space:normal !important;}
+}
+</style>
+<style type=3Dtext/css>
+@media screen and (max-width:951px){
+.dsa_module_head_mob {font-size: 22px!important;line-height: 33px!important=
+;}
+.mobile-email-width,.first_logo, .second_logo { width:100% !important; max-=
+width:720px !important; }
+.bg-white{ background-color:#ffffff !important; }
+.icon_para_bottom_spacing { padding-bottom:20px !important; }
+.p-t-24{padding-top:24px !important;}
+.p-b-24{padding-bottom:24px !important;}
+.mob_imgPad{padding-top:25px!important; padding-bottom:0px !important; padd=
+ing-left:25px !important; padding-right:15px !important;}
+.mob_font_size{font-size: 16px!important ;line-height: 24px !important;}
+.p-t-25{padding-top:25px !important;}
+.p-t-29{padding-top:29px !important;}
+.mob_imgtd2{padding-top:25px!important; padding-bottom:0px !important; padd=
+ing-left:5px !important; padding-right:17px !important;}
+.valign_top{vertical-align: top!important; }
+.rem-1-hero-headline { padding-top:43px !important; }
+.mob_top_bot_pad{padding-top:25px !important; padding-bottom:25px !importan=
+t;}
+.td-to-row { display:block !important; width:100% !important; }
+.p-b-64 { padding-bottom:64px !important; }
+.mob_imgPad_2{padding-top:25px!important; padding-bottom:10px !important; p=
+adding-left:25px !important; padding-right:25px !important;}
+.footer_address_class{padding-bottom:32px!important;}
+.pad_logo{ padding-top:3px!important; padding-bottom:0px !important;}
+.first_logo{text-align: center !important; padding-left:23px!important; pad=
+ding-bottom:2px !important;}
+.common_bg_text{padding-left:28px !important; padding-right:28px !important=
+;}
+.common_bg_text{text-align:left!important;}
+.hero_head{font-size:32px!important;line-height:42px!important;}
+.icon_module_headline{padding-top:27px!important;}
+.icon_mod_cta{padding-top:15px!important;}
+.img_mob{width:100%!important;}
+.first_logo{padding-top:0px;}
+.module2_head {
+color: #202124 !important;
+font-size: 20px !important;
+line-height: 30px !important;
+padding-right: 40px !important;
+}
+.module3_head {
+color: #202124 !important;
+font-size: 20px !important;
+line-height: 30px !important;
+}
+.module3_subhead {
+padding-left: 22px !important;
+padding-right: 22px !important;
+}
+.mobile-spacing2{text-align: center !important;}
+.id_text { text-align: right !important; }
+.second_logo_mob{text-align: left !important;}
+.pad_top_mob {padding-top: 20px !important;}
+.p-t-20 {padding-top: 30px !important;}
+.mob_font { font-size: 7px!important; line-height: 12px!important; }
+.p-lr-15 {padding-left:15px !important; padding-right:15px !important;}
+}
+@media screen and (max-width:450px){
+.mobile-email-width,.first_logo, .second_logo { width:100% !important; max-=
+width:360px !important; }
+.footer_layout_width_mob {width:100%!important; max-width:304px!important;}
+.second_logo_mob{width:22% !important;}
+}
+@media only screen and (device-width: 414px) and (orientation:portrait){
+}
+@media only screen and (device-width: 375px) and (orientation:portrait){
+}
+</style>
+<style type=3Dtext/css>
+@media screen and (min-width: 812px) and (max-width: 812px),
+screen and (min-width: 736px) and (max-width: 736px),
+screen and (min-width: 667px) and (max-width: 667px),
+screen and (min-width: 568px) and (max-width: 568px),
+screen and (min-width: 414px) and (max-width: 414px),
+screen and (min-width: 375px) and (max-width: 375px),
+screen and (min-width: 320px) and (max-width: 320px) {
+.body {
+min-width: 100vw !important;
+}
+}
+</style>
+<!--[if mso]>
+<style>span, td, table, div,a ,p{font-family: 'Google Sans', 'Roboto', Aria=
+l, Helvetica, sans-serif !important; }</style>
+<xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+</head>
+<body style=3Dmargin:0;padding:0;width:100%; bgcolor=3D"" class=3Dbody>
+<div style=3Dwidth:auto;line-height:0;font-size:0;height:0;overflow:hidden;=
+border-collapse:collapse><img alt=3D"" height=3D1 src=3Dhttps://notificatio=
+ns.google.com/g/img/AOPyDKRvo1giUCeUnjUT98Y7RTVrhDvMc0fE_kWrvOBAI0mrqLaadsk=
+M8bXZ6AMfpGUjDEMTnAXtRTuAEcwlkEkS0VWWCP0lVNJmzusxRUc_IwtuFF3CGQsSVchbpiRQyb=
+aeTdGGFA.gif width=3D3></div>
+<table role=3Dpresentation align=3Dcenter cellpadding=3D0 cellspacing=3D0 s=
+tyle=3D"width: 730px; margin:0 auto;padding:0;" class=3Dmobile-email-width =
+widh=3D730>
+<tbody>
+<!--[if !mso]><!-- --> <tr>
+<td style=3D"padding-left:20px;padding-right:20px;padding-top:18px;padding-=
+bottom:20px;font-size: 16px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif; line-height: 20px; color:#5f6368;direc=
+tion:ltr;text-align:left; display:none;">Siapkan Performa Maksimal untuk mu=
+lai mempromosikan bisnis Anda.</td>
+</tr>
+<![endif]--> <tr><td class=3D"mobile-email-width border-dark" style=3D"line=
+-height: 0px;">=C2=A0</td></tr>
+<tr>
+<td class=3D"mobile-email-width border-dark" style=3D"line-height: 0px;bord=
+er: 1px solid #E8EAED;">
+<table role=3Dpresentation dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=
+=3D0 width=3D100% align=3Dcenter style=3D"">
+<tr>
+<!--[if gte mso 9]> <td style=3D"line-height:0px; background-color:#f9f9f9;=
+ ">
+<![endif]--><!--[if !mso]><!-- --> <td style=3D"line-height:0px; background=
+-image:url(https://www.gstatic.com/gumdrop/files/adwords-gray-rectangle-pma=
+x-transparent-w1456px-h50px-2x.png); background-size:100%; background-repea=
+t: repeat-y; background-color:#ffffff; ">
+<![endif]-->
+<table class=3Dmobile-email-width role=3Dpresentation align=3Dcenter cellpa=
+dding=3D0 cellspacing=3D0 style=3D"width:100%; min-width:100%; max-width:72=
+0px;" bgcolor=3D"">
+<tr>
+<td class=3Dpad_logo dir=3Dltr style=3D"direction:ltr; padding-left:0px;pad=
+ding-right:0px; padding-bottom:10px; padding-top:13px; width:100%; ">
+<table class=3Dmobile-email-width role=3Dpresentation dir=3Dltr style=3D"bo=
+rder-spacing:0; border-collapse:collapse; width:100%; min-width:100%;">
+<tr>
+<td align=3Dleft style=3D"padding-left:53px;padding-bottom:2px; padding-rig=
+ht:20px; width:50%; text-align:left;line-height:0px;" aria-hidden=3Dtrue cl=
+ass=3D"pad30 first_logo">
+<a href=3D# target=3D_blank style=3D"text-decoration:none; line-height:0px;=
+ pointer-events:none;">
+<img height=3D48 src=3Dhttps://www.gstatic.com/gumdrop/files/adwords-google=
+-ads-logo-11y-transparent-w277px-h96px-2x.png width=3D139 style=3Dheight:au=
+to;>
+</a>
+</td>
+<td align=3Dright style=3D"line-height:0px;text-align:left; margin:0px; pad=
+ding:0px;" class=3Ddesktop_only width=3D390>
+<table align=3Dright role=3Dpresentation dir=3Dltr style=3D"border-spacing:=
+0; border-collapse:collapse; width:390px;">
+<tr>
+<td class=3D"id_text text-gray" align=3Dright style=3D"text-align: right; f=
+ont-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-=
+serif;font-size:14px; line-height:21px; padding-top:6px; mso-line-height-ru=
+le:exactly; direction:ltr; word-break:normal; color:#202124; mso-padding-ri=
+ght-alt:0px;">ID Pelanggan Anda: <span style=3D" font-family:&#39;Google Sa=
+ns&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif;"><strong class=3Df=
+orApple style=3Dfont-weight:normal;direction:ltr; dir=3Dltr><a role=3Dtext =
+style=3D"cursor: text; color: #202124; text-decoration: none; pointer-event=
+s: none; cursor: text; " target=3D_blank><font style=3D"color: #202124; tex=
+t-decoration: none; cursor: text; color: #202121; pointer-events: none; "><=
+span style=3D"color: #202124; white-space: nowrap; text-decoration: none; c=
+ursor: text; color: #202124; pointer-events: none;direction:ltr;" dir=3Dltr=
+ role=3Dtext aria-label=3D" 8 9 0 1 8 2 9 2 0 1 ">890-182-9201</span></font=
+></a></strong></span></td>
+<td align=3Dright style=3D"padding-left:14px; padding-top:0; padding-bottom=
+:0; padding-right:49px; width:48px; text-align:right;line-height:0px;" clas=
+s=3D"pad30 second_logo">
+<a href=3Dhttps://c.gle/AOPyDKRKXXHZg8Ct44uG2zC9nWuC3APdsg593kebsRuzSwESESh=
+tbEj4vBjq2jK16D3EBWdUNzUSPwPTqAHITzl6UIJ8TPtrZdgYsG6NOJCS4vDA95AMq7PYjB4Ee_=
+aras7uL64ZDtwxgTEma9cY4VnM3sKop3G2eHGE61s6I6OsaWn3Lw target=3D_blank style=
+=3D"text-decoration:none; line-height:0px; ">
+<img alt=3DLogin width=3D48 height=3D"" src=3Dhttps://www.gstatic.com/gumdr=
+op/files/merchant-center-sign-in-11y-transparent-w192px-h192px-2x.png style=
+=3Dheight:auto;>
+</a>
+</td></tr>
+</table></td>
+</tr>
+<!--[if !mso]><!-- --> <tr>
+<td style=3Dline-height:0px;display:none;mso-hide:all;width:100%; class=3D"=
+mobile-email-width mobile_only" width=3D100%>
+<table align=3Dcenter role=3Dpresentation dir=3Dltr style=3D"border-spacing=
+:0; border-collapse:collapse;mso-hide:all; width:100%;" class=3Dmobile-emai=
+l-width>
+<tr>
+<td class=3D"id_text text-gray" align=3Dleft style=3D"text-align: left; fon=
+t-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-se=
+rif;font-size:14px; line-height:21px; color:#202124; mso-line-height-rule:e=
+xactly; direction:ltr; padding-left:8px; padding-top:0px; ">ID Pelanggan An=
+da: <span style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Ari=
+al, Helvetica, sans-serif;"><strong class=3DforApple style=3Dfont-weight:no=
+rmal;direction:ltr; dir=3Dltr><a role=3Dtext style=3D"cursor: text; color: =
+#202124; text-decoration: none; pointer-events: none; cursor: text; " targe=
+t=3D_blank><font style=3D"color: #202124; text-decoration: none; cursor: te=
+xt; color: #202121; pointer-events: none; "><span style=3D"color: #202124; =
+white-space: nowrap; text-decoration: none; cursor: text; color: #202124; p=
+ointer-events: none;direction:ltr;" dir=3Dltr role=3Dtext aria-label=3D" 8 =
+9 0 1 8 2 9 2 0 1 ">890-182-9201</span></font></a></strong></span></td>
+<td align=3Dright style=3D"padding:0px; padding-right:7px; width:35%; text-=
+align:right;line-height:21px;" class=3Dsecond_logo_mob>
+<a href=3Dhttps://c.gle/AOPyDKRKXXHZg8Ct44uG2zC9nWuC3APdsg593kebsRuzSwESESh=
+tbEj4vBjq2jK16D3EBWdUNzUSPwPTqAHITzl6UIJ8TPtrZdgYsG6NOJCS4vDA95AMq7PYjB4Ee_=
+aras7uL64ZDtwxgTEma9cY4VnM3sKop3G2eHGE61s6I6OsaWn3Lw target=3D_blank style=
+=3D"text-decoration:none; line-height:0px; ">
+<img alt=3DLogin width=3D48 height=3D"" src=3Dhttps://www.gstatic.com/gumdr=
+op/files/merchant-center-sign-in-11y-transparent-w192px-h192px-2x.png style=
+=3Dheight:auto;>
+</a></td></tr>
+</table></td>
+</tr><![endif]-->
+</table>
+</td>
+</tr>
+</table>
+<table role=3Dpresentation cellpadding=3D0 cellspacing=3D0 width=3D100% bgc=
+olor=3D"" border=3D0 style=3D"border-spacing:0; border:0; border-collapse:c=
+ollapse;">
+<tbody>
+<tr><td dir=3Dltr style=3D"line-height:0px; text-align:center; padding:18px=
+ 0px 11px; padding:17px 0px 11px;" class=3D"mobile-email-width mob_td_padd"=
+>
+<div><!--[if mso]>
+<v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schem=
+as-microsoft-com:office:word" href=3D"" style=3D"height:36px; font-family:'=
+Google Sans', 'Roboto', Arial, Helvetica, sans-serif; v-text-anchor:middle;=
+ width:220px; " arcsize=3D"154%" stroke=3D"f" fillcolor=3D"#FEF7E0">
+<w:anchorlock/>
+<center>
+<![endif]-->
+<span style=3D"background-color:#FEF7E0; border-radius:40px; color:#B35900;=
+ display:inline-block; font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;,=
+ Arial, Helvetica, sans-serif; font-size:14px;font-weight:bold;line-height:=
+21px;text-align:center;text-decoration:none; -webkit-text-size-adjust:none;=
+ direction:ltr; padding:2px 25px; letter-spacing:0.5px; mso-text-raise:10px=
+; word-break:normal; ">PERFORMA MAKSIMAL</span>
+<!--[if mso]>
+</center>
+</v:roundrect>
+<![endif]--></div>
+</td></tr>
+<tr>
+<td style=3D"font-size:32px; font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif; line-height:40px; text-align: center;=
+direction:ltr; word-break:normal; color: #202124; padding-top:8px; padding-=
+bottom:20px; padding-left: 80px; padding-right: 80px; font-weight:bold; mso=
+-line-height-rule:exactly; font-size:40px; font-family: &#39;Google Sans&#3=
+9;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; line-height:48px; paddi=
+ng-top:10px; padding-bottom:20px; " class=3D"mobile-spacing text-gray icon_=
+module_head mob_left head_font_fix">Selesaikan persiapan Anda untuk mulai m=
+endapatkan <span style=3D"color:#1A73E8; " class=3D"span " dir=3D"">hasil y=
+ang menguntungkan</span></td>
+</tr>
+<tr>
+<td style=3D"font-size:16px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;line-height:24px;text-align: center;dir=
+ection:ltr;word-break:normal;color: #202124; padding-top:0px; padding-botto=
+m:13px; padding-left: 80px; padding-right: 80px; mso-line-height-rule:exact=
+ly; padding-bottom:10px;" class=3D"mobile-spacing text-gray icon_module_sub=
+head mob_left">Tinggal sedikit lagi untuk menjangkau lebih banyak pelanggan=
+ yang berpotensi melakukan konversi di semua saluran Google. Cukup selesaik=
+an kampanye Performa Maksimal Anda untuk mengembangkan bisnis dengan teknol=
+ogi <!--[if gte mso 9]><br><![endif]--><span style=3D"white-space:nowrap; w=
+ord-break: break-word; " class=3D"span " dir=3D"">AI Google.</span></td>
+</tr>
+<tr><td dir=3Dltr class=3D"mobile-spacing align-left" style=3D"line-height:=
+0px; text-align:center; padding-top:10px; padding-bottom:10px;padding-botto=
+m:18px;">
+<div><!--[if mso]>
+<v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schem=
+as-microsoft-com:office:word" href=3D"https://c.gle/AOPyDKQvPCx0hNCP9_rlBFK=
+62aAEkSizr9ii4H4xqTo-8B8PORKbtnfhNs3TJK3XyjYiyuee9fuN6skRwjqcGeRazF4FbTMww4=
+n30ebyjsAVnNqdGfzxLa9ZBWlP1w-mVqZ-IF9p3uT0PHV8MYttx1jEVwyyjPrC7feJ0F4AwM3wU=
+39qVJ3TSidmHfkVBIIqp2Tndeed9QJd" target=3D"_blank" style=3D"height:48px; fo=
+nt-family:'Google Sans', 'Roboto', Arial, Helvetica, sans-serif; v-text-anc=
+hor:middle; width:258px; " arcsize=3D"17%" stroke=3D"f" fillcolor=3D"#1A73E=
+8">
+<w:anchorlock/>
+<center>
+<![endif]-->
+<a href=3Dhttps://c.gle/AOPyDKQvPCx0hNCP9_rlBFK62aAEkSizr9ii4H4xqTo-8B8PORK=
+btnfhNs3TJK3XyjYiyuee9fuN6skRwjqcGeRazF4FbTMww4n30ebyjsAVnNqdGfzxLa9ZBWlP1w=
+-mVqZ-IF9p3uT0PHV8MYttx1jEVwyyjPrC7feJ0F4AwM3wU39qVJ3TSidmHfkVBIIqp2Tndeed9=
+QJd target=3D_blank style=3D"background-color:#1A73E8; border-radius:8px; c=
+olor:#FFFFFF; display:inline-block; font-family:&#39;Google Sans&#39;, &#39=
+;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:16px;font-weight:bold=
+;line-height:24px;text-align:center;text-decoration:none; -webkit-text-size=
+-adjust:none; direction:ltr; padding:12px 21px; word-break:normal; ">Selesa=
+ikan kampanye Anda</a>
+<!--[if mso]>
+</center>
+</v:roundrect>
+<![endif]--></div>
+</td></tr>
+</tbody>
+</table>
+</td></tr></table>
+<table bgcolor=3D#ffffff cellspacing=3D0 cellpadding=3D0 border=3D0 width=
+=3D100% role=3Dpresentation style=3D"border:0; border-spacing:0; border-col=
+lapse:collapse; background-color:#ffffff;" class=3Dads_background_new>
+<tr>
+<td class=3D"desktop_only " style=3Dline-height:0px;>
+<table role=3Dpresentation width=3D100% align=3Dright cellpadding=3D0 cells=
+pacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse:collapse; =
+border:0;" class=3D"width-100 text-center table-transparent">
+<tr>
+<td valign=3Dbottom width=3D100% height=3D276 style=3D"line-height:0px; ver=
+tical-align:bottom; ">
+<table align=3Dcenter cellspacing=3D0 cellpadding=3D0 border=3D0 role=3Dpre=
+sentation style=3D"border:0; border-spacing:0; border-collapse:collapse;" c=
+lass=3Dtable-transparent>
+<tr>
+<td background=3Dhttps://www.gstatic.com/gumdrop/files/adwords-hero-local-l=
+tr-small-desk-transparent-w1454px-h552px-2x.png style=3D"background-size:72=
+8px; background-repeat:no-repeat; vertical-align:middle" width=3D728 valign=
+=3Dcenter>
+<!--[if gte mso 9]>
+<v:rect xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"true" stroke=3D"f=
+alse" style=3D"width:728px;height:276px;">
+<v:fill type=3D"frame" src=3D"https://www.gstatic.com/gumdrop/files/adwords=
+-hero-local-ltr-small-desk-transparent-w1454px-h552px-2x.png" color=3D"#FFF=
+FFF" />
+<v:textbox inset=3D"0,0,0,0">
+<![endif]-->
+<div>
+<table role=3Dpresentation cellspacing=3D0 cellpadding=3D0 border=3D0 width=
+=3D100% class=3Dtable-transparent>
+<tr>
+<td valign=3Dtop height=3D276 style=3D"line-height:0px; text-align:right;">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:coll=
+apse; text-align:center;" class=3Dbg_inner_section_outer_table_class>
+<tr>
+<td width=3D100% style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3Dbg_right_content_table_class>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; text-align:left; font-size:13px;font-weight: bold; lin=
+e-height:20px; color:#1C6EF2; word-break:normal; padding-top:158px;padding-=
+bottom:1px; padding-left:464px;font-size:10px;line-height:15px;" class=3Dri=
+ght_text_3_class dir=3Dltr>Produk Anda</td>
+</tr>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; text-align:left; font-size:9px; line-height:14px; colo=
+r:#298541; padding-left:464px;" class=3D"right_text_4_class mob_font" dir=
+=3Dltr>
+<span style=3D"border:1px solid #298541; border-radius:5px; padding:0px 3px=
+; word-break:normal; font-size: 10px;line-height: 15px; font-family: &#39;G=
+oogle Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif;" class=3Dm=
+ob_font><!--[if gte mso 9]>&nbsp;<![endif]-->Iklan<!--[if gte mso 9]>&nbsp;=
+<![endif]--></span>
+<!--[if gte mso 9]>&nbsp;<![endif]--><span style=3D"padding:0px 3px;"><a hr=
+ef=3Dhttps://c.gle/AOPyDKRf-mYmpSH5XSgCmICrqm4KdUW3TOQS1w9rSTFbUdmePozSD-EB=
+nXzi_85CNeus0pTlp4zxUxVyQjs7mItBYfeZU6nAjUPVjvGtDc5qehoDK1nq0UDN target=3D_=
+blank style=3D"color:#298541; text-decoration:none;">your-business.com</a><=
+/span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if gte mso 9]>
+</v:textbox>
+</v:rect>
+<![endif]-->
+</td>
+</tr>
+</table>
+</td></tr>
+</table>
+</td></tr>
+<!--[if !mso]><!-- --> <tr>
+<td dir=3Dltr class=3D"mobile_only " style=3D"display:none; border-radius:1=
+0px; background-color:#ffffff; ">
+<table class=3Dmob-bg-grey background=3Dhttps://www.gstatic.com/gumdrop/fil=
+es/adwords-gray-bg-mob-pmax-transparent-w1456px-h240px-2x.png dir=3Dltr cel=
+lspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% role=3Dpresentation st=
+yle=3D"width:100%; border:0; border-spacing:0; border-collapse:collapse; ba=
+ckground-size:100%; background-repeat:no-repeat; background-color:#ffffff;"=
+ class=3Dtable-transparent>
+<tr>
+<td style=3D"line-height:0px; padding-top: 0px;" class=3D"">
+<table dir=3Dltr align=3Dcenter cellspacing=3D0 cellpadding=3D0 border=3D0 =
+role=3Dpresentation style=3D" vertical-align:top border:0; border-spacing:0=
+; border-collapse:collapse; margin:0px auto;" class=3D"margin-auto table-tr=
+ansparent">
+<tr>
+<td dir=3Dltr background=3Dhttps://www.gstatic.com/gumdrop/files/adwords-em=
+ail2-mob-transparent-w686px-h742px-2x.png style=3D"background-size:343px; b=
+ackground-repeat:no-repeat; vertical-align:top;" width=3D343 height=3D371 v=
+align=3Dcenter>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:coll=
+apse; text-align:center;" class=3Dbg_inner_section_outer_table_class>
+<tr>
+<td width=3D100% style=3D"line-height:0px; vertical-align:top; padding-left=
+:122px;">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3Dbg_right_content_table_class>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; text-align:left; font-size:13px;font-weight: bold; lin=
+e-height:20px; color:#1C6EF2; word-break:normal; padding-top:274px; padding=
+-left:82px;" class=3Dright_text_3_class dir=3Dltr>Produk Anda</td>
+</tr>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; text-align:left; font-size:9px; line-height:14px; colo=
+r:#298541; padding-left:82px;" class=3D"right_text_4_class mob_font" dir=3D=
+ltr>
+<span style=3D"border:1px solid #298541; border-radius:5px; padding:0px 3px=
+; word-break:normal; font-size: 10px;line-height: 15px; font-family: &#39;G=
+oogle Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif;" class=3Dm=
+ob_font><!--[if gte mso 9]>&nbsp;<![endif]-->Iklan<!--[if gte mso 9]>&nbsp;=
+<![endif]--></span>
+<!--[if gte mso 9]>&nbsp;<![endif]--><span style=3D"padding:0px 3px;"><a hr=
+ef=3Dhttps://c.gle/AOPyDKRf-mYmpSH5XSgCmICrqm4KdUW3TOQS1w9rSTFbUdmePozSD-EB=
+nXzi_85CNeus0pTlp4zxUxVyQjs7mItBYfeZU6nAjUPVjvGtDc5qehoDK1nq0UDN target=3D_=
+blank style=3D"color:#298541; text-decoration:none;">your-business.com</a><=
+/span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr><![endif]-->
+</table>
+<table role=3Dpresentation cellpadding=3D0 cellspacing=3D0 width=3D100% bgc=
+olor=3D#ffffff border=3D0 style=3D"border-spacing:0; border:0; border-colla=
+pse:collapse;background-color:#ffffff;">
+<tbody>
+<tr>
+<td style=3D"font-size:32px; font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif; line-height:40px; text-align: center;=
+direction:ltr; word-break:normal; color: #202124; padding-top:8px; padding-=
+bottom:20px; padding-left: 80px; padding-right: 80px; font-weight:bold; mso=
+-line-height-rule:exactly; padding-top:49px;padding-bottom:26px;color: #3A3=
+B3D; " class=3D"mobile-spacing text-gray icon_module_head module3_head pad_=
+top_mob">Lakukan lebih banyak dari satu kampanye</td>
+</tr>
+<tr>
+<td style=3D"padding-left:140px; padding-right:140px;" class=3D"p-l-0 p-r-0=
+">
+<table bgcolor=3D#FFFFFF cellspacing=3D0 cellpadding=3D0 dir=3Dltr border=
+=3D0 width=3D440 role=3Dpresentation style=3D"border:0; border-spacing:0; b=
+order-collapse:collapse; background-color:#FFFFFF; " class=3D"width-100 ads=
+_background">
+<tr>
+<td dir=3Dltr class=3D"desktop_only dt-darkblue-bg" style=3D"line-height:0p=
+x; direction:ltr; padding-bottom:34px; padding-left:9px; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"margin-auto width-100 text-center table-tran=
+sparent">
+<tr>
+<td dir=3Dltr valign=3Dbottom width=3D200 height=3D200 style=3D"line-height=
+:0px; vertical-align:top; padding-top:10px; ">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 role=3Dpresenta=
+tion style=3D"border:0; border-spacing:0; border-collapse:collapse;" class=
+=3Dtable-transparent width=3D200>
+<tr>
+<td dir=3Dltr background=3Dhttps://www.gstatic.com/gumdrop/files/adwords-ca=
+rousel-1-desk-transparent-w483px-h436px-2x.png style=3D"background-size:200=
+px; background-repeat:no-repeat; vertical-align:top; " width=3D200 valign=
+=3Dcenter>
+<!--[if gte mso 9]>
+<v:rect xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"true" stroke=3D"f=
+alse" style=3D"width:200px;height:218px;">
+<v:fill type=3D"frame" src=3D"https://www.gstatic.com/gumdrop/files/adwords=
+-carousel-1-desk-transparent-w483px-h436px-2x.png" color=3D"#FFFFFF" />
+<v:textbox inset=3D"0,0,0,0">
+<![endif]-->
+<div>
+<table dir=3Dltr role=3Dpresentation cellspacing=3D0 cellpadding=3D0 border=
+=3D0 width=3D200 class=3Dtable-transparent>
+<tr>
+<td valign=3Dtop height=3D200 style=3Dline-height:0px;>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D200 rol=
+e=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:colla=
+pse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if gte mso 9]>
+</v:textbox>
+</v:rect>
+<![endif]-->
+</td>
+</tr>
+</table>
+</td>
+<td dir=3Dltr valign=3Dtop style=3D"line-height:0px; padding-left:30px;">
+<table role=3Dpresentation width=3D200 cellpadding=3D0 cellspacing=3D0 bord=
+er=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" clas=
+s=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:18px; line-hei=
+ght:27px; color:#3C4043; padding-top:14px; padding-bottom:11px; word-break:=
+normal; direction:ltr; padding-right:5px; font-weight:bold; padding-top:18p=
+x; padding-bottom:8px;" class=3D"text-light p-t-20">Temukan lebih banyak pe=
+langgan yang berpotensi melakukan konversi</td>
+</tr>
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:16px; line-hei=
+ght:24px; color:#202124; word-break:normal; padding-bottom:10px; padding-ri=
+ght:10px; direction:ltr; " class=3Dtext-light>Maksimalkan iklan Anda untuk =
+meraih sasaran konversi yang unik =E2=80=93 seperti penjualan, prospek, ata=
+u traffic situs.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!--[if !mso]><!-- --> <tr>
+<td dir=3Dltr class=3D"mobile_only dt-darkblue-bg" style=3D"display:none; b=
+order-radius:10px; padding-top:20px; padding-bottom:0px;">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"width:100%; border:0; border-spacing:0; border-c=
+ollapse:collapse;" class=3Dtable-transparent>
+<tr>
+<td style=3Dline-height:0px;>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 role=3Dpresenta=
+tion style=3D"border:0; border-spacing:0; border-collapse:collapse;" class=
+=3D"margin-auto table-transparent">
+<tr>
+<td dir=3Dltr background=3Dhttps://www.gstatic.com/gumdrop/files/adwords-ca=
+rousel-1-mob-transparent-w474px-h352px-2x.png style=3D"background-size:237p=
+x; background-repeat:no-repeat; vertical-align:top" width=3D237 height=3D17=
+6 valign=3Dcenter>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:coll=
+apse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td dir=3Dltr class=3Dmobile-spacing style=3Dline-height:0px;>
+<table role=3Dpresentation width=3D100% cellpadding=3D0 cellspacing=3D0 bor=
+der=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" cla=
+ss=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:18px; line-hei=
+ght:27px; color:#3C4043; padding-top:14px; padding-bottom:11px; word-break:=
+normal; direction:ltr; padding-right:5px; font-weight:bold; " class=3D"text=
+-light p-t-20">Temukan lebih banyak pelanggan yang berpotensi melakukan kon=
+versi</td>
+</tr>
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:16px; line-hei=
+ght:24px; color:#202124; word-break:normal; padding-bottom:10px; padding-ri=
+ght:10px; direction:ltr; " class=3Dtext-light>Maksimalkan iklan Anda untuk =
+meraih sasaran konversi yang unik =E2=80=93 seperti penjualan, prospek, ata=
+u traffic situs.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr><![endif]-->
+</table>
+<table bgcolor=3D#FFFFFF cellspacing=3D0 cellpadding=3D0 dir=3Dltr border=
+=3D0 width=3D440 role=3Dpresentation style=3D"border:0; border-spacing:0; b=
+order-collapse:collapse; background-color:#FFFFFF; " class=3D"width-100 ads=
+_background">
+<tr>
+<td dir=3Dltr class=3D"desktop_only dt-darkblue-bg" style=3D"line-height:0p=
+x; direction:ltr; padding-bottom:34px; padding-left:9px; padding-left:0px;p=
+adding-bottom:30px;">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"margin-auto width-100 text-center table-tran=
+sparent">
+<tr>
+<td dir=3Dltr valign=3Dtop style=3D"line-height:0px; padding-right:30px;">
+<table role=3Dpresentation width=3D200 cellpadding=3D0 cellspacing=3D0 bord=
+er=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" clas=
+s=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:18px; line-hei=
+ght:27px; color:#3C4043; padding-top:14px; padding-bottom:11px; word-break:=
+normal; direction:ltr; padding-right:5px; font-weight:bold; " class=3D"text=
+-light p-t-20">Tingkatkan nilai</td>
+</tr>
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:16px; line-hei=
+ght:24px; color:#202124; word-break:normal; padding-bottom:10px; padding-ri=
+ght:10px; direction:ltr; " class=3Dtext-light>Performa Maksimal menggunakan=
+ AI Google untuk menemukan poin kontak utama dan memprediksi dengan lebih b=
+aik iklan mana yang paling berperforma.</td>
+</tr>
+</table>
+</td>
+<td dir=3Dltr valign=3Dbottom width=3D200 height=3D200 style=3D"line-height=
+:0px; vertical-align:top; padding-top:10px; ">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 role=3Dpresenta=
+tion style=3D"border:0; border-spacing:0; border-collapse:collapse;" class=
+=3Dtable-transparent width=3D200>
+<tr>
+<td dir=3Dltr background=3Dhttps://www.gstatic.com/gumdrop/files/adwords-lo=
+cale-educational3-domore-static-desk-large-transparent-w406px-h349px-2x.png=
+ style=3D"background-size:202px; background-repeat:no-repeat; vertical-alig=
+n:top; padding-right:15px;" width=3D202 valign=3Dcenter>
+<!--[if gte mso 9]>
+<v:rect xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"true" stroke=3D"f=
+alse" style=3D"width:202px;height:175px;">
+<v:fill type=3D"frame" src=3D"https://www.gstatic.com/gumdrop/files/adwords=
+-locale-educational3-domore-static-desk-large-transparent-w406px-h349px-2x.=
+png" color=3D"#FFFFFF" />
+<v:textbox inset=3D"0,0,0,0">
+<![endif]-->
+<div>
+<table dir=3Dltr role=3Dpresentation cellspacing=3D0 cellpadding=3D0 border=
+=3D0 width=3D200 class=3Dtable-transparent>
+<tr>
+<td valign=3Dtop height=3D200 style=3Dline-height:0px;>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D200 rol=
+e=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:colla=
+pse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold; text-align:center; padding-top: 98px; word-break:normal; line=
+-height:16px;padding-top: 98px;mso-padding-top-alt: 98px;padding-left: 68px=
+;text-align: left;font-size:11px" class=3D"" dir=3Dltr>Prospek terfinalisas=
+i</td>
+</tr>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold; text-align:center; padding-top:4px; word-break:normal; paddin=
+g-top: 4px;mso-padding-top-alt: 4px;padding-left: 68px;text-align: left;" c=
+lass=3D"" dir=3Dltr>Konversi</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if gte mso 9]>
+</v:textbox>
+</v:rect>
+<![endif]-->
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!--[if !mso]><!-- --> <tr>
+<td dir=3Dltr class=3D"mobile_only dt-darkblue-bg" style=3D"display:none; b=
+order-radius:10px; padding-top:20px; padding-bottom:0px;">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"width:100%; border:0; border-spacing:0; border-c=
+ollapse:collapse;" class=3Dtable-transparent>
+<tr>
+<td style=3Dline-height:0px;>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 role=3Dpresenta=
+tion style=3D"border:0; border-spacing:0; border-collapse:collapse;" class=
+=3D"margin-auto table-transparent">
+<tr>
+<td dir=3Dltr background=3Dhttps://www.gstatic.com/gumdrop/files/adwords-lo=
+cale-educational3-static-mob-transparent-w602px-h349px-2x.png style=3D"back=
+ground-size:301px; background-repeat:no-repeat; vertical-align:top" width=
+=3D301 height=3D175 valign=3Dcenter>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:coll=
+apse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold; text-align:center; padding-top: 98px; word-break:normal; padd=
+ing-left: 100px;padding-top:90px;text-align: left;" class=3D"" dir=3Dltr>Pr=
+ospek terfinalisasi</td>
+</tr>
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold; text-align:center; padding-top:4px; word-break:normal; paddin=
+g-left: 100px;text-align: left;padding-top:10px;" class=3D"" dir=3Dltr>Konv=
+ersi</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td dir=3Dltr class=3Dmobile-spacing style=3Dline-height:0px;>
+<table role=3Dpresentation width=3D100% cellpadding=3D0 cellspacing=3D0 bor=
+der=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" cla=
+ss=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:18px; line-hei=
+ght:27px; color:#3C4043; padding-top:14px; padding-bottom:11px; word-break:=
+normal; direction:ltr; padding-right:5px; font-weight:bold; " class=3D"text=
+-light p-t-20">Tingkatkan nilai</td>
+</tr>
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:16px; line-hei=
+ght:24px; color:#202124; word-break:normal; padding-bottom:10px; padding-ri=
+ght:10px; direction:ltr; " class=3Dtext-light>Performa Maksimal menggunakan=
+ AI Google untuk menemukan poin kontak utama dan memprediksi dengan lebih b=
+aik iklan mana yang paling berperforma.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr><![endif]-->
+</table>
+<table bgcolor=3D#FFFFFF cellspacing=3D0 cellpadding=3D0 dir=3Dltr border=
+=3D0 width=3D440 role=3Dpresentation style=3D"border:0; border-spacing:0; b=
+order-collapse:collapse; background-color:#FFFFFF; " class=3D"width-100 ads=
+_background">
+<tr>
+<td dir=3Dltr class=3D"desktop_only dt-darkblue-bg" style=3D"line-height:0p=
+x; direction:ltr; padding-bottom:34px; padding-left:9px; padding-bottom:18p=
+x; padding-left:8px;">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"margin-auto width-100 text-center table-tran=
+sparent">
+<tr>
+<td dir=3Dltr valign=3Dbottom width=3D200 height=3D200 style=3D"line-height=
+:0px; vertical-align:top; padding-top:10px; ">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 role=3Dpresenta=
+tion style=3D"border:0; border-spacing:0; border-collapse:collapse;" class=
+=3Dtable-transparent width=3D200>
+<tr>
+<td dir=3Dltr background=3Dhttps://www.gstatic.com/gumdrop/files/adwords-ca=
+rousel-3-static-transparent-w383px-h349px-2x.png style=3D"background-size:1=
+92px; background-repeat:no-repeat; vertical-align:top; " width=3D192 valign=
+=3Dcenter>
+<!--[if gte mso 9]>
+<v:rect xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"true" stroke=3D"f=
+alse" style=3D"width:192px;height:175px;">
+<v:fill type=3D"frame" src=3D"https://www.gstatic.com/gumdrop/files/adwords=
+-carousel-3-static-transparent-w383px-h349px-2x.png" color=3D"#FFFFFF" />
+<v:textbox inset=3D"0,0,0,0">
+<![endif]-->
+<div>
+<table dir=3Dltr role=3Dpresentation cellspacing=3D0 cellpadding=3D0 border=
+=3D0 width=3D200 class=3Dtable-transparent>
+<tr>
+<td valign=3Dtop height=3D200 style=3Dline-height:0px;>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D200 rol=
+e=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:colla=
+pse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold; text-align:center; padding-top: 98px; word-break:normal; colo=
+r:#FFFFFF; text-align:left; padding-left: 64px; padding-top: 49px;font-size=
+:11px" class=3D"" dir=3Dltr>Telusuri</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if gte mso 9]>
+</v:textbox>
+</v:rect>
+<![endif]-->
+</td>
+</tr>
+</table>
+</td>
+<td dir=3Dltr valign=3Dtop style=3D"line-height:0px; padding-left:30px;">
+<table role=3Dpresentation width=3D200 cellpadding=3D0 cellspacing=3D0 bord=
+er=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" clas=
+s=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:18px; line-hei=
+ght:27px; color:#3C4043; padding-top:14px; padding-bottom:11px; word-break:=
+normal; direction:ltr; padding-right:5px; font-weight:bold; padding-right:1=
+2px;" class=3D"text-light p-t-20">Temukan lebih banyak insight</td>
+</tr>
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:16px; line-hei=
+ght:24px; color:#202124; word-break:normal; padding-bottom:10px; padding-ri=
+ght:10px; direction:ltr; " class=3Dtext-light>Manfaatkan tren penelusuran t=
+erbaru dan lihat aset mana yang paling efektif sehingga Anda dapat mengopti=
+malkan kesuksesan.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!--[if !mso]><!-- --> <tr>
+<td dir=3Dltr class=3D"mobile_only dt-darkblue-bg" style=3D"display:none; b=
+order-radius:10px; padding-top:20px; padding-bottom:0px;">
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"width:100%; border:0; border-spacing:0; border-c=
+ollapse:collapse;" class=3Dtable-transparent>
+<tr>
+<td style=3Dline-height:0px;>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 role=3Dpresenta=
+tion style=3D"border:0; border-spacing:0; border-collapse:collapse;" class=
+=3D"margin-auto table-transparent">
+<tr>
+<td dir=3Dltr background=3Dhttps://www.gstatic.com/gumdrop/files/adwords-ca=
+rousel-3-mob-transparent-w547px-h350px-2x.png style=3D"background-size:274p=
+x; background-repeat:no-repeat; vertical-align:top" width=3D274 height=3D17=
+5 valign=3Dcenter>
+<table dir=3Dltr cellspacing=3D0 cellpadding=3D0 border=3D0 width=3D100% ro=
+le=3Dpresentation style=3D"border:0; border-spacing:0; border-collapse:coll=
+apse; text-align:left;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"line-height:0px; vertical-align:top; ">
+<table dir=3Dltr role=3Dpresentation width=3D100% align=3Dcenter cellpaddin=
+g=3D0 cellspacing=3D0 border=3D0 style=3D"border-spacing:0; border-collapse=
+:collapse; border:0;" class=3D"carousel_img_content table-transparent">
+<tr>
+<td style=3D"font-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, He=
+lvetica, sans-serif; font-size:11px; line-height:16px; color: #9AA0A6; font=
+-weight:bold; text-align:center; padding-top: 98px; word-break:normal; colo=
+r:#FFFFFF; font-size:14px; line-height:21px; text-align:left;padding-left: =
+90px;padding-top: 54px;" class=3D"" dir=3Dltr>Telusuri</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td dir=3Dltr class=3Dmobile-spacing style=3Dline-height:0px;>
+<table role=3Dpresentation width=3D100% cellpadding=3D0 cellspacing=3D0 bor=
+der=3D0 style=3D"border-spacing:0; border-collapse:collapse; border:0;" cla=
+ss=3D"margin-auto width-100 text-center">
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:18px; line-hei=
+ght:27px; color:#3C4043; padding-top:14px; padding-bottom:11px; word-break:=
+normal; direction:ltr; padding-right:5px; font-weight:bold; " class=3D"text=
+-light p-t-20">Temukan lebih banyak insight</td>
+</tr>
+<tr>
+<td style=3D"mso-line-height-rule:exactly; font-family:&#39;Google Sans&#39=
+;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:16px; line-hei=
+ght:24px; color:#202124; word-break:normal; padding-bottom:10px; padding-ri=
+ght:10px; direction:ltr; " class=3Dtext-light>Manfaatkan tren penelusuran t=
+erbaru dan lihat aset mana yang paling efektif sehingga Anda dapat mengopti=
+malkan kesuksesan.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr><![endif]-->
+</table>
+</td>
+</tr>
+<tr><td dir=3Dltr class=3D"mobile-spacing align-left" style=3D"line-height:=
+0px; text-align:center; padding-top:10px; padding-bottom:10px;padding-top:2=
+0px;padding-bottom: 25px;">
+<div><!--[if mso]>
+<v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schem=
+as-microsoft-com:office:word" href=3D"https://c.gle/AOPyDKTMY_yy9wdvefYfOvm=
+s12fqtXapS_fcQ2fxVimdA2LDD62a1it8veP6bCzRgaJA9hI0vthnf-n1iHKY06jdL_fdKdabQN=
+sQT7sE4AESvAkQIhdcj06ImS-JanI3AA-Ap2_DrAcZIQHOqWDmvxILV9NEaN7Mz--veR7C4r7yz=
+9a7AXw671VuGawGHVjG1CE6bnGU8Tvy" target=3D"_blank" style=3D"height:48px; fo=
+nt-family:'Google Sans', 'Roboto', Arial, Helvetica, sans-serif; v-text-anc=
+hor:middle; width:258px; " arcsize=3D"17%" stroke=3D"f" fillcolor=3D"#1A73E=
+8">
+<w:anchorlock/>
+<center>
+<![endif]-->
+<a href=3Dhttps://c.gle/AOPyDKTMY_yy9wdvefYfOvms12fqtXapS_fcQ2fxVimdA2LDD62=
+a1it8veP6bCzRgaJA9hI0vthnf-n1iHKY06jdL_fdKdabQNsQT7sE4AESvAkQIhdcj06ImS-Jan=
+I3AA-Ap2_DrAcZIQHOqWDmvxILV9NEaN7Mz--veR7C4r7yz9a7AXw671VuGawGHVjG1CE6bnGU8=
+Tvy target=3D_blank style=3D"background-color:#1A73E8; border-radius:8px; c=
+olor:#FFFFFF; display:inline-block; font-family:&#39;Google Sans&#39;, &#39=
+;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:16px;font-weight:bold=
+;line-height:24px;text-align:center;text-decoration:none; -webkit-text-size=
+-adjust:none; direction:ltr; padding:12px 21px; word-break:normal; ">Selesa=
+ikan kampanye Anda</a>
+<!--[if mso]>
+</center>
+</v:roundrect>
+<![endif]--></div>
+</td></tr>
+</tbody>
+</table>
+<table role=3Dpresentation cellpadding=3D0 cellspacing=3D0 width=3D100% bgc=
+olor=3D#ffffff border=3D0 style=3D"border-spacing:0; border:0; border-colla=
+pse:collapse;background-color:#ffffff;">
+<tbody>
+<tr>
+<td class=3Dicon_module_logo style=3D"text-align: center; line-height:0px; =
+padding-top:17px; padding-bottom:10px; margin:0px; padding-top:46px; paddin=
+g-bottom:14px;">
+<img alt=3D"" src=3Dhttps://www.gstatic.com/gumdrop/files/adwords-zenyum-lo=
+go-new-transparent-w310px-h72px-2x.png width=3D155 style=3D"width:155px; ">
+</td>
+</tr>
+<tr>
+<td style=3D"font-size:32px; font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif; line-height:40px; text-align: center;=
+direction:ltr; word-break:normal; color: #202124; padding-top:8px; padding-=
+bottom:20px; padding-left: 80px; padding-right: 80px; font-weight:bold; mso=
+-line-height-rule:exactly; font-size:26px; line-height:39px; padding-top:8p=
+x; padding-bottom:19px; " class=3D"mobile-spacing text-gray icon_module_hea=
+d ">Startup perawatan gigi Zenyum meningkatkan prospek dan menurunkan biaya=
+</td>
+</tr>
+<tr>
+<td class=3Ddesktop_only style=3D"margin:0px; line-height:0px; direction:lt=
+r; padding-left:118px; padding-right:118px; ">
+<table role=3Dpresentation cellpadding=3D0 cellspacing=3D0 width=3D100% bgc=
+olor=3D#ffffff border=3D0 style=3D"border-spacing:0; border:0; border-colla=
+pse:collapse;" dir=3Dltr class=3Ddesktop_only>
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top; width:164px; ">
+<table align=3Dcenter role=3Dpresentation cellpadding=3D0 cellspacing=3D0 s=
+tyle=3D"background: #ffffff; border-spacing:0; border:0; border-collapse:co=
+llapse; width:164px; " border=3D0 dir=3Dltr class=3D"margin-auto width-100 =
+desktop_only">
+<tbody>
+<tr>
+<td style=3D"font-size:40px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;font-weight:bold; line-height:48px; tex=
+t-align: center;direction:ltr;word-break:normal;color: #1A73E8; padding-bot=
+tom:4px; padding-left:8px; padding-right:8px; mso-line-height-rule:exactly;=
+ " class=3D"mobile-spacing text-gray">37%</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+text-align: center;direction:ltr;word-break:normal;color: #202124; mso-line=
+-height-rule:exactly; padding-left:20px; padding-right:20px; " class=3D"mob=
+ile-spacing icon_para_bottom_spacing text-gray">lebih rendah biaya per pros=
+pek di seluruh saluran</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class=3D"" style=3D"vertical-align:top; width:164px; ">
+<table align=3Dcenter role=3Dpresentation cellpadding=3D0 cellspacing=3D0 s=
+tyle=3D"background: #ffffff; border-spacing:0; border:0; border-collapse:co=
+llapse; width:164px; " border=3D0 dir=3Dltr class=3D"margin-auto width-100 =
+desktop_only">
+<tbody>
+<tr>
+<td style=3D"font-size:40px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;font-weight:bold; line-height:48px; tex=
+t-align: center;direction:ltr;word-break:normal;color: #1A73E8; padding-bot=
+tom:4px; padding-left:8px; padding-right:8px; mso-line-height-rule:exactly;=
+ " class=3D"mobile-spacing text-gray">6,5x</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+text-align: center;direction:ltr;word-break:normal;color: #202124; mso-line=
+-height-rule:exactly; padding-left:20px; padding-right:20px; " class=3D"mob=
+ile-spacing icon_para_bottom_spacing text-gray">lipat lebih banyak peroleha=
+n prospek</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class=3D"" style=3D"vertical-align:top; width:164px; ">
+<table align=3Dcenter role=3Dpresentation cellpadding=3D0 cellspacing=3D0 s=
+tyle=3D"background: #ffffff; border-spacing:0; border:0; border-collapse:co=
+llapse; width:164px; " border=3D0 dir=3Dltr class=3D"margin-auto width-100 =
+desktop_only">
+<tbody>
+<tr>
+<td style=3D"font-size:40px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;font-weight:bold; line-height:48px; tex=
+t-align: center;direction:ltr;word-break:normal;color: #1A73E8; padding-bot=
+tom:4px; padding-left:8px; padding-right:8px; mso-line-height-rule:exactly;=
+ " class=3D"mobile-spacing text-gray">700+</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+text-align: center;direction:ltr;word-break:normal;color: #202124; mso-line=
+-height-rule:exactly; padding-left:20px; padding-right:20px; " class=3D"mob=
+ile-spacing icon_para_bottom_spacing text-gray">prospek yang diperoleh dala=
+m 3 bulan</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!--[if !mso]><!-- --> <tr>
+<td class=3Dmobile_only style=3D"width:100%; margin:0px; display:none;line-=
+height:0px; direction:ltr; ">
+<table width=3D100% align=3Dcenter role=3Dpresentation cellpadding=3D0 cell=
+spacing=3D0 style=3D"background: #ffffff; border-spacing:0; border:0; borde=
+r-collapse:collapse;" border=3D0 dir=3Dltr class=3D"margin-auto width-100">
+<tbody>
+<tr>
+<td style=3D"font-size: 40px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight:bold;line-height:48px;text=
+-align: center;direction:ltr;word-break:normal;color: #1A73E8;padding-botto=
+m:0px;" class=3D"mobile-spacing text-gray ">37%</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+text-align: center;direction:ltr;word-break:normal;color: #202124; padding-=
+bottom:35px;" class=3D"mobile-spacing icon_para_bottom_spacing text-gray ">=
+lebih rendah biaya per prospek di seluruh saluran</td>
+</tr>
+<tr>
+<td style=3D"font-size: 40px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight:bold;line-height:48px;text=
+-align: center;direction:ltr;word-break:normal;color: #1A73E8;padding-botto=
+m:0px;" class=3D"mobile-spacing text-gray ">6,5x</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+text-align: center;direction:ltr;word-break:normal;color: #202124; padding-=
+bottom:35px;" class=3D"mobile-spacing icon_para_bottom_spacing text-gray ">=
+lipat lebih banyak perolehan prospek</td>
+</tr>
+<tr>
+<td style=3D"font-size: 40px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight:bold;line-height:48px;text=
+-align: center;direction:ltr;word-break:normal;color: #1A73E8;padding-botto=
+m:0px;" class=3D"mobile-spacing text-gray ">700+</td>
+</tr>
+<tr>
+<td style=3D"font-size: 14px;font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif;font-weight: normal;line-height: 21px;=
+text-align: center;direction:ltr;word-break:normal;color: #202124; padding-=
+bottom:35px;" class=3D"mobile-spacing icon_para_bottom_spacing text-gray ">=
+prospek yang diperoleh dalam 3 bulan</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<![endif]-->
+</tbody>
+</table>
+<table role=3Dpresentation cellpadding=3D0 cellspacing=3D0 width=3D100% bgc=
+olor=3D#ffffff border=3D0 style=3D"border-spacing:0; border:0; border-colla=
+pse:collapse;background-color:#ffffff;">
+<tbody>
+<tr><td class=3D"mobile-spacing inner_table_td_class" style=3D"margin:0px; =
+line-height:0px; padding:37px 61px 47px; padding-top:30px;"><table role=3Dp=
+resentation cellpadding=3D0 cellspacing=3D0 width=3D100% bgcolor=3D#E8F0FE =
+border=3D0 style=3D"border-spacing:0; border:0; border-collapse:collapse; b=
+order-radius:20px; "><tbody>
+<tr>
+<td style=3D"font-size:32px; font-family: &#39;Google Sans&#39;, &#39;Robot=
+o&#39;, Arial, Helvetica, sans-serif; line-height:40px; text-align: center;=
+direction:ltr; word-break:normal; color: #202124; padding-top:8px; padding-=
+bottom:20px; padding-left: 80px; padding-right: 80px; font-weight:bold; mso=
+-line-height-rule:exactly; padding-top:36px;padding-bottom:14px; " class=3D=
+"mobile-spacing text-gray icon_module_head mob_icon_center module3_head">Lu=
+ncurkan kampanye Anda dengan <span style=3D"color:#1A73E8; " class=3D"span =
+" dir=3D"">tambahan <!--[if mso 16]><br><![endif]--><span style=3D"white-sp=
+ace:nowrap; word-break: break-word; " class=3D"span " dir=3Dltr>Rp 3,000,00=
+0</span></span></td>
+</tr>
+<tr>
+<td style=3D"font-size:16px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;line-height:24px;text-align: center;dir=
+ection:ltr;word-break:normal;color: #202124; padding-top:0px; padding-botto=
+m:13px; padding-left: 80px; padding-right: 80px; mso-line-height-rule:exact=
+ly; " class=3D"mobile-spacing text-gray icon_module_subhead mob_icon_center=
+ ">Dapatkan kredit iklan senilai <span style=3D"white-space:nowrap; word-br=
+eak: break-word; " class=3D"span " dir=3D""><span style=3D"white-space:nowr=
+ap; word-break: break-word; " class=3D"span " dir=3Dltr>Rp 3,000,000</span>=
+</span> setelah membelanjakan <span style=3D"white-space:nowrap; word-break=
+: break-word; " class=3D"span " dir=3D""><span style=3D"white-space:nowrap;=
+ word-break: break-word; " class=3D"span " dir=3Dltr>Rp 3,000,000</span></s=
+pan> pertama Anda di <span style=3D"white-space:nowrap; word-break: break-w=
+ord; " class=3D"span " dir=3D"">Google Ads.</span> Kredit akan otomatis dit=
+erapkan ke akun Anda dengan <!--[if gte mso 9]><br><![endif]--><span style=
+=3D"white-space:nowrap; word-break: break-word; " class=3D"span " dir=3D"">=
+ID Pelanggan <strong class=3DforApple style=3Dfont-weight:normal;direction:=
+ltr; dir=3Dltr><a role=3Dtext style=3D"cursor: text; color: #202124; text-d=
+ecoration: none; pointer-events: none; cursor: text; " target=3D_blank><fon=
+t style=3D"color: #202124; text-decoration: none; cursor: text; color: #202=
+121; pointer-events: none; "><span style=3D"color: #202124; white-space: no=
+wrap; text-decoration: none; cursor: text; color: #202124; pointer-events: =
+none;direction:ltr;" dir=3Dltr role=3Dtext aria-label=3D" 8 9 0 1 8 2 9 2 0=
+ 1 ">890-182-9201</span></font></a></strong></span> setelah membelanjakan <=
+!--[if gte mso 9]><br><![endif]--><span style=3D"white-space:nowrap; word-b=
+reak: break-word; " class=3D"span " dir=3D""><span style=3D"white-space:now=
+rap; word-break: break-word; " class=3D"span " dir=3Dltr>Rp 3,000,000</span=
+></span> dalam waktu 60 hari sejak pendaftaran, jika memenuhi syarat.</td>
+</tr>
+<tr>
+<td style=3D"font-size:16px;font-family: &#39;Google Sans&#39;, &#39;Roboto=
+&#39;, Arial, Helvetica, sans-serif;line-height:24px;text-align: center;dir=
+ection:ltr;word-break:normal;color: #202124; padding-top:0px; padding-botto=
+m:13px; padding-left: 80px; padding-right: 80px; mso-line-height-rule:exact=
+ly; " class=3D"mobile-spacing text-gray icon_module_subhead_2 mob_icon_cent=
+er">Khusus pengiklan baru. Penawaran hanya dapat diterapkan ke akun <span s=
+tyle=3D"white-space:nowrap; word-break: break-word; " class=3D"span " dir=
+=3D"">Google Ads</span> yang dikaitkan dengan alamat email yang menerima em=
+ail ini. Lihat persyaratan dan ketentuan selengkapnya.*</td>
+</tr>
+<tr>
+<td class=3Dcta_arrow_main_td_class style=3Dpadding:0;margin:0;vertical-ali=
+gn:top;line-height:0;padding-top:4px;padding-bottom:35px;>
+<table role=3Dpresentation align=3Dcenter cellpadding=3D0 cellspacing=3D0 b=
+order=3D0 class=3D"cta_arrow_text_class text-gray" dir=3Dltr style=3D"margi=
+n:0px auto;">
+<tbody><tr>
+<!--[if mso]>
+<td class=3D"cta_arrow_td_class" style=3D"font-size:16px;font-weight: bold;=
+font-family:'Google Sans', 'Roboto', Arial, Helvetica, sans-serif;line-heig=
+ht:24px;text-align:left;direction:ltr;word-break:normal; color:#1568D5; "><=
+a href=3D"https://c.gle/AOPyDKTJHTE69UPxgLZG6Mb74MgJumcaIjRRPlS6Im9qR8Tfst7=
+as7W5_Nh9xWYa6rVK9ggK-S6hLFbiZYMidqDT-5fbyVZxu4JXeIMfB6IcjvVkgiES6IJNS2p0fq=
+vmQ4vffjv5dtx5bNMlp-6wyrCXO7p5FPcZDr40v9a4oxbWSwoqTequrHqaQOWxIIFROYFTpCEiP=
+XNIspIx3dY" style=3D"color:#1568D5;text-decoration:none;" target=3D"_blank"=
+ class=3D"">Klaim penawaran untuk Anda</a></td>
+<td style=3D"padding:0;margin:0;text-align:left;padding-left:10px;line-heig=
+ht:0px;mso-line-height-alt: 24px;" dir=3D"ltr" width=3D"18" class=3D"cta_ar=
+row_img_td_class">
+<a href=3D"https://c.gle/AOPyDKTJHTE69UPxgLZG6Mb74MgJumcaIjRRPlS6Im9qR8Tfst=
+7as7W5_Nh9xWYa6rVK9ggK-S6hLFbiZYMidqDT-5fbyVZxu4JXeIMfB6IcjvVkgiES6IJNS2p0f=
+qvmQ4vffjv5dtx5bNMlp-6wyrCXO7p5FPcZDr40v9a4oxbWSwoqTequrHqaQOWxIIFROYFTpCEi=
+PXNIspIx3dY" style=3D"text-decoration:none" target=3D"_blank">
+<img src=3D"https://www.gstatic.com/gumdrop/files/merchant-center-arrow-ssc=
+-transparent-w36px-h36px-2x.png" width=3D"18" style=3D"border:0;outline:non=
+e" class=3D"cta_arrow_img_class">
+</a>
+</td>
+<![endif]-->
+<!--[if !mso]><!-- -->
+<td class=3Dcta_arrow_td_class style=3D"font-size:16px;font-weight: bold;fo=
+nt-family:&#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-s=
+erif;line-height:24px;text-align:center;direction:ltr;word-break:normal; co=
+lor:#1568D5; "><a href=3Dhttps://c.gle/AOPyDKTJHTE69UPxgLZG6Mb74MgJumcaIjRR=
+PlS6Im9qR8Tfst7as7W5_Nh9xWYa6rVK9ggK-S6hLFbiZYMidqDT-5fbyVZxu4JXeIMfB6IcjvV=
+kgiES6IJNS2p0fqvmQ4vffjv5dtx5bNMlp-6wyrCXO7p5FPcZDr40v9a4oxbWSwoqTequrHqaQO=
+WxIIFROYFTpCEiPXNIspIx3dY style=3D"color:#1568D5;text-decoration:none;verti=
+cal-align: top;padding-right: 5px;" target=3D_blank class=3D"">Klaim penawa=
+ran untuk Anda</a>
+<a href=3Dhttps://c.gle/AOPyDKTJHTE69UPxgLZG6Mb74MgJumcaIjRRPlS6Im9qR8Tfst7=
+as7W5_Nh9xWYa6rVK9ggK-S6hLFbiZYMidqDT-5fbyVZxu4JXeIMfB6IcjvVkgiES6IJNS2p0fq=
+vmQ4vffjv5dtx5bNMlp-6wyrCXO7p5FPcZDr40v9a4oxbWSwoqTequrHqaQOWxIIFROYFTpCEiP=
+XNIspIx3dY style=3D"text-decoration:none;display: inline-block;padding-top:=
+ 3px;" target=3D_blank>
+<img src=3Dhttps://www.gstatic.com/gumdrop/files/merchant-center-arrow-ssc-=
+transparent-w36px-h36px-2x.png width=3D18 style=3Dborder:0;outline:none cla=
+ss=3Dcta_arrow_img_class>
+</a>
+</td>
+<!--<![endif]-->
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td></tr>
+</tbody>
+</table>
+<table role=3Dpresentation bgcolor=3D#F8F9FA align=3Dcenter cellpadding=3D0=
+ cellspacing=3D0 style=3D"width:100%; margin:0 auto;padding:0;direction:ltr=
+; border:0; border-spacing:0; border-collapse:collapse;" class=3D"table-gra=
+y footer_table_class">
+<tbody>
+<tr>
+<td style=3D"line-height:0px; padding: 28px 30px 0px; mso-padding-alt: 28px=
+ 30px 0px 30px;">
+<table align=3Dcenter width=3D100% role=3Dpresentation align=3Dcenter class=
+=3D"footer_layout_width_mob table-gray footer_table_class" cellpading=3D0 c=
+ellspacing=3D0 style=3D"width:100%; max-width:664px; min-width:300px; margi=
+n: 0 auto;">
+<tr>
+<td style=3D"padding:0px; margin:0px; line-height:0px; vertical-align:top;"=
+>
+<table width=3D100% role=3Dpresentation align=3Dcenter class=3D"footer_layo=
+ut_width_mob table-gray footer_table_class" cellpading=3D0 cellspacing=3D0 =
+style=3D"width:100%; margin: 0 auto;">
+<tr>
+<td width=3D79 style=3D"padding:0px; margin:0px; line-height:0px; text-alig=
+n:left;vertical-align:top;">
+<table class=3Dfooter_table_class role=3Dpresentation align=3Dleft cellpadi=
+ng=3D0 cellspacing=3D0>
+<tr>
+<td width=3D79 dir=3Dltr style=3D"vertical-align:top; padding-top:40px; tex=
+t-align:left;line-height:0px;">
+<img height=3D26 width=3D79 src=3Dhttps://www.gstatic.com/gumdrop/files/adw=
+ords-google-footer-p-max-transparent-w158px-h52px-2x.png border=3D0 style=
+=3D"border:none; outline:none;" class=3Dfoot_logo>
+</td>
+</tr>
+</table>
+</td>
+<td width=3D2 style=3D"padding:0px; margin:0px; line-height:0px;text-align:=
+left;vertical-align:top;">
+<table class=3Dfooter_table_class role=3Dpresentation align=3Dleft cellpadi=
+ng=3D0 cellspacing=3D0>
+<tr>
+<td width=3D2 dir=3Dltr style=3D"vertical-align:top; padding-top:16px; mso-=
+padding-top-alt:28px; padding-left:21px; padding-right:23px; text-align:lef=
+t;line-height:0px; height:77px;">
+<img height=3D72 width=3D2 src=3Dhttps://www.gstatic.com/gumdrop/files/adwo=
+rds-line-footer-p-max-transparent-w3px-h144px-2x.png border=3D0 style=3D"bo=
+rder:none; outline:none; height:72px;" class=3Dfoot_sep>
+</td>
+</tr>
+</table>
+</td>
+<td style=3D"padding:0px; margin:0px; line-height:0px;text-align:left;verti=
+cal-align:top;">
+<table class=3Dfooter_table_class role=3Dpresentation align=3Dleft cellpadi=
+ng=3D0 cellspacing=3D0>
+<tr>
+<td style=3D"vertical-align:top; padding-top:17px; font-family:&#39;Google =
+Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif; font-size:12px;l=
+ine-height:18px; font-weight:normal; word-break:normal; color: #5F6368; pad=
+ding-right:0px; padding-bottom:37px;text-align:left; " dir=3Dltr class=3D"f=
+ooter_text footer_text_class footer_address_class">
+<span style=3D"font-size:inherit; color:inherit; font-weight:inherit; line-=
+height:inherit; font-family:inherit;">Google LLC<br>1600 Amphitheatre Parkw=
+ay,<br>Mountain View, CA 94043</span>
+<br><a class=3D"text-gray footer_text" href=3Dhttps://c.gle/AOPyDKQnv0t5Chs=
+ZWaSi6CH_8CV4CuprwhR0T1CzJQHMCMvTRPMqYiJ9JQOsHTbWwESKSbOMPu_tCPky4Qd3wCREiS=
+VS5H3C4alH9Mj6g3gAOM5WXdmm target=3D_blank style=3D"text-decoration:none;bo=
+rder:none; color:#5F6368;">www.google.com</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<!--[if gte mso 9]>
+<td class=3D"footer_text" style=3D"width:100%; table-layout:fixed;font-fami=
+ly: 'Google Sans', 'Roboto', Arial, Helvetica, sans-serif;font-size:12px; l=
+ine-height:18px; font-weight:normal; word-break:normal; color: #5F6368; pad=
+ding-top:15px; padding-bottom:12px; text-align:left; direction:ltr;" dir=3D=
+"ltr">
+<div class=3D"mb_legal width-100" style=3D"word-break:normal;margin:0 auto;=
+ width:658px;">Kami mengirim email informasi ini untuk memberikan informasi=
+ terbaru tentang akun <span style=3D"white-space: nowrap !important;">Googl=
+e Ads</span> Anda. Jika Anda tidak ingin menerima email semacam ini di masa=
+ mendatang, berhenti berlangganan <a class=3D"legal-color" href=3D"https://=
+c.gle/AOPyDKS6qyu8oMTedubrHhIICBAjI0eSqKago7gxnoN35eCBQOYe_PR4fKADPn-fUi4l_=
+qYABNW8mLC_0TSzX-EvZDCOiR_iLkAmAOAjhaesAz7SI81NJ3RDgocKIdjfgp8r6gcIvjVhPJnh=
+6mYiKFbPxFv0B1vJxAZmhj72Zar_WotP5f00FSTQGdMrT-9nJ4-lTK2BmRWt6GxWyE3b8wvCOCg=
+L6tVkmb_CAW3myo_Ph15RT2p7Cp3C5qfWUDD3ZkUazPnW4Dea7extx6HMEnl9rLwdH50NnXLgAH=
+tqMOERKTc7-Fz6QuRr-lHzZ6-jLlA7f8DiQ2Cq-fRevIrhoNk1RpxhNbVXjfbu9FP65g" targe=
+t=3D"_blank" style=3D"text-decoration:none;font-weight:normal;color:#448AFF=
+;">di sini</a>.</div>
+<![endif]-->
+<!--[if !mso]><!-->
+<td class=3D"footer_text width-100" style=3D"width:100%; table-layout:fixed=
+;font-family: &#39;Google Sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sa=
+ns-serif;font-size:12px; line-height:18px; font-weight:normal; word-break:n=
+ormal; color: #5F6368; padding-top:15px;padding-bottom:12px; text-align:lef=
+t; direction:ltr;" dir=3Dltr>
+<div class=3D"mb_legal width-100" style=3D"word-break:normal;margin:0 auto;=
+ width:658px; overflow:hidden;">Kami mengirim email informasi ini untuk mem=
+berikan informasi terbaru tentang akun <span style=3D"white-space: nowrap !=
+important;"><span style=3Dwhite-space:nowrap;>Google Ads</span></span> Anda=
+. Jika Anda tidak ingin menerima email semacam ini di masa mendatang, berhe=
+nti berlangganan <a class=3Dlegal-color href=3Dhttps://c.gle/AOPyDKS6qyu8oM=
+TedubrHhIICBAjI0eSqKago7gxnoN35eCBQOYe_PR4fKADPn-fUi4l_qYABNW8mLC_0TSzX-EvZ=
+DCOiR_iLkAmAOAjhaesAz7SI81NJ3RDgocKIdjfgp8r6gcIvjVhPJnh6mYiKFbPxFv0B1vJxAZm=
+hj72Zar_WotP5f00FSTQGdMrT-9nJ4-lTK2BmRWt6GxWyE3b8wvCOCgL6tVkmb_CAW3myo_Ph15=
+RT2p7Cp3C5qfWUDD3ZkUazPnW4Dea7extx6HMEnl9rLwdH50NnXLgAHtqMOERKTc7-Fz6QuRr-l=
+HzZ6-jLlA7f8DiQ2Cq-fRevIrhoNk1RpxhNbVXjfbu9FP65g target=3D_blank style=3Dte=
+xt-decoration:none;font-weight:normal;color:#1967D2;>di sini</a>.</div> <!-=
+-[endif]---->
+</td>
+</tr>
+<tr>
+<td style=3D"width:100%;table-layout:fixed;font-family: &#39;Google Sans&#3=
+9;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif;font-size:12px;line-heig=
+ht:18px; font-weight:normal; word-break:normal; word-break:break-word; colo=
+r: #5F6368; padding-top:0px; padding-left:0px; padding-right:0px; padding-b=
+ottom:25px;text-align:left; direction:ltr; mso-line-height-rule:exactly; " =
+dir=3Dltr class=3D"footer_text footer_text_class"> <strong style=3D"" class=
+=3D"" dir=3D"">*<strong style=3D"" class=3D"" dir=3D""> Persyaratan dan ket=
+entuan untuk penawaran ini:</strong></strong><br>
+1. Penawaran hanya tersedia selama persediaan masih ada.<br>
+2. Penawaran hanya tersedia untuk pengiklan yang baru menggunakan <span sty=
+le=3D"white-space:nowrap; word-break: break-word; " class=3D"span " dir=3D"=
+"><span style=3Dwhite-space:nowrap;>Google Ads</span></span>, dengan alamat=
+ penagihan di Indonesia. Satu penawaran promosi berlaku untuk satu pengikla=
+n.<br>
+3. Untuk mengaktifkan penawaran ini: Klik tombol atau link yang terkait den=
+gan penawaran ini agar penawaran promosinya otomatis diterapkan ke akun <sp=
+an style=3D"white-space:nowrap; word-break: break-word; " class=3D"span " d=
+ir=3D""><span style=3Dwhite-space:nowrap;>Google Ads</span></span> pertama =
+Anda. Penawaran promosi tersebut harus diterapkan ke akun <span style=3D"wh=
+ite-space:nowrap; word-break: break-word; " class=3D"span " dir=3D""><span =
+style=3Dwhite-space:nowrap;>Google Ads</span></span> pertama Anda dalam wak=
+tu 14 hari sejak tayangan iklan pertama Anda ditayangkan.<br>
+4. Penawaran promosi hanya akan diberikan ke akun Anda jika profil pembayar=
+an dan metode pembayaran yang valid ditambahkan saat proses awal pendaftara=
+n.<br>
+5. Untuk memperoleh kredit <span style=3D"white-space:nowrap; word-break: b=
+reak-word; " class=3D"span " dir=3D""><span style=3Dwhite-space:nowrap;>Goo=
+gle Ads</span></span>: Setelah penawaran promosi diterapkan ke akun <span s=
+tyle=3D"white-space:nowrap; word-break: break-word; " class=3D"span " dir=
+=3D""><span style=3Dwhite-space:nowrap;>Google Ads</span></span> Anda, kamp=
+anye iklan Anda harus mengakumulasi biaya minimal sebesar <span style=3D"wh=
+ite-space:nowrap; word-break: break-word; " class=3D"span " dir=3D"">Rp 3,0=
+00,000</span> (tidak termasuk pajak dan biaya yang berlaku) dalam waktu 60 =
+hari. Melakukan pembayaran sebesar <span style=3D"white-space:nowrap; word-=
+break: break-word; " class=3D"span " dir=3D"">Rp 3,000,000</span> saja tida=
+k cukup. Pelacakan biaya iklan hingga mencapai jumlah <!--[if gte mso 9]><b=
+r><![endif]--><span style=3D"white-space:nowrap; word-break: break-word; " =
+class=3D"span " dir=3D"">Rp 3,000,000</span> dimulai setelah penawaran prom=
+osi diterapkan.<br>
+6. Setelah langkah 5 selesai, dengan catatan bahwa persyaratan kelayakan te=
+lah terpenuhi, kredit promo ini biasanya akan diberikan dalam waktu 35 hari=
+ ke Ringkasan Penagihan akun <span style=3D"white-space:nowrap; word-break:=
+ break-word; " class=3D"span " dir=3D""><span style=3Dwhite-space:nowrap;>G=
+oogle Ads</span></span> Anda.<br>
+7. Masa berlaku kredit ini berakhir 60 hari setelah kredit diberikan ke aku=
+n Anda.<br>
+8. Kredit hanya berlaku untuk biaya iklan di masa mendatang. Kredit tidak b=
+erlaku untuk biaya yang terakumulasi sebelum penawaran promosi diterapkan d=
+i akun <span style=3D"white-space:nowrap; word-break: break-word; " class=
+=3D"span " dir=3D""><span style=3Dwhite-space:nowrap;>Google Ads</span></sp=
+an> Anda.<br>
+9. Anda tidak akan menerima notifikasi setelah kredit di akun <span style=
+=3D"white-space:nowrap; word-break: break-word; " class=3D"span " dir=3D"">=
+<span style=3Dwhite-space:nowrap;>Google Ads</span></span> Anda habis digun=
+akan dan semua biaya iklan tambahan akan dibebankan ke metode pembayaran An=
+da. Jika Anda tidak ingin melanjutkan iklan, Anda dapat menjeda atau mengha=
+pus kampanye Anda kapan saja.<br>
+10. Akun Anda harus berhasil ditagih oleh <span style=3D"white-space:nowrap=
+; word-break: break-word; " class=3D"span " dir=3D""><span style=3Dwhite-sp=
+ace:nowrap;>Google Ads</span></span> dan tetap memiliki reputasi baik agar =
+memenuhi syarat untuk menggunakan kredit tersebut.<br>
+11. PT Google Indonesia berhak menghapus penawaran promosi dari akun Anda j=
+ika pembayaran gagal, penawaran keliru diberikan, Anda melanggar persyarata=
+n ini, atau akun Anda tidak lagi memiliki reputasi baik. Dalam kasus terseb=
+ut, jika kredit promo telah diberikan, PT Google Indonesia berhak untuk mem=
+batalkan kredit tersebut.<br>
+12. Persyaratan dan ketentuan lengkap dapat dilihat di sini: <a target=3D_b=
+lank style=3D"color:#1a73e8; text-decoration:none;" href=3Dhttps://c.gle/AO=
+PyDKSo1BhI6HDnI5buUajjiBWuFdBZWyDHdFTRSmDf28jAb3SaL0hjxMJO-96JdAb92sO1XelLS=
+m35hU_xJzbjLsRfrlL1TDRLj2zxT61YJkEkS9FFDZSDFeo2EzWjBlUz05CLUS2dgA3jr4aMWH9n=
+yjHt>https://www.google.com/intl/id_ID/ads/coupons/terms/</a><br>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</table>
+</tbody>
+</body>
+</html>
+--000000000000a84cce065469d2af--
