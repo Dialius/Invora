@@ -10,7 +10,7 @@ export interface BlogPost {
   category: string;
   readTime: string;
   date: string;
-  coverEmoji: string;
+  coverImage: string;
 }
 
 export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
@@ -22,7 +22,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Panduan Invoicing',
       readTime: '7 menit',
       date: '10 Juni 2026',
-      coverEmoji: '📄',
+      coverImage: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'perbedaan-invoice-proforma-dan-invoice-reguler',
@@ -31,7 +31,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Edukasi Bisnis',
       readTime: '6 menit',
       date: '5 Juni 2026',
-      coverEmoji: '📑',
+      coverImage: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'tips-agar-invoice-dibayar-tepat-waktu',
@@ -40,7 +40,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Tips Bisnis',
       readTime: '8 menit',
       date: '1 Juni 2026',
-      coverEmoji: '💡',
+      coverImage: 'https://images.unsplash.com/photo-1580519542036-ed47f3e48956?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'panduan-faktur-pajak-dan-npwp-untuk-umkm',
@@ -49,7 +49,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Perpajakan',
       readTime: '10 menit',
       date: '25 Mei 2026',
-      coverEmoji: '🏛️',
+      coverImage: 'https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'tutorial-membuat-tanda-tangan-digital-di-invora',
@@ -58,7 +58,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Tutorial Invora',
       readTime: '4 menit',
       date: '27 Juni 2026',
-      coverEmoji: '✍️',
+      coverImage: 'https://images.unsplash.com/photo-1583526362016-c3137c71cc3a?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'cara-mengelola-database-klien-dan-perusahaan',
@@ -67,7 +67,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Tutorial Invora',
       readTime: '5 menit',
       date: '26 Juni 2026',
-      coverEmoji: '🗃️',
+      coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'strategi-diskon-dan-pajak-dalam-invoicing',
@@ -76,7 +76,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Panduan Invoicing',
       readTime: '6 menit',
       date: '20 Juni 2026',
-      coverEmoji: '📉',
+      coverImage: 'https://images.unsplash.com/photo-1531538512162-28005f43eb93?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'berbagi-invoice-melalui-public-link',
@@ -85,7 +85,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Tutorial Invora',
       readTime: '4 menit',
       date: '15 Juni 2026',
-      coverEmoji: '🔗',
+      coverImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
     }
   ],
   EN: [
@@ -96,7 +96,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Invoicing Guide',
       readTime: '7 min',
       date: 'Jun 10, 2026',
-      coverEmoji: '📄',
+      coverImage: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'perbedaan-invoice-proforma-dan-invoice-reguler',
@@ -105,7 +105,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Business Education',
       readTime: '6 min',
       date: 'Jun 5, 2026',
-      coverEmoji: '📑',
+      coverImage: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'tips-agar-invoice-dibayar-tepat-waktu',
@@ -114,7 +114,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Business Tips',
       readTime: '8 min',
       date: 'Jun 1, 2026',
-      coverEmoji: '💡',
+      coverImage: 'https://images.unsplash.com/photo-1580519542036-ed47f3e48956?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'panduan-faktur-pajak-dan-npwp-untuk-umkm',
@@ -123,7 +123,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Taxation',
       readTime: '10 min',
       date: 'May 25, 2026',
-      coverEmoji: '🏛️',
+      coverImage: 'https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'tutorial-membuat-tanda-tangan-digital-di-invora',
@@ -132,7 +132,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Invora Tutorial',
       readTime: '4 min',
       date: 'Jun 27, 2026',
-      coverEmoji: '✍️',
+      coverImage: 'https://images.unsplash.com/photo-1583526362016-c3137c71cc3a?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'cara-mengelola-database-klien-dan-perusahaan',
@@ -141,7 +141,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Invora Tutorial',
       readTime: '5 min',
       date: 'Jun 26, 2026',
-      coverEmoji: '🗃️',
+      coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'strategi-diskon-dan-pajak-dalam-invoicing',
@@ -150,7 +150,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Invoicing Guide',
       readTime: '6 min',
       date: 'Jun 20, 2026',
-      coverEmoji: '📉',
+      coverImage: 'https://images.unsplash.com/photo-1531538512162-28005f43eb93?auto=format&fit=crop&w=800&q=80',
     },
     {
       slug: 'berbagi-invoice-melalui-public-link',
@@ -159,7 +159,7 @@ export const blogPostsData: Record<'EN' | 'ID', BlogPost[]> = {
       category: 'Invora Tutorial',
       readTime: '4 min',
       date: 'Jun 15, 2026',
-      coverEmoji: '🔗',
+      coverImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
     }
   ]
 };
@@ -220,8 +220,13 @@ export const Blog = () => {
                   className="group bg-white border border-[#E2DED7] rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
                 >
                   {/* Cover */}
-                  <div className="bg-gradient-to-br from-teal-50 to-stone-100 h-36 flex items-center justify-center border-b border-[#E2DED7]">
-                    <span className="text-6xl">{post.coverEmoji}</span>
+                  <div className="h-48 w-full overflow-hidden border-b border-[#E2DED7]">
+                    <img 
+                      src={post.coverImage} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                      loading="lazy"
+                    />
                   </div>
 
                   {/* Content */}

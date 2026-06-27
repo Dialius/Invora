@@ -222,8 +222,12 @@ export const BlogPost = () => {
 
           {/* Article Header */}
           <div className="bg-white border border-[#E2DED7] rounded-2xl overflow-hidden mb-8">
-            <div className="bg-gradient-to-br from-teal-50 to-stone-100 h-48 flex items-center justify-center border-b border-[#E2DED7]">
-              <span className="text-8xl">{post.coverEmoji}</span>
+            <div className="h-64 sm:h-96 w-full border-b border-[#E2DED7]">
+              <img 
+                src={post.coverImage} 
+                alt={post.title} 
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="p-8 pb-6">
               <div className="flex items-center gap-3 mb-4">
