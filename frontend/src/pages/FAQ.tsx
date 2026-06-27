@@ -33,7 +33,7 @@ const faqsData: Record<'EN' | 'ID', FaqItem[]> = {
 };
 
 export const FAQ = () => {
-  const { lang, t } = useTranslation();
+  const { lang } = useTranslation();
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('All');
 

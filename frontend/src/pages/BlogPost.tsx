@@ -193,7 +193,7 @@ const articlesEN: Record<string, React.ReactNode> = {
 
 export const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { lang, t } = useTranslation();
+  const { lang } = useTranslation();
   
   const posts = blogPostsData[lang];
   const post = posts.find(p => p.slug === slug);
